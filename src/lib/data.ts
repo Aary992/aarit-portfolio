@@ -71,7 +71,7 @@ export const ventures: Venture[] = [
       { value: "0", label: "real money at risk" },
       { value: "Gen-Z", label: "built for" },
     ],
-    url: "https://marketplayy.vercel.app",
+    url: "https://marketplay.space",
     accent: "#8b5cf6",
     image: "/marketplay-ss.png",
     logo: "/marketplay-logo.png",
