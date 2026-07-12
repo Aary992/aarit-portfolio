@@ -40,8 +40,11 @@ def make(size):
     return img.resize((size, size), Image.LANCZOS)
 
 
-make(512).save("public/icon.png")
-make(192).save("public/icon-192.png")
-make(180).save("public/apple-icon.png")
+# App Router auto-detects these in src/app/ and emits the correct <link> tags.
+make(512).save("src/app/icon.png")
+make(180).save("src/app/apple-icon.png")
 make(48).save("src/app/favicon.ico", sizes=[(16, 16), (32, 32), (48, 48)])
-print("Icons written: favicon.ico, icon.png, icon-192.png, apple-icon.png")
+# Stable public URLs for the web manifest.
+make(512).save("public/icon-512.png")
+make(192).save("public/icon-192.png")
+print("Icons written: src/app/{favicon.ico,icon.png,apple-icon.png}, public/{icon-512,icon-192}.png")
