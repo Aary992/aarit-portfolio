@@ -62,7 +62,7 @@ export const ventures: Venture[] = [
     tagline: "Financial literacy, gamified for the next generation.",
     role: "Founder & CEO",
     note: "built solo",
-    status: "Prototype · pre-launch",
+    status: "Pre-launch · launches in 3 weeks · waitlist open",
     year: "2026",
     description:
       "A gamified platform killing financial illiteracy in teens. You're put through real-life financial situations as your age progresses, seeing the decisions you can make and how they play out, all backed by short-form lessons and micro-learning.",
