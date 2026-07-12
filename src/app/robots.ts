@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://aaritshahportfolio.online/sitemap.xml",
+    sitemap: "https://aaritshah.com/sitemap.xml",
   };
 }

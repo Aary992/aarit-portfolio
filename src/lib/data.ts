@@ -6,7 +6,7 @@ export const profile = {
   phone: "+91 98199 75062",
   phoneRaw: "+919819975062",
   calendly: "https://calendly.com/shahaarit3/30min",
-  domain: "https://aaritshahportfolio.online",
+  domain: "https://aaritshah.com",
   // Drop your resume PDF at public/aarit-shah-cv.pdf for this button to work.
   cv: "/aarit-shah-cv.pdf",
 };

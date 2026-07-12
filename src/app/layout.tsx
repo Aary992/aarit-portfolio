@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-const siteUrl = "https://aaritshahportfolio.online";
+const siteUrl = "https://aaritshah.com";
 const defaultTitle = "Aarit Shah · Founder, Trader & Creator";
 const titleTemplate = "%s · Aarit Shah";
 const description =

@@ -11,8 +11,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Aarit Shah",
-  url: "https://aaritshahportfolio.online",
-  image: "https://aaritshahportfolio.online/portrait.png",
+  url: "https://aaritshah.com",
+  image: "https://aaritshah.com/portrait.png",
   jobTitle: "Founder, Trader & Creator",
   description:
     "Founder, trader, creator and student from South Bombay building MarketPlay, GetAITrade and 10x Founders, and leading a 1,500-person community.",
