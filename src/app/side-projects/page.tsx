@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowUpRight } from "lucide-react";
 import { PageHeader } from "@/components/ui/page-header";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { sideProjects, forFun } from "@/lib/data";
@@ -7,7 +8,7 @@ import { Reveal } from "@/components/ui/reveal";
 export const metadata: Metadata = {
   title: "Side projects",
   description:
-    "The tools Aarit Shah builds for himself: research-analyst bots, a self-improving Obsidian second brain, trading dashboards and a content engine, plus the things he does purely for fun.",
+    "The tools Aarit Shah builds for himself: a self-improving Obsidian second brain, an AI trade journal, research-analyst bots, financial models and a content engine, plus the things he does purely for fun.",
   alternates: { canonical: "/side-projects" },
 };
 
