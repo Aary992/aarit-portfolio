@@ -315,24 +315,35 @@ export const nav = [
 
 export const sideProjects = [
   {
+    name: "Self-improving second brain",
+    category: "Knowledge",
+    desc: "A fully-built Obsidian OS that auto-scrapes viral reels, LinkedIn posts and podcasts, distils them into a structured knowledge graph, runs a nightly synthesis pass across every note, and quizzes me with active recall to test what actually stuck.",
+  },
+  {
+    name: "AI Trade Journal",
+    category: "Trading",
+    desc: "Send one screenshot to a Telegram bot and the AI logs the entire trade for you, no manual entry. The dashboard mimics Tradezella: net P&L, win rate, profit factor, avg R, equity curve, a full P&L calendar.",
+    href: "https://ai-trade-journal-delta.vercel.app",
+  },
+  {
     name: "Research-analyst bots",
     category: "Automation",
     desc: "Auto-bots that do the grunt work of equity and crypto research: screening, summarising and flagging, so I act on signal, not noise.",
   },
   {
-    name: "Self-improving second brain",
-    category: "Knowledge",
-    desc: "An Obsidian system that auto-scrapes viral reels, LinkedIn posts and podcasts, distils them, and gets sharper every day.",
-  },
-  {
-    name: "Trading & journaling dashboards",
-    category: "Web",
-    desc: "Internal dashboards for my own trading, with live data, journals and automations wired into one place.",
+    name: "Financial models & research",
+    category: "Investing",
+    desc: "Custom-built valuation and DCF models that tear a business apart before I commit a rupee, alongside whatever research tooling the off-the-shelf products don't offer.",
   },
   {
     name: "The content engine",
     category: "Growth",
     desc: "A pipeline that turns my daily inputs into scripts and posts, the system behind 2.7M views a month.",
+  },
+  {
+    name: "Vibecoded, shipped, forgotten",
+    category: "Everything else",
+    desc: "Internal tools, dashboards and weekend experiments I vibecode and ship just to see if I can, most of them without ever telling anyone.",
   },
 ];
 
