@@ -320,7 +320,64 @@ export const nav = [
   { label: "Building", href: "/building" },
   { label: "Investing", href: "/investing" },
   { label: "Side projects", href: "/side-projects" },
+  { label: "Writing", href: "/writing" },
   { label: "Certifications", href: "/certifications" },
+];
+
+export type Post = {
+  slug: string;
+  title: string;
+  dek: string;
+  category: string;
+  date: string;
+  readTime: string;
+  body: string[];
+};
+
+export const posts: Post[] = [
+  {
+    slug: "marketplays-ai-control-room",
+    title: "Inside MarketPlay's AI control room: 10 agents, one approval gate",
+    dek: "How I run a 10-agent backend for a live financial product without ever letting an agent act unsupervised.",
+    category: "AI projects",
+    date: "2026-07-20",
+    readTime: "5 min read",
+    body: [
+      "MarketPlay is a financial literacy game, but the backend that runs it is closer to an AI operations team. Ten scoped agents handle the work: generating scenario copy, grading checkpoint tests, monitoring the paper-trading broker, flagging anomalies across the six-tab analytics dashboard, and more. None of them ship a change or take an action without passing through a human approval gate first.",
+      "I built it this way on purpose. The product deals with a teenager's financial decisions, even in a paper-trading environment, so the cost of an unreviewed AI mistake is higher than in a typical side project. The control room is the compromise: agents do the grunt work at machine speed, I stay the single point of accountability for anything that touches a user.",
+      "Each agent is scoped narrowly rather than given broad autonomy. One agent's job is to draft the next scenario in the reel curriculum, nothing else. Another watches the paper-trading broker's order flow for anything that looks like a bug in fills or settlement. Narrow scope makes each agent easier to audit, and easier to debug when something goes wrong, which it occasionally does.",
+      "The pattern generalizes past MarketPlay. GetAITrade runs on the same philosophy applied to real trading infrastructure: broker connectivity and Telegram routing handled by AI, but every live order still passes a human verification gate before it executes. Human-in-the-loop isn't a compliance checkbox for me, it's the actual design principle that makes me comfortable putting AI in front of anyone's money.",
+      "I designed, built and shipped every layer of MarketPlay's control room solo. If you're building anything where AI touches financial decisions, the lesson I'd pass on is simple: decide what the agent is never allowed to do before you decide what it's allowed to do.",
+    ],
+  },
+  {
+    slug: "why-i-built-an-ai-trade-journal",
+    title: "Why I built my own AI trade journal instead of paying for Tradezella",
+    dek: "Screenshot in, fully logged trade out. No manual entry, no monthly subscription.",
+    category: "AI trading",
+    date: "2026-07-13",
+    readTime: "4 min read",
+    body: [
+      "Every serious trader eventually hits the same wall: you know you should journal every trade, and you almost never do it, because manual entry is tedious and breaks your flow the moment the market moves. I hit that wall enough times that I built my way out of it.",
+      "The AI Trade Journal works off a single screenshot. Send a trade confirmation to a Telegram bot and the AI reads it, extracts the entry, exit, size and instrument, and logs the entire trade automatically. No forms, no manual data entry, no excuse to skip a day.",
+      "The dashboard mimics what Tradezella charges a subscription for: net P&L, win rate, profit factor, average R, an equity curve, and a full P&L calendar. The difference is it's mine, it's free to run, and it's wired directly into the same AI-agent thinking behind MarketPlay and GetAITrade: narrow tool, single job, no unnecessary complexity.",
+      "It's live at ai-trade-journal-delta.vercel.app. I built it for myself first, the way most of my side projects start: I wanted something that didn't exist yet in the shape I wanted it, so I shipped it over a weekend and kept using it because it actually worked.",
+    ],
+  },
+  {
+    slug: "teaching-1500-people-ai-and-trading",
+    title: "What I actually teach in daily webinars to 1,500 people",
+    dek: "No tips, no signals, just how markets and AI actually work, every single day.",
+    category: "AI training",
+    date: "2026-06-29",
+    readTime: "4 min read",
+    body: [
+      "I run daily webinars for a community of 1,500-plus people on AI, markets and trading. I'm not SEBI registered, and every session starts with the same line: I will never give a tip or a signal. What I will do is show you exactly how I think through a decision, and teach you enough that you don't need me, or anyone else, to hand you one.",
+      "The AI half of it covers what I'm actually building: how agents are scoped and gated in MarketPlay's control room, how the AI Trade Journal turns a screenshot into a fully logged trade, how GetAITrade routes orders through a human-verification gate. I teach from real, shipped systems, not theory.",
+      "The markets half is value investing and systematic crypto trading, the same two disciplines I run my own capital through: screen for mispriced businesses, tear apart the financials before committing a rupee, demand a real moat, then manage the position as price moves. On the crypto side it's rules-based entries and exits with risk capped per trade, never a single bet on a single idea.",
+      "The content itself runs through a pipeline I built myself, the same content engine that turns daily inputs into scripts and posts behind roughly 2.7 million monthly views. Teaching daily only works if the system behind it doesn't depend on me having a good day. I'd rather build the machine than rely on willpower.",
+    ],
+  },
 ];
 
 export type SideProject = {
