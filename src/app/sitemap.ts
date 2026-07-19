@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/investing",
     "/side-projects",
     "/writing",
+    "/press",
     "/certifications",
   ];
   const ventureRoutes = ventures.map((v) => `/building/${v.slug}`);
