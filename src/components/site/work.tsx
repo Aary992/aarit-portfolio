@@ -51,14 +51,21 @@ function VentureCard({ v, index }: { v: Venture; index: number }) {
                 "radial-gradient(120% 120% at 30% 15%, color-mix(in oklab, var(--accent) 34%, transparent), transparent 62%)",
             }}
           />
-          <ScreenshotFrame
-            className="relative w-full transition-transform duration-500 group-hover:-translate-y-1"
-            src={v.image}
-            alt={`${v.name} screenshot`}
-            host={hostFromUrl(v.url)}
-            logo={v.logo}
-            badge={`${String(index + 1).padStart(2, "0")} / ${String(ventures.length).padStart(2, "0")}`}
-          />
+          {v.gallery ? (
+            <PhoneShowcase
+              className="relative transition-transform duration-500 group-hover:-translate-y-1"
+              images={v.gallery}
+            />
+          ) : (
+            <ScreenshotFrame
+              className="relative w-full transition-transform duration-500 group-hover:-translate-y-1"
+              src={v.image}
+              alt={`${v.name} screenshot`}
+              host={hostFromUrl(v.url)}
+              logo={v.logo}
+              badge={`${String(index + 1).padStart(2, "0")} / ${String(ventures.length).padStart(2, "0")}`}
+            />
+          )}
         </div>
 
         <div className={cn("flex flex-col bg-night p-8 sm:p-10", flip && "md:order-1")}>
