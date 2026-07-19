@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     description: v.description,
     alternates: { canonical },
     openGraph: {
-      title: `${v.name} · Aarit Shah`,
+      title: `Aarit Shah · ${v.name}`,
       description: v.description,
       url: canonical,
     },
