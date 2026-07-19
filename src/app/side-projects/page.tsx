@@ -29,28 +29,36 @@ export default function SideProjectsPage() {
       <section className="mx-auto max-w-6xl px-6 pb-20">
         <div className="grid gap-px overflow-hidden rounded-2xl border border-edge bg-edge sm:grid-cols-2">
           {sideProjects.map((p, i) => {
-            const Wrapper = p.href ? "a" : "div";
+            const cardBody = (
+              <>
+                <div className="flex items-start justify-between gap-3">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-amber">
+                    {p.category}
+                  </span>
+                  {p.href && (
+                    <ArrowUpRight className="h-4 w-4 shrink-0 text-faint transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-amber" />
+                  )}
+                </div>
+                <h3 className="mt-4 font-display text-2xl font-bold tracking-tight">
+                  {p.name}
+                </h3>
+                <p className="mt-3 leading-relaxed text-muted">{p.desc}</p>
+              </>
+            );
             return (
               <Reveal key={p.name} delay={(i % 2) * 0.05}>
-                <Wrapper
-                  {...(p.href
-                    ? { href: p.href, target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                  className="group flex h-full flex-col bg-night p-8"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-amber">
-                      {p.category}
-                    </span>
-                    {p.href && (
-                      <ArrowUpRight className="h-4 w-4 shrink-0 text-faint transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-amber" />
-                    )}
-                  </div>
-                  <h3 className="mt-4 font-display text-2xl font-bold tracking-tight">
-                    {p.name}
-                  </h3>
-                  <p className="mt-3 leading-relaxed text-muted">{p.desc}</p>
-                </Wrapper>
+                {p.href ? (
+                  <a
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex h-full flex-col bg-night p-8"
+                  >
+                    {cardBody}
+                  </a>
+                ) : (
+                  <div className="group flex h-full flex-col bg-night p-8">{cardBody}</div>
+                )}
               </Reveal>
             );
           })}
