@@ -18,6 +18,16 @@ export const socials = [
     href: "https://www.linkedin.com/in/aarit-shah-7a1a56395/",
   },
   {
+    label: "GitHub",
+    handle: "@Aary992",
+    href: "https://github.com/Aary992",
+  },
+  {
+    label: "X",
+    handle: "@withaarit",
+    href: "https://x.com/withaarit",
+  },
+  {
     label: "Instagram",
     handle: "@withaarit",
     href: "https://instagram.com/withaarit",
