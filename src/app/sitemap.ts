@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { ventures } from "@/lib/data";
+import { ventures, posts } from "@/lib/data";
 
 const base = "https://aaritshah.com";
 
@@ -11,11 +11,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/building",
     "/investing",
     "/side-projects",
+    "/writing",
     "/certifications",
   ];
   const ventureRoutes = ventures.map((v) => `/building/${v.slug}`);
+  const writingRoutes = posts.map((p) => `/writing/${p.slug}`);
 
-  return [...staticRoutes, ...ventureRoutes].map((route) => ({
+  return [...staticRoutes, ...ventureRoutes, ...writingRoutes].map((route) => ({
     url: `${base}${route}`,
     lastModified: new Date(),
     changeFrequency: "monthly",
