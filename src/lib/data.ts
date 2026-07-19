@@ -313,7 +313,14 @@ export const nav = [
   { label: "Certifications", href: "/certifications" },
 ];
 
-export const sideProjects = [
+export type SideProject = {
+  name: string;
+  category: string;
+  desc: string;
+  href?: string;
+};
+
+export const sideProjects: SideProject[] = [
   {
     name: "Self-improving second brain",
     category: "Knowledge",
