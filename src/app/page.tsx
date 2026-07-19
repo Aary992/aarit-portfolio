@@ -13,9 +13,19 @@ const jsonLd = {
   name: "Aarit Shah",
   url: "https://aaritshah.com",
   image: "https://aaritshah.com/portrait.png",
-  jobTitle: "Founder, Trader & Creator",
+  jobTitle: "Founder, AI Builder & Trader",
   description:
-    "Founder, trader, creator and student from South Bombay building MarketPlay, GetAITrade and 10x Founders, and leading a 1,500-person community.",
+    "Founder, AI builder, trader and educator from South Bombay building MarketPlay, GetAITrade and 10x Founders, and running daily webinars on AI, markets and trading for a 1,500-person community.",
+  knowsAbout: [
+    "Artificial Intelligence",
+    "AI agents",
+    "AI trading systems",
+    "Algorithmic trading",
+    "Financial markets",
+    "Value investing",
+    "Cryptocurrency",
+    "Financial literacy",
+  ],
   address: {
     "@type": "PostalAddress",
     addressLocality: "Mumbai",
