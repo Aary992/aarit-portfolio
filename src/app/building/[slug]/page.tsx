@@ -8,6 +8,7 @@ import { ventures, ventureDetail } from "@/lib/data";
 import { Reveal } from "@/components/ui/reveal";
 import { Counter } from "@/components/ui/counter";
 import { ScreenshotFrame } from "@/components/ui/screenshot-frame";
+import { PhoneShowcase } from "@/components/ui/phone-showcase";
 
 function hostFromUrl(url: string) {
   try {
