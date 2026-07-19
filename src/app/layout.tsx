@@ -13,10 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 const siteUrl = "https://aaritshah.com";
-const defaultTitle = "Aarit Shah · Founder, Trader & Creator";
+const defaultTitle = "Aarit Shah · AI Builder, Trader & Founder";
 const titleTemplate = "Aarit Shah · %s";
 const description =
-  "Aarit Shah is a founder, trader, creator and student from South Bombay building the future of finance: MarketPlay, GetAITrade and 10x Founders.";
+  "Aarit Shah is an AI builder, trader, founder and educator from Mumbai building MarketPlay, GetAITrade and 10x Founders, and training a 1,500-person community on AI, markets and trading.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -27,6 +27,12 @@ export const metadata: Metadata = {
     "MarketPlay",
     "GetAITrade",
     "10x Founders",
+    "AI trading",
+    "AI agents",
+    "AI training",
+    "AI builder",
+    "AI projects",
+    "trading bots",
     "value investing",
     "crypto CFDs",
     "trading",
