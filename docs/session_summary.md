@@ -1,16 +1,21 @@
-# Session summary (2026-07-19)
+# Session summary (2026-07-20)
 
-Two asks: SEO name-first fix, and a content overhaul (MarketPlay + new side projects).
+Ask: max publicity/SEO so "[Aarit Shah] + AI training/AI trading/AI projects" surfaces him, not just his bare name (which already ranks via LinkedIn/portfolio/Instagram).
 
-**SEO** — `src/app/layout.tsx` `titleTemplate` flipped to `"Aarit Shah · %s"`. All pages compose through this one template, so nothing else needed changing except the openGraph title in `building/[slug]/page.tsx`.
+**Site (pushed to `main`, live via Vercel):**
+- `layout.tsx` + homepage JSON-LD repositioned around "AI builder" (title, keywords, jobTitle, description, `knowsAbout`).
+- `socials` in `data.ts` gained GitHub + X — auto-flow into footer/contact/about and into JSON-LD `sameAs` (no component edits needed, they're generic label pills).
+- New `/writing` section: 3 grounded articles (MarketPlay's AI control room, the AI Trade Journal, and the daily AI/markets webinars — this one directly targets the "AI training" query), each with its own metadata + `BlogPosting` JSON-LD. Added to nav + sitemap.
+- Verified via `tsc --noEmit` + `next build` (23 routes, all green) before pushing.
 
-**MarketPlay** — real content came from the user describing the full shipped product (21-module reel curriculum, 30+ interactive calculators, life simulator, real paper-trading broker, founder control room with 10 AI agents). Assets are NOT sent through chat — this machine has the MarketPlay repo locally at `C:\Users\Admin\Projects\MarketPlay\marketplay\`, so screenshots/logos were copied directly from its `public/screenshots/` and `public/brand/` into this repo. Added `Venture.gallery` + `PhoneShowcase` component to display the portrait mobile screenshots properly (the existing `ScreenshotFrame` assumes landscape website screenshots with browser chrome — wrong shape for a mobile app).
+**GitHub (`Aary992`):**
+- New public `Aary992/Aary992` repo — its README is the GitHub profile page, states AI-builder positioning + all 4 projects + links.
+- Archived 10 confirmed-throwaway duplicate repos (Market-Play x7, FocusFlow x3) that were diluting the profile — checked size/stars/description via API before touching any, all archives reversible.
+- Profile bio/location/blog/twitter fields still unset — blocked on `gh` token missing the `user` OAuth scope. User needs to run `gh auth refresh -h github.com -s user` (opens a browser approval) before that's settable via API. Exact field values are queued in `PROGRESS.md`.
 
-**Side projects** — added AI Trade Journal (Telegram → auto-logged trade, live at ai-trade-journal-delta.vercel.app) and upgraded the Obsidian vault entry with real specifics (nightly synthesis, active-recall quizzing — these map to this session's actual `daily`/`synapse`/`recall`/`note`/`learn` skills, so they're genuine, not invented). Also added "Financial models & research" and a catch-all "Vibecoded, shipped, forgotten" for the vague "other AI products" ask.
+**Deliberately not touched:** `cortex`, `cortex-os`, `AI-War-Room`, `doctor`, `portfolio-tracker`, `trade-journal`, `demo-concept`, `pop`, `waitlist` — not obvious throwaways like the Market-Play/FocusFlow dupes were, so left for a real decision with the user rather than guessed at.
 
-**Verified**: `tsc --noEmit` + `next build` both clean, and visually confirmed via Playwright screenshots (had to scroll the page first since `Reveal` components only animate in on `whileInView`).
-
-**Not done / needs the user**:
-- MarketPlay's launch-timeline copy — old "launches in 3 weeks" was stale, just removed rather than replaced with a guess.
-- No screenshots exist yet for AI Trade Journal or the Obsidian vault (side-project cards don't show images currently anyway).
-- Nothing committed to git — all changes are sitting in the working tree.
+**Not done / needs the user:**
+- Run the `gh auth refresh` command above, then profile bio/location/blog can be set in one follow-up API call.
+- Decide the un-evaluated repos above: archive, describe, or pin.
+- Off-site distribution (Product Hunt/Indie Hackers/Show HN launches, LinkedIn/X posting cadence) — guidance given in-chat, nothing automated since it needs the user's own accounts/voice.
