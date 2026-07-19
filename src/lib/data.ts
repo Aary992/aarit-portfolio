@@ -424,11 +424,14 @@ export const ventureDetail: Record<
 > = {
   marketplay: {
     longDescription:
-      "MarketPlay turns the thing that scares most teenagers, money, into a game they actually want to play. As your age progresses you're put through real-life financial situations and get to see the decisions you can make and how they affect you, all backed by short-form lessons and micro-learning. I designed, built and shipped the entire prototype myself.",
+      "MarketPlay turns the thing that scares most teenagers, money, into a game they actually want to play. A real market event drops as a fullscreen takeover, you make one irreversible call, Defensive, Balanced or Bold, and a six-beat cinematic reveal shows exactly what it did to your net worth. That loop sits inside a full product: a 21-module curriculum across Money Basics and Stock Market delivered as TikTok-style vertical reels with gated checkpoint tests, 30+ interactive calculator chapters you drag sliders through, a life simulator that ages you through financial stages, and a paper-trading module with a real simulated broker, order validation, fills, settlement, live P&L. Behind it all is a founder control room: a six-tab analytics command center and a control plane for 10 scoped AI agents running the backend with human approval on everything. I designed, built and shipped every layer of it myself.",
     features: [
-      { title: "Gamified learning", desc: "Streaks, levels and challenges that make financial literacy addictive." },
-      { title: "Real-life scenarios", desc: "Face real financial situations as your age progresses and see how each decision plays out." },
-      { title: "Short-form & micro-learning", desc: "Bite-sized lessons built for how this generation actually learns." },
+      { title: "Gamified scenario engine", desc: "Fullscreen market events, one irreversible call, and a paced six-beat cinematic result reveal." },
+      { title: "21-module reel curriculum", desc: "TikTok-style vertical lessons across Money Basics and Stock Market, gated behind checkpoint tests." },
+      { title: "30+ interactive calculators", desc: "Drag-the-slider chapters on FDs, tax, RSI, MACD, Bollinger Bands and Fibonacci with custom-built visualizations." },
+      { title: "Life simulator", desc: "Ages you through financial life stages and charts your net worth over time. Next up: an avatar whose look evolves with it." },
+      { title: "Real paper trading", desc: "A working simulated broker: order validation, fills, settlement, positions and day P&L, not a toy." },
+      { title: "Founder control room", desc: "A six-tab analytics command center plus a control plane for 10 AI agents, every action gated by human approval." },
     ],
   },
   getaitrade: {
