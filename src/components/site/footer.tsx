@@ -41,6 +41,9 @@ export default function Footer() {
             >
               Newsletter
             </a>
+            <Link href="/press" className="text-sm text-muted transition-colors hover:text-ink">
+              Press kit
+            </Link>
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             {socials.map((s) => (
