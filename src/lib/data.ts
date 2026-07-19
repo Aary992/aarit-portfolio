@@ -52,6 +52,7 @@ export type Venture = {
   url: string;
   accent: string;
   image: string;
+  gallery?: { src: string; alt: string }[];
   logo?: string;
 };
 
