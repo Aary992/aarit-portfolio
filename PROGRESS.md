@@ -1,5 +1,22 @@
 # aarit-portfolio — Progress
 
+## Completed (2026-07-20) — SEO / "name + AI" publicity push
+
+**Goal:** rank for "[Aarit Shah] + AI training / AI trading / AI projects", not just bare name (which already ranks fine via LinkedIn/Instagram/portfolio).
+
+**Site changes** (all pushed to `main`, live via Vercel):
+- `src/app/layout.tsx`: default title now "Aarit Shah · AI Builder, Trader & Founder"; `keywords` array gained AI trading/AI agents/AI training/AI builder/AI projects/trading bots.
+- `src/app/page.tsx`: homepage `Person` JSON-LD `jobTitle`/`description` now lead with "AI builder"; added `knowsAbout` (AI, AI agents, AI trading systems, algorithmic trading, etc.); `sameAs` auto-picks up GitHub + X since both were added to `socials`.
+- `src/lib/data.ts`: added GitHub (`github.com/Aary992`) and X (`x.com/withaarit`) to `socials` (renders automatically in footer/contact/about — no component changes needed, they're plain label pills). Added new `posts`/`Post` type + 3 grounded articles.
+- **New `/writing` section** (`src/app/writing/page.tsx` + `src/app/writing/[slug]/page.tsx`): 3 articles, each with per-page metadata + `BlogPosting` JSON-LD, grounded entirely in real shipped facts (no invented content): "Inside MarketPlay's AI control room" (10-agent backend, human approval gate), "Why I built my own AI trade journal" (Telegram screenshot → logged trade), "What I actually teach in daily webinars to 1,500 people" (the AI-training-facing one — directly targets "AI training" + name searches). Added to `nav` and `sitemap.ts`.
+- Verified: `tsc --noEmit` clean, `next build` green (23 routes incl. 3 static writing posts).
+
+**GitHub (`Aary992`) changes:**
+- Created public `github.com/Aary992/Aary992` profile-README repo (renders on the profile page): states name, AI-builder positioning, all 4 ventures/projects, links to site/writing/LinkedIn/X.
+- Archived 10 near-duplicate/throwaway repos that were diluting the profile: `_Market-Play_`, `-Market-Play-`, `MPlay`, `MP`, `market-play_`, `Market-Play`, `Market_play`, `FocusFlow`, `Focus-Flow`, `Focus--Flow` (all 0 stars/no description/tiny, confirmed via `gh api` before touching — archiving is reversible from repo settings).
+- **Not done — blocked on missing OAuth scope:** GitHub profile bio/location/blog/twitter fields need the `user` scope; current `gh` token only has `gist, read:org, repo`. User needs to run `gh auth refresh -h github.com -s user` (interactive browser approval) before this can be set via API. Intended values once unblocked: bio "Founder & AI builder. Building MarketPlay, GetAITrade and 10x Founders. Trading, AI agents, financial literacy.", location "Mumbai, India", blog "https://aaritshah.com", twitter "withaarit".
+- **Not evaluated:** `cortex`, `cortex-os`, `AI-War-Room`, `doctor`, `portfolio-tracker`, `trade-journal`, `demo-concept`, `pop`, `waitlist` were left untouched — unlike the Market-Play/FocusFlow dupes these aren't obvious throwaways by name, could be real unlisted projects worth describing/pinning rather than archiving. Worth a deliberate pass with the user, not a blind archive.
+
 ## Completed (2026-07-19)
 
 **SEO: name-first titles**
