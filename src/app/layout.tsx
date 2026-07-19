@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 const siteUrl = "https://aaritshah.com";
 const defaultTitle = "Aarit Shah · Founder, Trader & Creator";
-const titleTemplate = "%s · Aarit Shah";
+const titleTemplate = "Aarit Shah · %s";
 const description =
   "Aarit Shah is a founder, trader, creator and student from South Bombay building the future of finance: MarketPlay, GetAITrade and 10x Founders.";
 
