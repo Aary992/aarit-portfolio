@@ -149,13 +149,17 @@ export default async function VenturePage({ params }: Params) {
 
         <div className="flex flex-col gap-8">
           <Reveal>
-            <ScreenshotFrame
-              src={v.image}
-              alt={`${v.name} screenshot`}
-              host={hostFromUrl(v.url)}
-              logo={v.logo}
-              priority
-            />
+            {v.gallery ? (
+              <PhoneShowcase images={v.gallery} />
+            ) : (
+              <ScreenshotFrame
+                src={v.image}
+                alt={`${v.name} screenshot`}
+                host={hostFromUrl(v.url)}
+                logo={v.logo}
+                priority
+              />
+            )}
           </Reveal>
           {v.metrics.length > 0 && (
             <Reveal delay={0.05}>
