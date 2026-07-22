@@ -39,6 +39,16 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Aarit Shah", url: siteUrl }],
   creator: "Aarit Shah",
+  // Search Console and Bing ownership tags. Read from env so the tokens can be
+  // pasted into the Vercel dashboard and shipped with a redeploy, with no code
+  // change. Absent env vars render no tag at all, which is the correct
+  // behaviour rather than an empty one.
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : {},
+  },
   manifest: "/manifest.webmanifest",
   alternates: { canonical: "/" },
   openGraph: {
