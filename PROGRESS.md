@@ -1,6 +1,21 @@
 # aarit-portfolio — Progress
 
-## In progress (2026-07-22, session 5) — admin CMS, full nav, hero colour, calculators removed
+## SHIPPED 2026-07-23 — everything below is live
+
+Commit `c02c5fd` on `main`, pushed to GitHub, deployed to production via `vercel deploy --prod` (`dpl_BaBG2rctSFfzYsTvNfhbcZYxJEJK`), aliased to https://www.aaritshah.com.
+
+**Verified against the live site**, not just locally: every route returns 200; `/calculators`, `/lab/name` and unknown routes return 404; CSP is present and allows both Supabase and Vercel Analytics; HSTS set; RSS emits 3 items; sitemap has 22 URLs with no calculator or admin entries; robots disallows `/lab/` and `/admin`; the hero shows 4M and 22K with no trace of the old 2.7M figure or the placeholder testimonials.
+
+**Deploy notes.** The Vercel project (`aarit-portfolio`, Node 24.x) is **not connected to GitHub**, so `git push` does not deploy; production ships only via `vercel deploy --prod`. `vercel link` writes `.vercel/repo.json` rather than `project.json` because the directory is a git repo, which is normal and works.
+
+### Outstanding, needs Aarit
+
+1. **Create the admin user**: Supabase dashboard → Authentication → Users → Add user. Pick a real password from a password manager. `/admin` is publicly reachable, so a weak password is a stranger publishing under his name. Supabase enforces a 6-character minimum, so short throwaway passwords are rejected outright.
+2. **Google Search Console and Bing verification tokens**, then submit the sitemap.
+3. **Enable Vercel Analytics** in the project dashboard; the script is installed but records nothing until the product is switched on.
+4. **The ~30 LinkedIn posts** for the Markets, Explained archive.
+
+## Session 5 detail (2026-07-22) — admin CMS, full nav, hero colour, calculators removed
 
 **Uncommitted.** 35 routes. Build green, `tsc` clean, `eslint src` clean.
 
