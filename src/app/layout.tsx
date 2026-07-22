@@ -1,18 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono } from "next/font/google";
 import "./globals.css";
-import SmoothScroll from "@/components/smooth-scroll";
 import Navbar from "@/components/site/navbar";
 import Footer from "@/components/site/footer";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { PageTransition } from "@/components/ui/page-transition";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { zodiak, geistMono } from "@/lib/fonts";
 
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
-  display: "swap",
-});
-
-const siteUrl = "https://aaritshah.com";
+// The apex 308-redirects to www on Vercel, so www is the canonical origin.
+const siteUrl = "https://www.aaritshah.com";
 const defaultTitle = "Aarit Shah · AI Builder, Trader & Founder";
 const titleTemplate = "Aarit Shah · %s";
 const description =
@@ -76,25 +73,47 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geistMono.variable} antialiased`}>
-      <head>
-        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800,900&f[]=zodiak@400,500,700&display=swap"
-        />
-      </head>
+    <html
+      lang="en"
+      className={`${zodiak.variable} ${geistMono.variable} antialiased`}
+    >
       <body className="min-h-screen bg-night text-ink">
-        <SmoothScroll>
-          <ScrollProgress />
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </SmoothScroll>
+        {/* Only the two critical Switzer weights block first paint: 400 for
+            body text, 900 for the display faces. Everything else loads on
+            demand via the @font-face rules in globals.css. */}
+        <link
+          rel="preload"
+          href="/fonts/switzer-400-normal.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/switzer-900-normal.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        {/* Keyboard users land here first; it stays invisible until focused. */}
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-night"
+        >
+          Skip to content
+        </a>
+        <ScrollProgress />
+        <Navbar />
+        <main id="main">
+          <PageTransition>{children}</PageTransition>
+        </main>
+        <Footer />
         <div
           aria-hidden="true"
           className="pointer-events-none fixed inset-0 z-[55] hidden bg-grain opacity-[0.06] mix-blend-soft-light sm:block"
         />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

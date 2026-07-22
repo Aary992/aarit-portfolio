@@ -3,9 +3,10 @@ import type { NextConfig } from "next";
 const isDev = process.env.NODE_ENV === "development";
 
 // Content Security Policy. Allows exactly what the site uses:
-// - Fontshare for the Switzer/Zodiak fonts (stylesheet + font files)
 // - the Calendly booking iframe
 // - inline styles (framer-motion / styled-jsx / next-font) and the JSON-LD + Next inline scripts
+// Fonts are self-hosted via next/font/local, so no third-party font origins are
+// allowed any more.
 // In dev we also allow eval + websockets so Turbopack HMR keeps working.
 const csp = [
   "default-src 'self'",
@@ -14,10 +15,14 @@ const csp = [
   "frame-ancestors 'self'",
   "form-action 'self'",
   "img-src 'self' data: blob:",
-  "font-src 'self' https://cdn.fontshare.com data:",
-  "style-src 'self' 'unsafe-inline' https://api.fontshare.com",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
-  `connect-src 'self' https://api.fontshare.com https://cdn.fontshare.com${isDev ? " ws: wss:" : ""}`,
+  "font-src 'self' data:",
+  "style-src 'self' 'unsafe-inline'",
+  // va.vercel-scripts.com serves the Analytics and Speed Insights scripts.
+  `script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com${isDev ? " 'unsafe-eval'" : ""}`,
+  // Supabase: the work-with-me enquiry form and calculator email capture
+  // insert rows into the dedicated aarit-portfolio project.
+  // vitals.vercel-insights.com receives the Core Web Vitals beacons.
+  `connect-src 'self' https://upknvaoegkagbrktkufd.supabase.co https://va.vercel-scripts.com https://vitals.vercel-insights.com${isDev ? " ws: wss:" : ""}`,
   "frame-src https://calendly.com https://*.calendly.com",
   "worker-src 'self' blob:",
   "manifest-src 'self'",
@@ -46,8 +51,25 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
   },
+  experimental: {
+    viewTransition: true,
+  },
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    return [
+      { source: "/:path*", headers: securityHeaders },
+      // Fonts in /public are content-stable (a new weight gets a new file
+      // name), so they can cache forever. Without this, /public assets ship
+      // with no cache header at all.
+      {
+        source: "/fonts/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+    ];
   },
 };
 

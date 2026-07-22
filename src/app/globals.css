@@ -1,5 +1,59 @@
 @import "tailwindcss";
 
+/* Switzer, self-hosted from /public/fonts. Declared by hand instead of
+   next/font/local so the browser only fetches the weights a page renders;
+   the two critical weights (400 body, 900 display) are preloaded from the
+   root layout. Weights 100 and 300 are not shipped: nothing renders them. */
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/switzer-200-normal.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/switzer-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/switzer-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/switzer-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/switzer-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/switzer-800-normal.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/switzer-900-normal.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --color-night: #0a0a0b;
   --color-surface: #141416;
@@ -18,17 +72,40 @@
 @theme inline {
   --font-display: "Switzer", ui-sans-serif, system-ui, sans-serif;
   --font-grotesk: "Switzer", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Zodiak", Georgia, serif;
+  --font-serif: var(--font-zodiak), Georgia, serif;
   --font-sans: "Switzer", ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
 :root {
   color-scheme: dark;
+
+  /* Fluid type scale. The vw term does the work on phones, the rem cap stops
+     it on desktop. The old clamps floored at 3rem, which meant 12vw never
+     engaged below ~400px and the "huge" name rendered at 48px on a phone. */
+  --step-name: clamp(5.5rem, 20vw, 13rem);
+  --step-display: clamp(2.75rem, 8vw, 5.5rem);
+  --step-heading: clamp(2rem, 5.5vw, 3.5rem);
+  --step-title: clamp(1.5rem, 3.5vw, 2.25rem);
+
+  /* Motion tokens. One easing vocabulary for the whole site. */
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+  --dur-fast: 180ms;
+  --dur-base: 420ms;
+  --dur-slow: 700ms;
+
+  /* View transitions */
+  --duration-exit: 150ms;
+  --duration-enter: 240ms;
 }
 
+/* Native scrolling. Lenis used to interpolate the wheel at lerp 0.1, which
+   read as input lag on desktop; the browser's own scrolling is the fast path.
+   Smooth applies to anchor jumps only, and the reduced-motion block at the
+   bottom of this file overrides it back to auto. */
 html {
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -43,6 +120,19 @@ body {
 ::selection {
   background: var(--color-ember);
   color: #0a0a0b;
+}
+
+/* One focus treatment for everything interactive. :focus-visible rather than
+   :focus so a mouse click does not leave a ring behind, while keyboard and
+   assistive navigation always get one. */
+:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+a:focus-visible,
+button:focus-visible {
+  outline-offset: 4px;
 }
 
 ::-webkit-scrollbar {
@@ -153,6 +243,22 @@ blockquote {
   }
 }
 
+/* Only the highlight layer travels; the molten gradient underneath is fixed,
+   which is what keeps the letterforms feeling lit rather than sliding. */
+@keyframes name-sweep {
+  0%,
+  62% {
+    background-position:
+      160% 0,
+      0 0;
+  }
+  100% {
+    background-position:
+      -60% 0,
+      0 0;
+  }
+}
+
 @keyframes scroll-reel-char-rise {
   from {
     opacity: 0;
@@ -198,6 +304,271 @@ blockquote {
   }
 }
 
+/* ── The band ────────────────────────────────────────────────────────────────
+   One device, reused: the hero role bar, the nav indicator, section dividers,
+   link underlines and the route-transition wipe are all the same amber
+   rectangle under transform. Transform and opacity only, so it composites on
+   the GPU and stays smooth on mid-range phones. */
+
+@layer utilities {
+  .text-name {
+    font-size: var(--step-name);
+    line-height: 0.78;
+    letter-spacing: -0.055em;
+  }
+
+  /* The name, cast in molten metal. A warm-white core with amber and ember
+     rolling through it, plus a highlight that sweeps across every 9 seconds.
+     Both layers live in one background, so this is a single paint per frame
+     on text rather than a second stacked element. */
+  .name-molten {
+    background-image:
+      linear-gradient(
+        100deg,
+        transparent 0%,
+        transparent 38%,
+        rgba(255, 255, 255, 0.85) 48%,
+        transparent 58%,
+        transparent 100%
+      ),
+      linear-gradient(
+        168deg,
+        #fff7ed 0%,
+        var(--color-ink) 26%,
+        var(--color-amber) 62%,
+        var(--color-ember) 88%,
+        #b3420f 100%
+      );
+    background-size:
+      260% 100%,
+      100% 100%;
+    background-position:
+      160% 0,
+      0 0;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: name-sweep 9s ease-in-out infinite;
+  }
+
+  /* Fallback for engines without background-clip: text, where the rule above
+     would render the name invisible rather than merely unstyled. */
+  @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+    .name-molten {
+      background-image: none;
+      color: var(--color-ink);
+    }
+  }
+  .text-display {
+    font-size: var(--step-display);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+  }
+  .text-heading {
+    font-size: var(--step-heading);
+    line-height: 1;
+    letter-spacing: -0.025em;
+  }
+
+  /* Link underline that grows from the left. On touch it fires on :active
+     instead of :hover, because half the site's hover states are dead on a
+     phone. */
+  .band-link {
+    position: relative;
+    display: inline-block;
+  }
+  .band-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.15em;
+    height: 2px;
+    width: 100%;
+    background: var(--color-amber);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--dur-base) var(--ease-out-expo);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .band-link:hover::after {
+      transform: scaleX(1);
+    }
+  }
+  @media (hover: none) {
+    .band-link:active::after {
+      transform: scaleX(1);
+      transition-duration: var(--dur-fast);
+    }
+  }
+
+  /* Tap feedback for touch devices, where :hover never fires. */
+  @media (hover: none) {
+    .tappable:active {
+      transform: scale(0.97);
+      transition: transform 120ms var(--ease-out-expo);
+    }
+  }
+
+  /* Navbar surface. 60% night over a blur let body text read straight
+     through the pill; 88% keeps a hint of depth while staying legible, and
+     browsers without backdrop-filter get solid night instead of a see-through
+     panel. */
+  .nav-surface {
+    background-color: color-mix(in srgb, var(--color-night) 88%, transparent);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .nav-surface {
+      background-color: var(--color-night);
+    }
+  }
+}
+
+/* ── View transitions ────────────────────────────────────────────────────────
+   Route changes animate as a directional slide, with the header pinned so the
+   user keeps one fixed spatial anchor. */
+
+::view-transition-old(.nav-forward) {
+  --slide-offset: -48px;
+  animation:
+    var(--duration-exit) ease-in both vt-fade reverse,
+    var(--dur-base) var(--ease-in-out-quint) both vt-slide reverse;
+}
+::view-transition-new(.nav-forward) {
+  --slide-offset: 48px;
+  animation:
+    var(--duration-enter) ease-out var(--duration-exit) both vt-fade,
+    var(--dur-base) var(--ease-in-out-quint) both vt-slide;
+}
+::view-transition-old(.nav-back) {
+  --slide-offset: 48px;
+  animation:
+    var(--duration-exit) ease-in both vt-fade reverse,
+    var(--dur-base) var(--ease-in-out-quint) both vt-slide reverse;
+}
+::view-transition-new(.nav-back) {
+  --slide-offset: -48px;
+  animation:
+    var(--duration-enter) ease-out var(--duration-exit) both vt-fade,
+    var(--dur-base) var(--ease-in-out-quint) both vt-slide;
+}
+
+@keyframes vt-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes vt-slide {
+  from {
+    translate: var(--slide-offset);
+  }
+  to {
+    translate: 0;
+  }
+}
+
+/* The header must not slide with the content. */
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header) {
+  display: none;
+}
+::view-transition-new(site-header) {
+  animation: none;
+}
+
+/* Drives the molten panel's oversized gradient layer. -54.5% of a 220%-wide
+   layer sweeps the visible window across the full gradient, the same travel
+   the old background-position animation had, but composited. */
+@keyframes molten {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-54.5%, 0, 0);
+  }
+}
+
+@keyframes band-sweep {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  50% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  50.1% {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}
+
+/* ── Print ───────────────────────────────────────────────────────────────────
+   People do print and PDF long reads, and dark-on-dark would burn a cartridge
+   and read badly, so print flips to ink on white and drops the chrome. */
+
+@media print {
+  :root {
+    color-scheme: light;
+  }
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+  header,
+  footer,
+  nav,
+  aside,
+  .print\:hidden {
+    display: none !important;
+  }
+  main {
+    padding: 0 !important;
+  }
+  article {
+    padding-top: 0 !important;
+  }
+  /* Force every themed surface back to paper. */
+  *,
+  *::before,
+  *::after {
+    background-image: none !important;
+    box-shadow: none !important;
+    color: #111 !important;
+    border-color: #ccc !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  [class*="bg-amber"],
+  [class*="bg-surface"],
+  [class*="bg-night"],
+  [class*="bg-edge"] {
+    background-color: #fafafa !important;
+  }
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
+    color: #555 !important;
+  }
+  a[href^="#"]::after,
+  a[href^="/"]::after {
+    content: "";
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -206,5 +577,12 @@ blockquote {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
   }
 }

@@ -42,9 +42,9 @@ export default async function WritingPostPage({ params }: Params) {
     headline: p.title,
     description: p.dek,
     datePublished: p.date,
-    author: { "@type": "Person", name: "Aarit Shah", url: "https://aaritshah.com" },
+    author: { "@type": "Person", name: "Aarit Shah", url: "https://www.aaritshah.com" },
     publisher: { "@type": "Person", name: "Aarit Shah" },
-    mainEntityOfPage: `https://aaritshah.com/writing/${p.slug}`,
+    mainEntityOfPage: `https://www.aaritshah.com/writing/${p.slug}`,
   };
 
   return (

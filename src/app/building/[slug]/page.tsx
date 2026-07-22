@@ -47,8 +47,27 @@ export default async function VenturePage({ params }: Params) {
   if (!v) notFound();
   const detail = ventureDetail[slug];
 
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.aaritshah.com" },
+      { "@type": "ListItem", position: 2, name: "Building", item: "https://www.aaritshah.com/building" },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: v.name,
+        item: `https://www.aaritshah.com/building/${v.slug}`,
+      },
+    ],
+  };
+
   return (
     <article style={{ "--accent": v.accent } as CSSProperties}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
       <header className="relative overflow-hidden">
         <div
           className="pointer-events-none absolute inset-0 opacity-60"
@@ -133,17 +152,86 @@ export default async function VenturePage({ params }: Params) {
             </div>
           )}
 
+          {detail?.breakdown && (
+            <section className="mt-16">
+              <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-amber">
+                The breakdown
+              </h2>
+
+              <Reveal>
+                <h3 className="mt-8 font-display text-xl font-bold tracking-tight">
+                  The problem
+                </h3>
+                <p className="mt-3 leading-relaxed text-muted">
+                  {detail.breakdown.problem}
+                </p>
+              </Reveal>
+
+              <Reveal>
+                <h3 className="mt-10 font-display text-xl font-bold tracking-tight">
+                  The approach
+                </h3>
+                <p className="mt-3 leading-relaxed text-muted">
+                  {detail.breakdown.approach}
+                </p>
+              </Reveal>
+
+              <Reveal>
+                <h3 className="mt-10 font-display text-xl font-bold tracking-tight">
+                  How it is put together
+                </h3>
+                <dl className="mt-5 flex flex-col">
+                  {detail.breakdown.architecture.map((a) => (
+                    <div key={a.label} className="border-t border-edge py-4">
+                      <dt className="font-medium text-ink">{a.label}</dt>
+                      <dd className="mt-1.5 text-sm leading-relaxed text-muted">
+                        {a.detail}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </Reveal>
+
+              <Reveal>
+                <h3 className="mt-10 font-display text-xl font-bold tracking-tight">
+                  Calls that could have gone the other way
+                </h3>
+                <div className="mt-5 flex flex-col gap-4">
+                  {detail.breakdown.decisions.map((d) => (
+                    <div
+                      key={d.call}
+                      className="rounded-2xl border border-edge bg-surface/30 p-5"
+                    >
+                      <p className="font-medium text-ink">{d.call}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-muted">
+                        {d.why}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            </section>
+          )}
+
           <Reveal>
-            <a
-              href={v.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group mt-12 inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-base font-semibold text-night"
-              style={{ background: "var(--accent)" }}
-            >
-              Visit {v.name}
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+            <div className="mt-12 flex flex-wrap items-center gap-3">
+              <a
+                href={v.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-base font-semibold text-night"
+                style={{ background: "var(--accent)" }}
+              >
+                Visit {v.name}
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+              <Link
+                href="/work-with-me"
+                className="tappable inline-flex items-center gap-2 rounded-full border border-edge-strong px-6 py-3.5 text-base font-medium text-ink transition-colors hover:bg-surface"
+              >
+                Want something like this built?
+              </Link>
+            </div>
           </Reveal>
         </div>
 

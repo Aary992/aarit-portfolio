@@ -20,7 +20,7 @@ const bios = [
   },
   {
     label: "Short bio",
-    text: "Aarit Shah is a founder, AI builder and trader from Mumbai building three ventures at once: MarketPlay, a gamified financial literacy app for Indian Gen Z powered by a 10-agent AI backend; GetAITrade, AI trading infrastructure with human-verified execution; and 10x Founders, an invite-only community for young Mumbai builders. He runs daily webinars on AI and markets for a 1,500-person community and posts content reaching 2.7M views a month, without ever giving a tip or a signal.",
+    text: "Aarit Shah is a founder, AI builder and trader from Mumbai building three ventures at once: MarketPlay, a gamified financial literacy app for Indian Gen Z powered by a 10-agent AI backend; GetAITrade, AI trading infrastructure with human-verified execution; and 10x Founders, an invite-only community for young Mumbai builders. He runs daily webinars on AI and markets for a 1,500-person community and posts content that reached 4M views in the last 90 days, without ever giving a tip or a signal.",
   },
   {
     label: "Long bio",
@@ -127,7 +127,7 @@ export default function PressPage() {
               He teaches AI, markets and trading to a 1,500-person community
               daily, with no tips or signals, just how the systems actually work.
               More at{" "}
-              <a href="https://aaritshah.com" className="text-amber underline-offset-4 hover:underline">
+              <a href="https://www.aaritshah.com" className="text-amber underline-offset-4 hover:underline">
                 aaritshah.com
               </a>
               .

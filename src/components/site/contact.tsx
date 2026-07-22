@@ -2,6 +2,7 @@ import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 import { profile, socials } from "@/lib/data";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { MoltenPanel } from "@/components/ui/molten-panel";
 import CalendlyEmbed from "./calendly-embed";
 
 const contactItems = [
@@ -13,6 +14,57 @@ const contactItems = [
 export default function Contact() {
   return (
     <section id="contact" className="mx-auto max-w-6xl px-6 py-28 sm:py-32">
+      <MoltenPanel className="mb-16">
+        <div className="grid gap-10 px-6 py-14 sm:px-12 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
+          <div>
+            <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-night/70">
+              Open for 2026
+            </p>
+            <h2 className="text-display mt-4 font-display font-black uppercase text-night">
+              Let&apos;s build
+              <br />
+              something
+            </h2>
+            <a
+              href="#calendly"
+              className="tappable mt-8 inline-flex items-center gap-2 rounded-full bg-night px-6 py-3.5 text-base font-semibold text-ink transition-transform duration-200 hover:scale-[1.02]"
+            >
+              Book a 30-minute call
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
+
+          {/* Proof column. Fills the right two-thirds that used to be empty
+              amber, and answers the three questions people have before they
+              book: how fast, what happens on the call, is it for me. */}
+          <ul className="flex flex-col divide-y divide-night/15">
+            {[
+              {
+                label: "Response time",
+                line: "I reply within 24 hours. Usually faster.",
+              },
+              {
+                label: "The 30 minutes",
+                line: "Your idea, your stack, and what I would build first.",
+              },
+              {
+                label: "Who it's for",
+                line: "Founders, creators and teams building with AI or content.",
+              },
+            ].map((p) => (
+              <li key={p.label} className="py-4 first:pt-0 last:pb-0">
+                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-night/60">
+                  {p.label}
+                </p>
+                <p className="mt-1 text-base font-medium leading-snug text-night sm:text-lg">
+                  {p.line}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </MoltenPanel>
+
       <SectionHeading
         label="Contact"
         title={
@@ -76,8 +128,10 @@ export default function Contact() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <CalendlyEmbed />
+        <Reveal delay={0.1} className="scroll-mt-24">
+          <div id="calendly">
+            <CalendlyEmbed />
+          </div>
         </Reveal>
       </div>
     </section>

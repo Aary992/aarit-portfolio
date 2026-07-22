@@ -1,6 +1,10 @@
+"use client";
+
 import type { ReactNode } from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Reveal } from "./reveal";
+import { DUR, EASE_IN_OUT_QUINT, VIEWPORT } from "@/lib/motion";
 
 export function SectionHeading({
   label,
@@ -18,18 +22,24 @@ export function SectionHeading({
       <Reveal>
         <span
           className={cn(
-            "inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-amber",
+            "inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-amber",
             align === "center" && "justify-center",
           )}
         >
-          <span className="h-px w-6 bg-amber/60" />
+          {/* The band again, at its smallest: a rule that draws itself in. */}
+          <motion.span
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={VIEWPORT}
+            transition={{ duration: DUR.base, ease: EASE_IN_OUT_QUINT }}
+            style={{ transformOrigin: "left" }}
+            className="h-[2px] w-8 bg-gradient-to-r from-ember to-amber"
+          />
           {label}
         </span>
       </Reveal>
       <Reveal delay={0.05}>
-        <h2 className="mt-4 font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl">
-          {title}
-        </h2>
+        <h2 className="text-heading mt-4 font-display font-semibold">{title}</h2>
       </Reveal>
       {intro && (
         <Reveal delay={0.1}>

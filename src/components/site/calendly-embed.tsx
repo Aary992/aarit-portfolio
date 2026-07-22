@@ -4,7 +4,7 @@ import { profile } from "@/lib/data";
 // Direct iframe embed — react-calendly's InlineWidget renders blank under React 19,
 // and the iframe approach needs no extra script.
 const params = new URLSearchParams({
-  embed_domain: "aaritshah.com",
+  embed_domain: "www.aaritshah.com",
   embed_type: "Inline",
   hide_gdpr_banner: "1",
   background_color: "0a0a0b",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { MeshGradient } from "@paper-design/shaders-react";
 
 // A static CSS gradient that mimics the mesh — used on phones, low-power
@@ -20,18 +20,30 @@ function StaticGradient() {
   );
 }
 
-export default function HeroShader() {
-  const [enableWebGL, setEnableWebGL] = useState(false);
+// Only run the GPU shader on larger, fine-pointer devices that aren't asking
+// for reduced motion. Phones get the cheap static gradient.
+const QUERY =
+  "(min-width: 768px) and (pointer: fine) and (prefers-reduced-motion: no-preference)";
 
-  useEffect(() => {
-    // Only run the GPU shader on larger, fine-pointer devices that aren't
-    // asking for reduced motion — phones get the cheap static gradient.
-    const ok =
-      window.matchMedia("(min-width: 768px)").matches &&
-      window.matchMedia("(pointer: fine)").matches &&
-      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    setEnableWebGL(ok);
-  }, []);
+/**
+ * Read as an external store rather than setting state in an effect: the
+ * server has no matchMedia, so the value cannot be computed during render,
+ * and useSyncExternalStore is the API built for exactly that split. It also
+ * keeps the gate live, so rotating a tablet or plugging in a mouse
+ * re-evaluates instead of being stuck at the first-paint answer.
+ */
+function subscribe(onChange: () => void) {
+  const mql = window.matchMedia(QUERY);
+  mql.addEventListener("change", onChange);
+  return () => mql.removeEventListener("change", onChange);
+}
+
+export default function HeroShader() {
+  const enableWebGL = useSyncExternalStore(
+    subscribe,
+    () => window.matchMedia(QUERY).matches,
+    () => false, // server and first paint: assume the cheap path
+  );
 
   if (!enableWebGL) return <StaticGradient />;
 

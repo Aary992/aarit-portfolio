@@ -2,7 +2,6 @@ import Hero from "@/components/site/hero";
 import ExploreNav from "@/components/site/explore-nav";
 import Marquee from "@/components/site/marquee";
 import BuildingTeaser from "@/components/site/building-teaser";
-import Testimonials from "@/components/site/testimonials";
 import Newsletter from "@/components/site/newsletter";
 import Contact from "@/components/site/contact";
 import { ventures, socials } from "@/lib/data";
@@ -11,8 +10,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Aarit Shah",
-  url: "https://aaritshah.com",
-  image: "https://aaritshah.com/portrait.png",
+  url: "https://www.aaritshah.com",
+  image: "https://www.aaritshah.com/portrait.png",
   jobTitle: "Founder, AI Builder & Trader",
   description:
     "Founder, AI builder, trader and educator from South Bombay building MarketPlay, GetAITrade and 10x Founders, and running daily webinars on AI, markets and trading for a 1,500-person community.",
@@ -40,6 +39,41 @@ const jsonLd = {
   ],
 };
 
+/**
+ * The practice, as distinct from the person. Search engines resolve "who is
+ * X" from the Person entity and "can I hire X" from this one; without it,
+ * the services have no organisation to attach to.
+ */
+const orgLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://www.aaritshah.com/#organization",
+  name: "Aarit Shah",
+  url: "https://www.aaritshah.com",
+  logo: "https://www.aaritshah.com/icon.png",
+  founder: { "@type": "Person", name: "Aarit Shah" },
+  areaServed: "Worldwide",
+  knowsLanguage: ["en", "hi"],
+  sameAs: socials.filter((s) => s.label !== "Email").map((s) => s.href),
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Mumbai",
+    addressRegion: "Maharashtra",
+    addressCountry: "IN",
+  },
+  description:
+    "AI consultation, AI tool and website builds, paid promotions and content work. Education, software and media only. Not SEBI registered and not an investment adviser.",
+};
+
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  url: "https://www.aaritshah.com",
+  name: "Aarit Shah",
+  inLanguage: "en-IN",
+  publisher: { "@id": "https://www.aaritshah.com/#organization" },
+};
+
 export default function Home() {
   return (
     <>
@@ -47,11 +81,18 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }}
+      />
       <Hero />
       <ExploreNav />
       <Marquee />
       <BuildingTeaser />
-      <Testimonials />
       <Newsletter />
       <Contact />
     </>

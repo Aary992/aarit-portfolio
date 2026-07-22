@@ -4,6 +4,7 @@ import { motion, type Variants } from "framer-motion";
 import { ArrowUpRight, AtSign } from "lucide-react";
 import { Portrait } from "@/components/ui/portrait";
 import { Counter } from "@/components/ui/counter";
+import { NameLockup } from "@/components/ui/name-lockup";
 import HeroShader from "@/components/site/hero-shader";
 
 const container: Variants = {
@@ -23,13 +24,11 @@ const item: Variants = {
 };
 
 const stats = [
-  { value: "2.7M", label: "monthly views" },
-  { value: "23K", label: "followers / 30 days" },
+  { value: "4M", label: "views / last 90 days" },
+  { value: "22K", label: "followers" },
   { value: "52%", label: "CAGR on stock portfolio*" },
   { value: "3", label: "ventures building" },
 ];
-
-const roles = ["Founder", "Trader", "Creator"];
 
 export default function Hero() {
   return (
@@ -60,27 +59,9 @@ export default function Hero() {
             South Bombay, IN · open to collaborations
           </motion.div>
 
-          <motion.h1
-            variants={item}
-            className="group cursor-default select-none font-display text-[clamp(3.75rem,13vw,12rem)] font-black uppercase leading-[0.8] tracking-[-0.04em]"
-          >
-            <span className="name-sheen block">Aarit</span>
-            <span className="name-outline block transition-colors duration-500">
-              Shah
-            </span>
+          <motion.h1 variants={item} className="w-full">
+            <NameLockup />
           </motion.h1>
-
-          <motion.div
-            variants={item}
-            className="mt-7 flex items-center gap-3 font-mono text-sm uppercase tracking-[0.18em] text-muted"
-          >
-            {roles.map((r, i) => (
-              <span key={r} className="flex items-center gap-3">
-                {i > 0 && <span className="h-1 w-1 rounded-full bg-amber" />}
-                {r}
-              </span>
-            ))}
-          </motion.div>
 
           <motion.p
             variants={item}
@@ -101,14 +82,14 @@ export default function Hero() {
           >
             <a
               href="#contact"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-ember to-amber px-6 py-3.5 text-base font-semibold text-night transition-transform duration-200 hover:scale-[1.02]"
+              className="group tappable inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-ember to-amber px-6 py-3.5 text-base font-semibold text-night transition-transform duration-200 hover:scale-[1.02]"
             >
               Book a call
               <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
             <a
               href="#work"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-edge-strong px-6 py-3.5 text-base font-medium text-ink transition-colors duration-200 hover:bg-surface"
+              className="tappable inline-flex items-center justify-center gap-2 rounded-full border border-edge-strong px-6 py-3.5 text-base font-medium text-ink transition-colors duration-200 hover:bg-surface"
             >
               View the work
             </a>
