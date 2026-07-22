@@ -8,12 +8,24 @@ Commit `c02c5fd` on `main`, pushed to GitHub, deployed to production via `vercel
 
 **Deploy notes.** The Vercel project (`aarit-portfolio`, Node 24.x) is **not connected to GitHub**, so `git push` does not deploy; production ships only via `vercel deploy --prod`. `vercel link` writes `.vercel/repo.json` rather than `project.json` because the directory is a git repo, which is normal and works.
 
+### Follow-up deploy, same day (`31d9141`)
+
+- **Per-post OG share cards** for Markets, Explained. They had **no `og:image` at all**, so sharing a post on LinkedIn rendered a bare link with no card, on the one channel the series exists to feed. Each post now generates a 1200x630 card with the day stamp, headline and the not-SEBI line, pre-generated for published posts and on demand for anything published later from `/admin`.
+- **Search Console and Bing verification** read from `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` and `NEXT_PUBLIC_BING_SITE_VERIFICATION`, so tokens go in the Vercel dashboard with no code change. Absent vars render no tag rather than an empty one.
+
 ### Outstanding, needs Aarit
 
-1. **Create the admin user**: Supabase dashboard → Authentication → Users → Add user. Pick a real password from a password manager. `/admin` is publicly reachable, so a weak password is a stranger publishing under his name. Supabase enforces a 6-character minimum, so short throwaway passwords are rejected outright.
-2. **Google Search Console and Bing verification tokens**, then submit the sitemap.
-3. **Enable Vercel Analytics** in the project dashboard; the script is installed but records nothing until the product is switched on.
-4. **The ~30 LinkedIn posts** for the Markets, Explained archive.
+1. **Create the admin user**: Supabase dashboard → Authentication → Users → Add user. `/admin` is publicly reachable, so this password is the only thing between a stranger and publishing under his name. Use a generated password from a manager, not one typed into a chat window.
+2. **Search Console**: add `https://www.aaritshah.com` as a URL-prefix property, pick the HTML tag method, put the token in Vercel as `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`, redeploy, then verify and submit `/sitemap.xml`.
+3. **Bing**: easiest path is Import from Google Search Console once step 2 is done; otherwise the `msvalidate.01` token goes in `NEXT_PUBLIC_BING_SITE_VERIFICATION`.
+4. **The ~30 LinkedIn posts** for the archive, via `/admin`.
+5. Vercel Analytics declined; the packages remain installed but inert.
+
+### Known gaps, deliberately not closed
+
+- **No testimonials anywhere.** Still the biggest credibility gap for a page selling services. Real ones only: screenshots of community or LinkedIn praise with names, or quotes from webinar attendees.
+- **10x Founders has no breakdown**; only MarketPlay and GetAITrade do.
+- **Nothing drives traffic yet.** The site is built and indexable, but the Instagram bio, LinkedIn Featured section and community links still have to point at `/work-with-me` for any of the SEO work to convert.
 
 ## Session 5 detail (2026-07-22) — admin CMS, full nav, hero colour, calculators removed
 
