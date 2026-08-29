@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+﻿import type { CSSProperties } from "react";
 import Link from "next/link";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { ventures, type Venture } from "@/lib/data";
@@ -137,6 +137,17 @@ function VentureCard({ v, index }: { v: Venture; index: number }) {
               Visit live
               <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover/visit:translate-x-0.5 group-hover/visit:-translate-y-0.5" />
             </a>
+            {v.storeUrl && (
+              <a
+                href={v.storeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/store inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
+              >
+                Google Play
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover/store:translate-x-0.5 group-hover/store:-translate-y-0.5" />
+              </a>
+            )}
           </div>
         </div>
 

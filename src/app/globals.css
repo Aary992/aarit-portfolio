@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 /* Switzer, self-hosted from /public/fonts. Declared by hand instead of
    next/font/local so the browser only fetches the weights a page renders;
@@ -584,6 +584,101 @@ blockquote {
   }
 }
 
+/* Homepage opening curtain.
+   Sits above everything, wipes upward and unmounts. The reduced-motion block
+   at the end of this file zeroes the animation, so the reduce case is handled
+   there as well as by IntroLoader's own matchMedia check. */
+body.intro-locked {
+  overflow: hidden !important;
+}
+
+.site-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.25rem, 2.8vw, 3rem);
+  overflow: hidden;
+  padding: 1.5rem;
+  background: #ff6b1a;
+  color: #0a0a0b;
+  animation: site-intro-curtain 3.95s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.site-intro__wordmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1em;
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 15.5vw, 15rem);
+  font-weight: 900;
+  line-height: 0.78;
+  letter-spacing: -0.085em;
+  white-space: nowrap;
+  transform-origin: 50% 0;
+  animation: site-intro-wordmark 1.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.site-intro__roles {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 3.2vw, 3.25rem);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 0.94;
+  animation: site-intro-roles 0.7s 0.48s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes site-intro-wordmark {
+  0% {
+    opacity: 0;
+    transform: translateY(-18%) scaleX(1.08);
+  }
+  55%,
+  100% {
+    opacity: 1;
+    transform: translateY(0) scaleX(1);
+  }
+}
+
+@keyframes site-intro-roles {
+  from {
+    opacity: 0;
+    transform: translateY(130%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Holds fully visible to 79%, then wipes up over the remaining 21%. */
+@keyframes site-intro-curtain {
+  0%,
+  79% {
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 100% 0);
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-intro__wordmark {
+    font-size: 15.2vw;
+  }
+  .site-intro__roles {
+    font-size: 1rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -599,5 +694,9 @@ blockquote {
   ::view-transition-group(*) {
     animation-duration: 0s !important;
     animation-delay: 0s !important;
+  }
+
+  .site-intro {
+    display: none !important;
   }
 }

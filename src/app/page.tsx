@@ -1,3 +1,4 @@
+﻿import IntroLoader from "@/components/site/intro-loader";
 import Hero from "@/components/site/hero";
 import ExploreNav from "@/components/site/explore-nav";
 import Marquee from "@/components/site/marquee";
@@ -89,6 +90,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }}
       />
+      <IntroLoader />
       <Hero />
       <ExploreNav />
       <Marquee />

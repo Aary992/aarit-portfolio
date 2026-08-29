@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+﻿import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -225,6 +225,17 @@ export default async function VenturePage({ params }: Params) {
                 Visit {v.name}
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
+              {v.storeUrl && (
+                <a
+                  href={v.storeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="tappable group inline-flex items-center gap-2 rounded-full border border-edge-strong px-6 py-3.5 text-base font-medium text-ink transition-colors hover:bg-surface"
+                >
+                  View on Google Play
+                  <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              )}
               <Link
                 href="/work-with-me"
                 className="tappable inline-flex items-center gap-2 rounded-full border border-edge-strong px-6 py-3.5 text-base font-medium text-ink transition-colors hover:bg-surface"

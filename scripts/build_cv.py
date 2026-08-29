@@ -92,7 +92,7 @@ contact = " &nbsp;&middot;&nbsp; ".join([
 ])
 story.append(Paragraph(contact, contact_st))
 story.append(HRFlowable(width="100%", thickness=1.1, color=AMBER, spaceBefore=8, spaceAfter=0))
-reach = ("<font color='#c2740a'><b>2.7M</b></font> monthly views &nbsp;&nbsp;&nbsp; "
+reach = ("<font color='#c2740a'><b>4M</b></font> monthly views &nbsp;&nbsp;&nbsp; "
          "<font color='#c2740a'><b>23K</b></font> followers / 30 days &nbsp;&nbsp;&nbsp; "
          "<font color='#c2740a'><b>1,500+</b></font> community led")
 story.append(Paragraph(reach, reach_st))

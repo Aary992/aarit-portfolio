@@ -60,6 +60,7 @@ export type Venture = {
   highlights: string[];
   metrics: Metric[];
   url: string;
+  storeUrl?: string;
   accent: string;
   image: string;
   gallery?: { src: string; alt: string }[];
@@ -73,23 +74,22 @@ export const ventures: Venture[] = [
     tagline: "A financial life in your pocket, one irreversible call at a time.",
     role: "Founder & CEO",
     note: "built solo",
-    status: "Pre-launch Â· waitlist open",
+    status: "Live on Google Play · 800+ users",
     year: "2026",
     description:
-      "A Duolingo-style financial literacy game for Indian Gen Z. A real market event drops, you make one irreversible call, and an AI plays out the consequence on your net worth, backed by a 21-module reel-based curriculum, 30+ interactive calculators and a fully working paper-trading broker.",
+      "A live financial-literacy game for Indian Gen Z, now on the web and Android. Two learning tracks and 290+ short lessons sit alongside a daily money decision, a 32-decision Life simulator and ₹1,00,000 of simulated paper trading, with no brokerage account, no KYC and no real money at risk.",
     highlights: [
-      "Gamified scenario engine",
-      "21-module reel curriculum",
-      "Paper trading, real broker logic",
-      "Founder control room",
+      "290+ short lessons",
+      "32-decision Life simulator",
+      "₹1L simulated paper trading",
     ],
     metrics: [
-      { value: "21", label: "learning modules" },
-      { value: "30+", label: "interactive calculators" },
-      { value: "10", label: "AI agents running the backend" },
+      { value: "800+", label: "users" },
+      { value: "290+", label: "short lessons" },
       { value: "0", label: "real money at risk" },
     ],
     url: "https://marketplay.space",
+    storeUrl: "https://play.google.com/store/apps/details?id=space.marketplay.twa",
     accent: "#8b5cf6",
     image: "/marketplay-app-scenario.webp",
     gallery: [
@@ -425,7 +425,7 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What is MarketPlay?",
-    a: "A Duolingo-style financial literacy game for Indian Gen Z. Each scenario is a real market event where you make one irreversible decision and live with it. Behind it sits a backend of ten scoped AI agents gated behind human approval, a 21-module reel curriculum, more than 30 interactive calculators, a life simulator and paper trading. It's pre-launch with the waitlist open.",
+    a: "A Duolingo-style financial literacy game for Indian Gen Z. Each scenario is a real market event where you make one irreversible decision and live with it. Behind it sits a backend of ten scoped AI agents gated behind human approval, a 21-module reel curriculum, more than 30 interactive calculators, a 32-decision life simulator and ₹1,00,000 of simulated paper trading. It's live on the web and Google Play, used by 800+ people, with no real money at risk.",
   },
   {
     q: "What is GetAITrade?",
@@ -647,13 +647,13 @@ export const ventureDetail: Record<
 > = {
   marketplay: {
     longDescription:
-      "MarketPlay turns the thing that scares most teenagers, money, into a game they actually want to play. A real market event drops as a fullscreen takeover, you make one irreversible call, Defensive, Balanced or Bold, and a six-beat cinematic reveal shows exactly what it did to your net worth. That loop sits inside a full product: a 21-module curriculum across Money Basics and Stock Market delivered as TikTok-style vertical reels with gated checkpoint tests, 30+ interactive calculator chapters you drag sliders through, a life simulator that ages you through financial stages, and a paper-trading module with a real simulated broker, order validation, fills, settlement, live P&L. Behind it all is a founder control room: a six-tab analytics command center and a control plane for 10 scoped AI agents running the backend with human approval on everything. I designed, built and shipped every layer of it myself.",
+      "MarketPlay is live on the web and Google Play, used by 800+ people, and it turns the thing that scares most teenagers, money, into a game they actually want to play. A real market event drops as a fullscreen takeover, you make one irreversible call, Defensive, Balanced or Bold, and a six-beat cinematic reveal shows exactly what it did to your net worth. That loop sits inside a full product: a 21-module curriculum across Money Basics and Stock Market delivered as TikTok-style vertical reels with gated checkpoint tests, 30+ interactive calculator chapters you drag sliders through, a 32-decision life simulator that ages you through financial stages, and a paper-trading module with ₹1,00,000 of simulated money and a real simulated broker, order validation, fills, settlement, live P&L. Behind it all is a founder control room: a six-tab analytics command center and a control plane for 10 scoped AI agents running the backend with human approval on everything. I designed, built and shipped every layer of it myself.",
     features: [
       { title: "Gamified scenario engine", desc: "Fullscreen market events, one irreversible call, and a paced six-beat cinematic result reveal." },
       { title: "21-module reel curriculum", desc: "TikTok-style vertical lessons across Money Basics and Stock Market, gated behind checkpoint tests." },
       { title: "30+ interactive calculators", desc: "Drag-the-slider chapters on FDs, tax, RSI, MACD, Bollinger Bands and Fibonacci with custom-built visualizations." },
-      { title: "Life simulator", desc: "Ages you through financial life stages and charts your net worth over time. Next up: an avatar whose look evolves with it." },
-      { title: "Real paper trading", desc: "A working simulated broker: order validation, fills, settlement, positions and day P&L, not a toy." },
+      { title: "32-decision Life simulator", desc: "Ages you through financial life stages across 32 decisions and charts your net worth over time. Next up: an avatar whose look evolves with it." },
+      { title: "Real paper trading", desc: "₹1,00,000 of simulated money through a working simulated broker: order validation, fills, settlement, positions and day P&L, no brokerage account and no KYC." },
       { title: "Founder control room", desc: "A six-tab analytics command center plus a control plane for 10 AI agents, every action gated by human approval." },
     ],
     breakdown: {
