@@ -71,13 +71,13 @@ export const ventures: Venture[] = [
   {
     slug: "marketplay",
     name: "MarketPlay",
-    tagline: "A financial life in your pocket, one irreversible call at a time.",
+    tagline: "Learn how money works by making decisions and seeing what follows.",
     role: "Founder & CEO",
     note: "built solo",
     status: "Live on Google Play · 800+ users",
     year: "2026",
     description:
-      "A live financial-literacy game for Indian Gen Z, now on the web and Android. Two learning tracks and 290+ short lessons sit alongside a daily money decision, a 32-decision Life simulator and ₹1,00,000 of simulated paper trading, with no brokerage account, no KYC and no real money at risk.",
+      "A financial literacy game for Indian Gen Z, available on the web and Android. It has two learning tracks, 290+ short lessons, a daily money decision, a 32-decision Life simulator and ₹1,00,000 in simulated paper trading. It does not require a brokerage account or KYC, and no real money is at risk.",
     highlights: [
       "290+ short lessons",
       "32-decision Life simulator",
@@ -102,12 +102,12 @@ export const ventures: Venture[] = [
   {
     slug: "getaitrade",
     name: "GetAITrade",
-    tagline: "The smarter way to trade, AI command infrastructure.",
+    tagline: "Prepare trades from the web or Telegram, then confirm every order yourself.",
     role: "Co-founder",
     status: "Live Â· Phase 1",
     year: "2026",
     description:
-      "AI-powered trading command infrastructure with broker connectivity, Telegram routing, audit logging and controlled, human-verified execution. Tested live with real funds.",
+      "A trading tool that connects to brokers, accepts instructions from the web or Telegram, keeps an audit log and asks for confirmation before every order. It has been tested with real funds.",
     highlights: ["Broker connectivity", "Telegram routing", "Human-in-the-loop"],
     metrics: [
       { value: "99.8%", label: "routing accuracy" },
@@ -121,12 +121,12 @@ export const ventures: Venture[] = [
   {
     slug: "10x-founders",
     name: "10x Founders",
-    tagline: "Access is earned. Not bought.",
+    tagline: "An invite-only room for young founders in Mumbai.",
     role: "Co-founder",
     status: "Invite-only Â· launching",
     year: "2026",
     description:
-      "An invite-only ecosystem for young founders in Mumbai building with intensity and discretion. Curated introductions and real rooms, no crowded mixers, no pitch theatre.",
+      "An invite-only group for young founders in Mumbai. It is built around considered introductions and small in-person gatherings rather than crowded mixers or pitch events.",
     highlights: ["Invite-only", "Curated intros", "Mumbai"],
     metrics: [
       { value: "<25", label: "founders only" },
@@ -141,23 +141,23 @@ export const ventures: Venture[] = [
 
 export const lab = [
   {
-    name: "Research-analyst bots",
-    desc: "Auto-bots that do the grunt work of equity and crypto research for me.",
+    name: "Research tools",
+    desc: "Tools that screen, summarise and flag equity and crypto research for me.",
   },
   {
-    name: "Self-improving second brain",
-    desc: "An Obsidian system that auto-scrapes viral reels, LinkedIn posts and podcasts, then learns from them.",
+    name: "Obsidian research library",
+    desc: "An Obsidian setup that collects useful reels, LinkedIn posts and podcasts and organises what I learn from them.",
   },
   {
     name: "Custom internal tools",
-    desc: "I build the websites and automations for everything I run.",
+    desc: "I build the websites and small automations I use in my own work.",
   },
 ];
 
 export const community = {
   size: "1,500+",
-  title: "A community I lead, not a signal group.",
-  desc: "Leading has always come naturally to me, whether that's captaining my football team or running daily webinars on AI, markets and trading for a community of 1,500+. Every message states it plainly: I'm not SEBI registered, and I'll never give a tip or a signal. Just education, and leadership by example.",
+  title: "A learning community, not a signal group.",
+  desc: "I run daily webinars on software, markets and trading for a community of more than 1,500 people. Every session comes with the same clear boundary: I'm not SEBI registered, and I don't give tips or signals. I explain what I know and show how I approach the work.",
 };
 
 export const experience = [
@@ -165,21 +165,21 @@ export const experience = [
     role: "Founder",
     org: "10x Founders",
     period: "Jun 2026 - Present",
-    desc: "Launched this month: an invite-only room for young Mumbai founders who are actually building. Curating the people, the introductions and the rooms.",
+    desc: "Started an invite-only group for young Mumbai founders, with a focus on small gatherings and considered introductions.",
     tags: ["Community", "Founders", "Mumbai"],
   },
   {
     role: "Founder",
     org: "GetAITrade",
     period: "2026 - Present",
-    desc: "Co-building AI trading-command infrastructure with my team: broker connectivity, human-verified execution and full audit logging.",
+    desc: "Building GetAITrade with my team: broker connections, confirmation before every order and a complete audit log.",
     tags: ["AI", "Trading", "Product"],
   },
   {
     role: "Founder & CEO",
     org: "MarketPlay",
     period: "Apr 2026 - Present",
-    desc: "Reimagining how the next generation learns finance, building MarketPlay end to end.",
+    desc: "Building MarketPlay from product design through development to help young people learn finance by making decisions.",
     tags: ["AI", "Financial markets", "Product"],
   },
   {
@@ -193,7 +193,7 @@ export const experience = [
     role: "AI Finance Intern",
     org: "Concept Investwell Pvt. Ltd.",
     period: "Mar 2026 - May 2026",
-    desc: "Built internal AI tools to automate workflows and improve operational efficiency for the investment team.",
+    desc: "Built internal tools to automate repetitive work for the investment team.",
     tags: ["AI", "Portfolio management"],
   },
 ];
@@ -217,27 +217,27 @@ export const education = [
 
 export const vision = {
   intro:
-    "I'm playing a long game. Over the next five years I want every venture firing, full financial independence, and a portfolio compounding hard, all in service of building something that lasts and giving back at a scale nobody has seen.",
+    "Over the next five years, I want to become financially independent, keep building my three ventures, grow my investment portfolio and use the results to give back.",
   goals: [
     {
       title: "Financial independence",
-      desc: "Fully financially independent within five years, without ever slowing down on building.",
+      desc: "Become financially independent within five years while continuing to build.",
     },
     {
-      title: "Build the empire",
-      desc: "Take MarketPlay, GetAITrade and 10x Founders as far as they can go, and grow a powerful, genuine circle around them.",
+      title: "Grow the ventures",
+      desc: "Keep developing MarketPlay, GetAITrade and 10x Founders, and build a genuine circle around them.",
     },
     {
-      title: "Compound relentlessly",
-      desc: "Stay active across investments and trading, targeting 500-700% on my overall portfolio over five years while I keep reinvesting.",
+      title: "Keep investing",
+      desc: "Stay active in investing and trading, with a target of 500-700% growth across my overall portfolio over five years while reinvesting the returns.",
     },
     {
-      title: "Discipline & mastery",
-      desc: "Sharpen my trading discipline and skill every single day. The edge comes from the reps.",
+      title: "Improve the craft",
+      desc: "Work on my trading discipline and decision-making every day through consistent practice.",
     },
     {
-      title: "Give it all back",
-      desc: "Use all of it to become one of the most serious philanthropists the world has ever seen.",
+      title: "Give back",
+      desc: "Use what I build and earn to support causes that matter to me.",
     },
   ],
 };
@@ -248,8 +248,8 @@ export const skills = [
     items: ["Derivatives", "Day trading", "Crypto", "Equity research", "Technical analysis", "Portfolio mgmt"],
   },
   {
-    group: "AI & automation",
-    items: ["AI agents", "Trading bots", "Research bots", "Automation", "Prompt engineering"],
+    group: "Software & automation",
+    items: ["Task automation", "Trading tools", "Research tools", "Workflow design", "Prompt design"],
   },
   {
     group: "Building",
@@ -273,15 +273,15 @@ export const certifications = [
 export const marqueeItems = [
   "Derivatives",
   "Crypto",
-  "AI agents",
+  "Task automation",
   "Next.js",
-  "Trading bots",
+  "Trading tools",
   "4M views / 90 days",
   "1,500-strong community",
   "Financial literacy",
   "Automation",
   "Equity research",
-  "Obsidian second brain",
+  "Obsidian research library",
   "Web & app dev",
 ];
 
@@ -352,56 +352,56 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "ai-consultation",
-    name: "AI consultation",
+    name: "Workflow consultation",
     pitch:
-      "You know AI should be doing more for your business. I find where, and hand you the plan.",
+      "I review how your business works, identify the repetitive parts worth automating and give you a practical plan.",
     engagement: [
-      "A 30-minute call to map what you do and where the hours actually go",
-      "I audit the workflows worth automating, and tell you which ones aren't",
-      "You get a scoped build plan: the tools, the agents, the order of attack",
+      "A 30-minute call to understand what you do and where the time goes",
+      "I review which workflows are worth automating and which are better left alone",
+      "You get a scoped plan covering the tools, responsibilities and order of work",
     ],
     outcome:
-      "A roadmap you can execute yourself, or hand straight back to me to build.",
+      "A plan you can follow yourself or ask me to build.",
   },
   {
     slug: "ai-builds",
-    name: "AI tools & websites",
+    name: "Custom tools & websites",
     pitch:
-      "Custom tools, agent systems and websites, built end to end and shipped.",
+      "I design and build focused tools, automations and websites for a specific job.",
     engagement: [
-      "We scope it on a call: what it does, what it talks to, what done looks like",
-      "I build it the way I build my own products, agent backends to frontends",
-      "Handover with source code and a walkthrough, no forced retainer",
+      "We define what it needs to do, what it connects to and what finished means",
+      "I build and test the product, from the background processes to the interface",
+      "You receive the source code and a walkthrough, with no required retainer",
     ],
     outcome:
-      "A working product you own outright, plus the ability to run it without me.",
+      "A working product you own and can run without me.",
   },
   {
     slug: "paid-promotions",
     name: "Paid promotions",
     pitch:
-      "Your product in front of an audience that actually watches: 4M views in the last 90 days, 22K followers, a 1,500-person community.",
+      "I can introduce a relevant product to an audience that generated 4M views in the last 90 days and includes 22K followers and a 1,500-person community.",
     engagement: [
-      "Fit check first. If your product doesn't fit my audience, I'll say no",
+      "I first check whether the product is relevant to my audience, and say no if it isn't",
       "We agree the format: reel, post, or a live walkthrough in my community",
-      "I make it in my voice, because that's what my audience shows up for",
+      "I create the reel, post or walkthrough in my usual voice",
     ],
     outcome:
-      "Distribution to a finance-and-AI-native Gen-Z audience, made by someone they already trust.",
+      "A sponsored piece shared with my audience across the agreed format.",
     note: "I don't promote tips, signals, or anything that needs SEBI registration to sell.",
   },
   {
     slug: "content-work",
     name: "Content work",
     pitch:
-      "The engine behind my output, pointed at your brand: scripts, carousels, or the whole pipeline.",
+      "I can write scripts and carousels for your brand, or help set up the process your team will use to produce them.",
     engagement: [
       "A call on your voice, your audience and what the content has to do",
-      "I draft with the same system that runs my channels every day",
-      "We iterate until it sounds like you, not like a tool",
+      "I draft using the same process I use for my own channels",
+      "We revise it until the language sounds like you",
     ],
     outcome:
-      "Content that ships consistently without you writing it, or the system so your team can.",
+      "Finished content, or a repeatable process your team can use.",
   },
 ];
 
@@ -413,11 +413,11 @@ export const services: Service[] = [
 export const faqs: { q: string; a: string }[] = [
   {
     q: "Who is Aarit Shah?",
-    a: "I'm a founder, AI builder and trader based in South Bombay, Mumbai. I run three ventures: MarketPlay, a gamified financial literacy app for Indian Gen Z; GetAITrade, AI trading infrastructure with a human verification gate on every order; and 10x Founders, an invite-only room for young Mumbai builders. Alongside that I teach AI, markets and trading daily to a community of about 1,500 people.",
+    a: "I'm a founder and trader based in South Bombay, Mumbai. I run three ventures: MarketPlay, a financial literacy game for Indian Gen Z; GetAITrade, a trading tool that requires confirmation before every order; and 10x Founders, an invite-only group for young Mumbai founders. I also teach software, markets and trading to a community of about 1,500 people.",
   },
   {
     q: "What can I hire you for?",
-    a: "Four things: AI consultation, where I audit your workflows and hand you a build plan; AI tools and websites, built end to end and handed over with the source code; paid promotions to my audience; and content work, which is either the content itself or the system that produces it. There is no pricing page and no minimum budget. You send an enquiry, we do a free 30-minute call, and I tell you whether I can help.",
+    a: "You can hire me to review and automate workflows, build custom tools and websites, create a paid promotion for my audience or help with content. There is no public pricing page or minimum budget. Send an enquiry and we'll use a free 30-minute call to work out whether I can help.",
   },
   {
     q: "Are you SEBI registered?",
@@ -425,23 +425,23 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What is MarketPlay?",
-    a: "A Duolingo-style financial literacy game for Indian Gen Z. Each scenario is a real market event where you make one irreversible decision and live with it. Behind it sits a backend of ten scoped AI agents gated behind human approval, a 21-module reel curriculum, more than 30 interactive calculators, a 32-decision life simulator and ₹1,00,000 of simulated paper trading. It's live on the web and Google Play, used by 800+ people, with no real money at risk.",
+    a: "MarketPlay is a financial literacy game for Indian Gen Z, available on the web and Google Play and used by more than 800 people. Each scenario uses a real market event, asks you to make one irreversible decision and shows the result. It also includes 290+ short lessons, more than 30 interactive calculators, a 32-decision Life simulator and ₹1,00,000 in simulated paper trading. Ten automated backend roles prepare work that requires human approval, and no real money is at risk.",
   },
   {
     q: "What is GetAITrade?",
-    a: "AI-powered trading command infrastructure, live and tested with real funds. The design point is the human verification gate: the system can propose and prepare, but a person confirms before anything executes. It is infrastructure and tooling, not a signal service and not a managed product.",
+    a: "GetAITrade is a trading tool that has been tested with real funds. It can prepare an order from instructions sent on the web or Telegram, but a person must confirm before anything executes. It is not a signal service and it does not manage money.",
   },
   {
     q: "What is Markets, Explained?",
     a: "A written series where I take one thing that happened in the market and explain the mechanism behind it in plain language: why capital rotated, what a company's balance sheet is really doing, why a price moved in the direction nobody expected. It is explanation after the fact, not prediction, and never a buy call.",
   },
   {
-    q: "How do I actually get started working with you?",
+    q: "How do I get started working with you?",
     a: "Send the form on the Work with me page, or email me directly at shahaarit2@gmail.com. I read everything and reply within 24 hours, usually faster. If there's a fit, the next step is a free 30-minute call, and after that a written proposal with fixed scope so you know what you're getting before anything starts.",
   },
   {
     q: "Do you speak at events or run sessions?",
-    a: "Yes. I've run seven webinars so far, on AI, trading, market basics and AI trading, mostly for my own community. If you want a session for your community, company or campus, the enquiry form is the way in.",
+    a: "Yes. I've run seven webinars so far on software, trading and market basics, mostly for my own community. If you want a session for your community, company or campus, use the enquiry form.",
   },
 ];
 
@@ -458,45 +458,45 @@ export type Post = {
 export const posts: Post[] = [
   {
     slug: "marketplays-ai-control-room",
-    title: "Inside MarketPlay's AI control room: 10 agents, one approval gate",
-    dek: "How I run a 10-agent backend for a live financial product without ever letting an agent act unsupervised.",
-    category: "AI projects",
+    title: "Inside MarketPlay's backend: 10 automated roles, one approval gate",
+    dek: "How ten task-specific tools help run MarketPlay while every action still requires human approval.",
+    category: "Product systems",
     date: "2026-07-20",
     readTime: "5 min read",
     body: [
-      "MarketPlay is a financial literacy game, but the backend that runs it is closer to an AI operations team. Ten scoped agents handle the work: generating scenario copy, grading checkpoint tests, monitoring the paper-trading broker, flagging anomalies across the six-tab analytics dashboard, and more. None of them ship a change or take an action without passing through a human approval gate first.",
-      "I built it this way on purpose. The product deals with a teenager's financial decisions, even in a paper-trading environment, so the cost of an unreviewed AI mistake is higher than in a typical side project. The control room is the compromise: agents do the grunt work at machine speed, I stay the single point of accountability for anything that touches a user.",
-      "Each agent is scoped narrowly rather than given broad autonomy. One agent's job is to draft the next scenario in the reel curriculum, nothing else. Another watches the paper-trading broker's order flow for anything that looks like a bug in fills or settlement. Narrow scope makes each agent easier to audit, and easier to debug when something goes wrong, which it occasionally does.",
-      "The pattern generalizes past MarketPlay. GetAITrade runs on the same philosophy applied to real trading infrastructure: broker connectivity and Telegram routing handled by AI, but every live order still passes a human verification gate before it executes. Human-in-the-loop isn't a compliance checkbox for me, it's the actual design principle that makes me comfortable putting AI in front of anyone's money.",
-      "I designed, built and shipped every layer of MarketPlay's control room solo. If you're building anything where AI touches financial decisions, the lesson I'd pass on is simple: decide what the agent is never allowed to do before you decide what it's allowed to do.",
+      "MarketPlay is a financial literacy game with ten task-specific tools working behind the scenes. They draft scenario copy, grade checkpoint tests, watch the paper-trading broker and flag unusual activity in the six-tab analytics dashboard. None of them can publish a change or take an action until I approve it.",
+      "I chose that structure because MarketPlay deals with a teenager's financial decisions, even when the money is simulated. An unreviewed mistake matters more here than it would in a typical side project. The tools handle repetitive work, but I remain responsible for anything that reaches a user.",
+      "Each tool has one narrow job. One drafts the next scenario in the reel curriculum. Another watches the paper-trading order flow for possible problems with fills or settlement. A narrow role is easier to review and easier to fix when something goes wrong.",
+      "GetAITrade follows the same rule with real trading. Software can connect to the broker, read a Telegram instruction and prepare an order, but a person must confirm before it executes. That approval step is the reason I'm comfortable using automation near anyone's money.",
+      "I designed and built every part of MarketPlay's control room myself. The main lesson is simple: decide what automated software must never be allowed to do before deciding what it can do.",
     ],
   },
   {
     slug: "why-i-built-an-ai-trade-journal",
     title: "Why I built my own AI trade journal instead of paying for Tradezella",
-    dek: "Screenshot in, fully logged trade out. No manual entry, no monthly subscription.",
-    category: "AI trading",
+    dek: "Send a screenshot and get a complete trade entry without filling in a form or paying a monthly subscription.",
+    category: "Trading tools",
     date: "2026-07-13",
     readTime: "4 min read",
     body: [
-      "Every serious trader eventually hits the same wall: you know you should journal every trade, and you almost never do it, because manual entry is tedious and breaks your flow the moment the market moves. I hit that wall enough times that I built my way out of it.",
-      "The AI Trade Journal works off a single screenshot. Send a trade confirmation to a Telegram bot and the AI reads it, extracts the entry, exit, size and instrument, and logs the entire trade automatically. No forms, no manual data entry, no excuse to skip a day.",
-      "The dashboard mimics what Tradezella charges a subscription for: net P&L, win rate, profit factor, average R, an equity curve, and a full P&L calendar. The difference is it's mine, it's free to run, and it's wired directly into the same AI-agent thinking behind MarketPlay and GetAITrade: narrow tool, single job, no unnecessary complexity.",
-      "It's live at ai-trade-journal-delta.vercel.app. I built it for myself first, the way most of my side projects start: I wanted something that didn't exist yet in the shape I wanted it, so I shipped it over a weekend and kept using it because it actually worked.",
+      "Traders know they should record every trade, but manual entry is slow and easy to skip when the market is moving. I skipped it often enough that I built a tool for myself.",
+      "The AI Trade Journal starts with one screenshot. Send a trade confirmation to its Telegram bot and the software extracts the entry, exit, size and instrument, then records the trade. There are no forms to fill in by hand.",
+      "The dashboard covers the figures I wanted from Tradezella: net P&L, win rate, profit factor, average R, an equity curve and a full P&L calendar. It is free for me to run and stays focused on one job.",
+      "It's live at ai-trade-journal-delta.vercel.app. Like most of my side projects, it began with a tool I wanted but couldn't find in the form I needed. I built it over a weekend and kept using it because it solved the problem.",
     ],
   },
   {
     slug: "teaching-1500-people-ai-and-trading",
-    title: "What I actually teach in daily webinars to 1,500 people",
-    dek: "No tips, no signals, just how markets and AI actually work, every single day.",
-    category: "AI training",
+    title: "What I teach in daily webinars to 1,500 people",
+    dek: "No tips or signals. I explain markets and show the tools I use in my own work.",
+    category: "Teaching",
     date: "2026-06-29",
     readTime: "4 min read",
     body: [
-      "I run daily webinars for a community of 1,500-plus people on AI, markets and trading. I'm not SEBI registered, and every session starts with the same line: I will never give a tip or a signal. What I will do is show you exactly how I think through a decision, and teach you enough that you don't need me, or anyone else, to hand you one.",
-      "The AI half of it covers what I'm actually building: how agents are scoped and gated in MarketPlay's control room, how the AI Trade Journal turns a screenshot into a fully logged trade, how GetAITrade routes orders through a human-verification gate. I teach from real, shipped systems, not theory.",
+      "I run daily webinars on software, markets and trading for a community of more than 1,500 people. I'm not SEBI registered, and every session starts with the same boundary: I don't give tips or signals. I show how I think through a decision so people can learn to make their own.",
+      "The software sessions use things I've built myself. I show how MarketPlay divides work into narrow roles, how the AI Trade Journal turns a screenshot into a trade entry and how GetAITrade requires a person to confirm every order.",
       "The markets half is value investing and systematic crypto trading, the same two disciplines I run my own capital through: screen for mispriced businesses, tear apart the financials before committing a rupee, demand a real moat, then manage the position as price moves. On the crypto side it's rules-based entries and exits with risk capped per trade, never a single bet on a single idea.",
-      "The content itself runs through a pipeline I built myself, the same content engine that turns daily inputs into scripts and posts behind 4 million views in the last 90 days. Teaching daily only works if the system behind it doesn't depend on me having a good day. I'd rather build the machine than rely on willpower.",
+      "I also use a repeatable process to turn daily notes into scripts and posts. It supported 4 million views in the last 90 days and helps me teach consistently, even on an ordinary day.",
     ],
   },
 ];
@@ -510,35 +510,35 @@ export type SideProject = {
 
 export const sideProjects: SideProject[] = [
   {
-    name: "Self-improving second brain",
+    name: "Obsidian research library",
     category: "Knowledge",
-    desc: "A fully-built Obsidian OS that auto-scrapes viral reels, LinkedIn posts and podcasts, distils them into a structured knowledge graph, runs a nightly synthesis pass across every note, and quizzes me with active recall to test what actually stuck.",
+    desc: "An Obsidian setup that collects reels, LinkedIn posts and podcasts, organises them into linked notes, reviews the notes each night and uses active-recall questions to check what I remember.",
   },
   {
     name: "AI Trade Journal",
     category: "Trading",
-    desc: "Send one screenshot to a Telegram bot and the AI logs the entire trade for you, no manual entry. The dashboard mimics Tradezella: net P&L, win rate, profit factor, avg R, equity curve, a full P&L calendar.",
+    desc: "Send one screenshot to a Telegram bot and it records the trade without manual entry. The dashboard shows net P&L, win rate, profit factor, average R, an equity curve and a full P&L calendar.",
     href: "https://ai-trade-journal-delta.vercel.app",
   },
   {
-    name: "Research-analyst bots",
+    name: "Research tools",
     category: "Automation",
-    desc: "Auto-bots that do the grunt work of equity and crypto research: screening, summarising and flagging, so I act on signal, not noise.",
+    desc: "Tools that screen, summarise and flag equity and crypto research so I can review the relevant information myself.",
   },
   {
     name: "Financial models & research",
     category: "Investing",
-    desc: "Custom-built valuation and DCF models that tear a business apart before I commit a rupee, alongside whatever research tooling the off-the-shelf products don't offer.",
+    desc: "Valuation and DCF models I use to study a business before committing money, along with research tools I couldn't find elsewhere.",
   },
   {
-    name: "The content engine",
+    name: "The content workflow",
     category: "Growth",
-    desc: "A pipeline that turns my daily inputs into scripts and posts, the system behind 4M views in 90 days.",
+    desc: "A repeatable process that turns my daily notes into scripts and posts. It supported 4M views in 90 days.",
   },
   {
-    name: "Vibecoded, shipped, forgotten",
+    name: "Weekend experiments",
     category: "Everything else",
-    desc: "Internal tools, dashboards and weekend experiments I vibecode and ship just to see if I can, most of them without ever telling anyone.",
+    desc: "Internal tools, dashboards and small weekend projects I build to test an idea, most of which I never publish.",
   },
 ];
 
@@ -546,60 +546,60 @@ export const forFun = [
   {
     name: "Productivity websites",
     category: "For fun",
-    desc: "I build small productivity tools and websites just because I enjoy it, scratching my own itch and shipping something useful by the weekend.",
+    desc: "I build small productivity tools and websites because I enjoy solving problems I run into myself.",
   },
   {
     name: "Learning AI",
     category: "For fun",
-    desc: "I learn AI for fun: agents, automations, prompt engineering, and wire whatever I learn straight back into the things I'm building.",
+    desc: "I study how current software models and automation tools work, then use what I learn in my own projects.",
   },
   {
     name: "Podcasts & deep dives",
     category: "For fun",
-    desc: "I watch podcasts and long-form deep dives constantly, mining them for ideas on markets, building and how people actually think.",
+    desc: "I listen to podcasts and long-form discussions about markets, building and how people think.",
   },
   {
-    name: "Learning, constantly",
+    name: "Following new questions",
     category: "For fun",
-    desc: "I learn a lot of things for the sake of it. The compounding curiosity is the point. New rabbit hole every week.",
+    desc: "I like learning for its own sake and usually find a new subject to follow each week.",
   },
 ];
 
 export const newsletter = {
   title: "I write a newsletter, too.",
-  desc: "Markets, building and the occasional rabbit hole, distilled into one honest email. No tips, no signals, just how I'm thinking.",
+  desc: "I write about markets, building and whatever I've been studying. No tips or signals, just the reasoning behind my decisions.",
   cta: "Subscribe on LinkedIn",
   href: "https://www.linkedin.com/newsletters/youth-market-insights-7406681601700614144/",
 };
 
 export const investing = {
   intro:
-    "I invest the way I build: slowly, with conviction, and only after I fully understand what I'm holding. Equity is value investing. Crypto is systematic. Both are run with risk in mind first.",
+    "I invest only after I understand what I'm holding. For equities, I use a value-investing approach. For crypto, I follow a written set of rules. In both cases, I decide the risk before entering a position.",
   equity: {
     label: "Equity Â· value investing",
-    title: "Find it cheap. Understand it deeply. Hold the moat.",
+    title: "Price, financials and competitive advantage.",
     intro:
-      "I'm a value investor. I hunt for genuinely undervalued businesses, tear their financials apart before I commit a rupee, and only buy what has a real, durable moat, then I manage the position actively as the price moves.",
+      "I look for businesses trading below what I believe they are worth. Before investing, I review the financial statements and the company's competitive advantage. I then adjust the position as the price changes.",
     process: [
       {
         step: "01",
-        title: "Find the undervalued",
-        desc: "Screen relentlessly for businesses the market has mispriced, where price and intrinsic value have drifted apart.",
+        title: "Look for a valuation gap",
+        desc: "Screen for businesses where the market price appears lower than the underlying value.",
       },
       {
         step: "02",
-        title: "Break down the financials",
-        desc: "Fully tear the stock apart: balance sheet, cash flows, margins, debt, all before conviction. No financials, no position.",
+        title: "Review the financials",
+        desc: "Study the balance sheet, cash flows, margins and debt before taking a position.",
       },
       {
         step: "03",
-        title: "Demand a moat",
-        desc: "Only buy businesses with a durable competitive advantage: pricing power, network effects, brand, cost edge.",
+        title: "Check the advantage",
+        desc: "Look for a durable advantage such as pricing power, network effects, brand strength or lower costs.",
       },
       {
         step: "04",
-        title: "Strategically trim",
-        desc: "Scale positions as the price changes: trim into strength, add into weakness, lock gains and keep risk in check.",
+        title: "Adjust the position",
+        desc: "Reduce or add to a position as the price changes while keeping the original risk limits in view.",
       },
     ],
     stats: [
@@ -611,13 +611,13 @@ export const investing = {
   },
   crypto: {
     label: "Crypto Â· CFDs",
-    title: "Systematic, multi-strategy, risk-first.",
+    title: "Written rules and a fixed risk limit.",
     intro:
-      "Alongside equities I trade crypto CFDs using multiple strategies, never a single bet on a single idea. The mix changes with the market, but the rules don't.",
+      "Alongside equities, I trade crypto CFDs using several strategies. The mix changes with the market, but I follow the same risk rules for every trade.",
     points: [
-      "Rules-based entries and exits, no impulse trades.",
-      "Every position is pre-sized, with risk per trade capped.",
-      "Leverage is a tool to be respected, not abused.",
+      "Entries and exits follow written rules rather than impulse.",
+      "I size every position in advance and cap the risk on each trade.",
+      "I use leverage cautiously and account for the added risk.",
     ],
   },
   disclaimer:
@@ -647,64 +647,64 @@ export const ventureDetail: Record<
 > = {
   marketplay: {
     longDescription:
-      "MarketPlay is live on the web and Google Play, used by 800+ people, and it turns the thing that scares most teenagers, money, into a game they actually want to play. A real market event drops as a fullscreen takeover, you make one irreversible call, Defensive, Balanced or Bold, and a six-beat cinematic reveal shows exactly what it did to your net worth. That loop sits inside a full product: a 21-module curriculum across Money Basics and Stock Market delivered as TikTok-style vertical reels with gated checkpoint tests, 30+ interactive calculator chapters you drag sliders through, a 32-decision life simulator that ages you through financial stages, and a paper-trading module with ₹1,00,000 of simulated money and a real simulated broker, order validation, fills, settlement, live P&L. Behind it all is a founder control room: a six-tab analytics command center and a control plane for 10 scoped AI agents running the backend with human approval on everything. I designed, built and shipped every layer of it myself.",
+      "MarketPlay is a financial literacy game available on the web and Google Play and used by more than 800 people. Each scenario begins with a real market event and asks you to choose Defensive, Balanced or Bold. A six-part result then shows how that choice affected your net worth. The product also includes 290+ short lessons across Money Basics and Stock Market, more than 30 interactive calculator chapters, a 32-decision Life simulator and ₹1,00,000 in simulated paper trading with order validation, fills, settlement and live P&L. A six-tab dashboard lets me review the product and approve work prepared by ten task-specific backend tools. I designed and built every part myself.",
     features: [
-      { title: "Gamified scenario engine", desc: "Fullscreen market events, one irreversible call, and a paced six-beat cinematic result reveal." },
-      { title: "21-module reel curriculum", desc: "TikTok-style vertical lessons across Money Basics and Stock Market, gated behind checkpoint tests." },
-      { title: "30+ interactive calculators", desc: "Drag-the-slider chapters on FDs, tax, RSI, MACD, Bollinger Bands and Fibonacci with custom-built visualizations." },
-      { title: "32-decision Life simulator", desc: "Ages you through financial life stages across 32 decisions and charts your net worth over time. Next up: an avatar whose look evolves with it." },
-      { title: "Real paper trading", desc: "₹1,00,000 of simulated money through a working simulated broker: order validation, fills, settlement, positions and day P&L, no brokerage account and no KYC." },
-      { title: "Founder control room", desc: "A six-tab analytics command center plus a control plane for 10 AI agents, every action gated by human approval." },
+      { title: "Market scenarios", desc: "Fullscreen market events, one irreversible choice and a six-part explanation of the result." },
+      { title: "290+ short lessons", desc: "Vertical lessons across Money Basics and Stock Market, with checkpoint tests between modules." },
+      { title: "30+ interactive calculators", desc: "Slider-based chapters on FDs, tax, RSI, MACD, Bollinger Bands and Fibonacci, with purpose-built visualisations." },
+      { title: "32-decision Life simulator", desc: "Moves through financial life stages across 32 decisions and charts how net worth changes over time." },
+      { title: "Paper trading", desc: "₹1,00,000 in simulated money with order validation, fills, settlement, positions and day P&L, without a brokerage account or KYC." },
+      { title: "Review dashboard", desc: "A six-tab dashboard for product analytics and approving work prepared by ten task-specific backend tools." },
     ],
     breakdown: {
       problem:
         "Financial literacy content for Indian teenagers is either a textbook or a finfluencer telling them what to buy. Both fail for the same reason: neither lets you be wrong cheaply. Nobody learns what risk feels like by reading a definition of it, and nobody should learn it with real money at eighteen.",
       approach:
-        "Make the decision irreversible and make the consequence vivid. A real market event drops as a fullscreen takeover, you pick Defensive, Balanced or Bold, and you cannot undo it. A six-beat reveal then walks through exactly what that call did to your net worth. Everything else in the product exists to support that loop: the curriculum teaches the concept, the calculators let you feel the maths, paper trading lets you rehearse the mechanics, and the life simulator stretches the consequence across decades.",
+        "Make each decision irreversible and show the consequence clearly. A real market event appears fullscreen, you choose Defensive, Balanced or Bold, and you cannot undo it. A six-part explanation then shows what that decision did to your net worth. The curriculum explains the concept, the calculators show the maths, paper trading lets you practise the mechanics, and the life simulator follows the effects over several decades.",
       architecture: [
         {
-          label: "Scenario engine",
+          label: "Scenario system",
           detail:
-            "Real market events modelled as branching decisions with a scored outcome, paced through a six-beat reveal rather than dumped as a result screen.",
+            "Real market events modelled as branching decisions with a scored outcome, explained in six parts rather than shown as a single result screen.",
         },
         {
           label: "21-module reel curriculum",
           detail:
-            "Vertical, TikTok-shaped lessons across Money Basics and Stock Market, gated behind checkpoint tests so modules unlock rather than being skimmed.",
+            "Vertical lessons across Money Basics and Stock Market, with checkpoint tests that must be completed before the next module opens.",
         },
         {
           label: "30+ calculator chapters",
           detail:
-            "FDs, tax, RSI, MACD, Bollinger Bands and Fibonacci, each as a drag-the-slider visualisation built from scratch instead of a form with a submit button.",
+            "FDs, tax, RSI, MACD, Bollinger Bands and Fibonacci, each explained through a slider-based visualisation rather than a static form.",
         },
         {
           label: "Simulated broker",
           detail:
-            "Order validation, fills, settlement, positions and day P&L. A real state machine, because a fake one teaches habits that break on a real broker.",
+            "Order validation, fills, settlement, positions and day P&L, modelled closely enough to teach the mechanics that matter on a real broker.",
         },
         {
-          label: "10-agent backend",
+          label: "Ten automated roles",
           detail:
-            "Scoped AI agents handling operational work behind a control plane, with a human approval gate on every action they take.",
+            "Ten task-specific tools prepare operational work, with human approval required for every action.",
         },
         {
-          label: "Founder control room",
+          label: "Review dashboard",
           detail:
-            "A six-tab analytics command centre over the whole product, which is also how the agent layer is supervised.",
+            "A six-tab analytics dashboard for reviewing the product and supervising the automated work.",
         },
       ],
       decisions: [
         {
-          call: "Every agent action needs human approval",
-          why: "An agent layer that can act unsupervised is a liability on a product aimed at teenagers. The approval gate costs speed and buys the ability to sleep.",
+          call: "Every automated action needs human approval",
+          why: "Software that can act without review is too risky for a product aimed at teenagers. Requiring approval makes the work slower, but keeps a person accountable.",
         },
         {
           call: "One irreversible decision per scenario, no undo",
-          why: "An undo button turns a lesson about consequences into a lesson about optimisation. The discomfort is the teaching mechanism.",
+          why: "An undo button would remove the consequence the lesson is meant to teach.",
         },
         {
           call: "Built the calculators rather than embedding existing ones",
-          why: "Off-the-shelf calculators are forms. The thing that teaches is watching the curve move as you drag, which needs custom visualisation.",
+          why: "Existing calculators were mostly forms. I wanted learners to see the curve change as they moved a slider, which required a custom visualisation.",
         },
         {
           call: "Paper trading models settlement, not just price",
@@ -715,43 +715,43 @@ export const ventureDetail: Record<
   },
   getaitrade: {
     longDescription:
-      "GetAITrade is trading-command infrastructure that lets you operate your broker through AI, from web or Telegram, with audit logging and a human verification gate on every order. Phase one is live and tested with real funds: the AI never acts without consent.",
+      "GetAITrade lets you prepare broker orders from the web or Telegram. It records each step and requires a person to confirm every order before execution. Phase one is live and has been tested with real funds.",
     features: [
-      { title: "Broker connectivity", desc: "Connect your broker and route typed, inspectable trade intents." },
-      { title: "Human-in-the-loop", desc: "Every live order passes an approval gate, safety by design." },
-      { title: "Audit everything", desc: "Full logging and dry-run-by-default, so nothing happens in the dark." },
+      { title: "Broker connectivity", desc: "Connect a broker and turn an instruction into a structured order for review." },
+      { title: "Confirmation before execution", desc: "A person must approve every live order before it is sent." },
+      { title: "Complete audit log", desc: "Every step is recorded, and dry run is the default setting." },
     ],
     breakdown: {
       problem:
-        "Letting an AI talk to a broker is easy to demo and hard to make safe. The demo version places orders from natural language and looks like magic. The production version has to answer a harder question: what happens the one time the model misreads the instruction and the money is real.",
+        "Software can turn a written instruction into a broker order, but it can also misunderstand that instruction. A useful trading tool has to account for the mistake that happens when real money is involved.",
       approach:
-        "Treat the AI as something that prepares work, never something that commits it. Instructions become typed, inspectable trade intents rather than direct broker calls, and every live order stops at a human verification gate. Dry run is the default, so the safe path is the one you get by doing nothing special.",
+        "Let the software prepare an order, but never submit it on its own. Each instruction becomes a structured order that a person can read before it reaches the broker. Every live order pauses for confirmation, and dry run is the default setting.",
       architecture: [
         {
-          label: "Typed trade intents",
+          label: "Structured orders",
           detail:
-            "Natural language resolves into a structured, inspectable intent object before anything touches a broker API, so the thing being approved is legible.",
+            "A written instruction becomes a structured order before anything reaches the broker API, so the person approving it can see exactly what will be sent.",
         },
         {
-          label: "Human verification gate",
+          label: "Confirmation step",
           detail:
-            "Every live order requires explicit consent. The system can prepare and explain, it cannot commit.",
+            "Every live order requires explicit consent. The software can prepare and explain the order, but cannot submit it.",
         },
         {
           label: "Web and Telegram surfaces",
           detail:
-            "The same intent pipeline behind both, because the approval step has to be identical wherever the instruction came from.",
+            "Both use the same order process so the confirmation step is identical wherever the instruction begins.",
         },
         {
           label: "Audit logging",
           detail:
-            "Full logging with dry-run by default, so every action has a record and nothing executes silently.",
+            "Every action is recorded, with dry run enabled by default so nothing executes silently.",
         },
       ],
       decisions: [
         {
           call: "No autonomous execution, at any tier",
-          why: "It is the feature most requested and the one that turns a tool into a fiduciary problem. Not being SEBI registered makes that line non-negotiable rather than merely cautious.",
+          why: "Autonomous execution would change the nature and risk of the product. Because I am not SEBI registered, that boundary is firm.",
         },
         {
           call: "Dry run is the default mode",
@@ -766,11 +766,11 @@ export const ventureDetail: Record<
   },
   "10x-founders": {
     longDescription:
-      "10x Founders is an invite-only room for young Mumbai founders who are actually building, not networking for its own sake. Curated introductions, real rooms, and a membership that's earned. No crowded mixers, no pitch theatre.",
+      "10x Founders is an invite-only group for young Mumbai founders. It focuses on considered introductions and small in-person gatherings rather than broad networking events or pitch sessions.",
     features: [
-      { title: "Invite-only", desc: "A curated membership of builders, operators and leaders under 25." },
-      { title: "Curated intros", desc: "One warm introduction worth a hundred cold DMs." },
-      { title: "Real rooms", desc: "Rooftops in Colaba, villas in Alibaug. The room is defined by who's in it." },
+      { title: "Invite-only", desc: "A selected group of founders, operators and leaders under 25." },
+      { title: "Considered introductions", desc: "Introductions are made when there is a clear reason for two people to meet." },
+      { title: "In-person gatherings", desc: "Small gatherings held in places such as Colaba and Alibaug." },
     ],
   },
 };

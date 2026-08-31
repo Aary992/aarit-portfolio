@@ -114,8 +114,8 @@ export default async function ResourcePage({ params }: Params) {
 
       <Reveal delay={0.24}>
         <p className="mt-6 text-sm leading-relaxed text-muted">
-          Free, no email required. If it helps, the fastest way to say thanks is
-          to tell someone else about it.
+          This resource is free and does not require an email address. You can
+          share it with someone else who may find it useful.
         </p>
       </Reveal>
 

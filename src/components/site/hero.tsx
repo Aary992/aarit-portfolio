@@ -67,13 +67,11 @@ export default function Hero() {
             variants={item}
             className="mt-7 max-w-xl text-lg leading-relaxed text-muted"
           >
-            I build what I wish existed: an{" "}
-            <span className="text-ink">AI trading engine</span>, a{" "}
-            <span className="text-ink">
-              finance game for <span className="whitespace-nowrap">Gen-Z</span>
-            </span>
-            , a <span className="text-ink">founders&apos; club</span>. Then I break
-            it all down for 1,500 people, every day.
+            I build tools for problems I have run into: <span className="text-ink">GetAITrade</span>{" "}
+            for preparing trades, <span className="text-ink">MarketPlay</span> for learning
+            finance, and <span className="text-ink">10x Founders</span> for small founder
+            gatherings. I also explain software, markets and trading to a community of
+            1,500 people.
           </motion.p>
 
           <motion.div

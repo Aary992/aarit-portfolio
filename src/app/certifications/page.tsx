@@ -16,10 +16,10 @@ export default function CertificationsPage() {
         eyebrow="Credentials"
         title={
           <>
-            Proof of <span className="font-serif text-amber">work.</span>
+            Courses and <span className="font-serif text-amber">job simulations.</span>
           </>
         }
-        intro="Job simulations and courses from the desks I learn from: Citi, J.P. Morgan, Goldman Sachs and more."
+        intro="Job simulations and courses from Citi, J.P. Morgan, Goldman Sachs and other organisations."
       />
       <Certifications />
     </>

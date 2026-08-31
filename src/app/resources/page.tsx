@@ -10,7 +10,7 @@ export const revalidate = 60;
 export const metadata: Metadata = {
   title: "Free resources",
   description:
-    "Every template, checklist and teardown I give away in my reels, in one place. Free, no email required.",
+    "Free templates, checklists and teardowns mentioned in Aarit Shah's reels, collected in one place with no email required.",
   alternates: { canonical: "/resources" },
 };
 
@@ -30,7 +30,7 @@ export default async function ResourcesPage() {
             Everything I give <span className="text-amber">away.</span>
           </>
         }
-        intro="Every template, checklist and teardown from my reels, in one place. Free, no email required."
+        intro="The templates, checklists and teardowns I mention in my reels are collected here. They are free and do not require an email address."
       />
 
       <div className="mx-auto max-w-6xl px-6 pb-28">

@@ -8,7 +8,7 @@ import Community from "@/components/site/community";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Who is Aarit Shah: a founder, trader, creator and student from South Bombay building MarketPlay, GetAITrade and 10x Founders, and leading a 1,500-person community.",
+    "Aarit Shah is a founder, trader, creator and student from South Bombay. He is building MarketPlay, GetAITrade and 10x Founders and teaches a community of 1,500 people.",
   alternates: { canonical: "/about" },
 };
 
@@ -19,10 +19,10 @@ export default function AboutPage() {
         eyebrow="Who I am"
         title={
           <>
-            Builder first. <span className="font-serif text-amber">Always.</span>
+            I build what <span className="font-serif text-amber">I need.</span>
           </>
         }
-        intro="Founder, trader, creator and student from South Bombay. I build the things I can't buy, trade real markets, and document my journey to help others learn how to think, analyze, and trade for themselves. No signals, just the mechanics, to my community of over 1,500+ people."
+        intro="I'm a founder, trader, creator and student from South Bombay. I build tools for problems I have, trade with my own money and explain my process to a community of more than 1,500 people. I don't give signals; I focus on how the decisions work."
       />
       <About />
       <Experience />

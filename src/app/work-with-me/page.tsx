@@ -9,7 +9,7 @@ import { services, profile } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Work with me",
   description:
-    "Hire Aarit Shah for AI consultation, AI tool and website builds, paid promotions to a 22K-follower finance audience, and content work. Currently taking on projects. No investment advice, education, software and media only.",
+    "Hire Aarit Shah for workflow consultation, custom tools and websites, paid promotions to a 22K-follower finance audience, or content work. Education, software and media only; no investment advice.",
   alternates: { canonical: "/work-with-me" },
 };
 
@@ -20,7 +20,7 @@ const steps = [
   },
   {
     label: "Call",
-    text: "30 minutes, free. Your idea, your stack, and whether I can actually move the needle.",
+    text: "A free 30-minute conversation about your idea, your current tools and whether I can help.",
   },
   {
     label: "Scope",
@@ -28,7 +28,7 @@ const steps = [
   },
   {
     label: "Ship",
-    text: "I build, you review, we iterate. You end up owning the result.",
+    text: "I build, you review and we revise. You own the finished work.",
   },
 ];
 
@@ -78,10 +78,10 @@ export default function WorkWithMePage() {
         eyebrow="Work with me · Open for 2026"
         title={
           <>
-            Four ways we can <span className="text-amber">build together.</span>
+            Four ways I can <span className="text-amber">help.</span>
           </>
         }
-        intro="Currently taking on work. No pricing pages, no minimum budget: tell me what you need, and if I can move the needle I'll say so on a free 30-minute call. If I can't, I'll tell you that too."
+        intro="I'm currently taking on work. There is no public pricing page or minimum budget. Tell me what you need and, on a free 30-minute call, I'll explain whether I can help."
       />
 
       <section className="mx-auto max-w-6xl px-6 pb-20">
@@ -122,9 +122,9 @@ export default function WorkWithMePage() {
 
         <Reveal delay={0.1}>
           <p className="mt-6 text-muted">
-            Building something at the intersection of AI, markets or content
-            that doesn&apos;t fit a box above? Send it anyway. The interesting
-            ones never fit.
+            If your software, markets or content project does not match one of
+            the services above, you can still send the details and I&apos;ll tell
+            you whether it is something I can take on.
           </p>
         </Reveal>
       </section>
@@ -132,7 +132,7 @@ export default function WorkWithMePage() {
       <section className="mx-auto max-w-6xl px-6 pb-20">
         <SectionHeading
           label="How it works"
-          title="No mystery, no retainers by default."
+          title="What happens after you enquire."
         />
         <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-edge bg-edge sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, i) => (

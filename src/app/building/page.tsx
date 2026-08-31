@@ -5,7 +5,7 @@ import Work from "@/components/site/work";
 export const metadata: Metadata = {
   title: "Building",
   description:
-    "The startups Aarit Shah is building: MarketPlay (gamified financial literacy), GetAITrade (AI trading infrastructure) and 10x Founders (an invite-only founders' club).",
+    "The three ventures Aarit Shah is building: MarketPlay, GetAITrade and 10x Founders.",
   alternates: { canonical: "/building" },
 };
 
@@ -16,11 +16,11 @@ export default function BuildingPage() {
         eyebrow="What I'm building"
         title={
           <>
-            Three startups,{" "}
-            <span className="font-serif text-amber">one pattern.</span>
+            The three ventures{" "}
+            <span className="font-serif text-amber">I&apos;m building.</span>
           </>
         }
-        intro="Find something broken, and rebuild it."
+        intro="Each started with a problem I wanted to solve for myself or the people around me."
       />
       <Work />
     </>

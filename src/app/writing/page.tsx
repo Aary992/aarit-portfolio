@@ -8,7 +8,7 @@ import { posts } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Writing",
   description:
-    "Aarit Shah writes on AI projects, AI trading and the daily webinars he runs teaching AI, markets and trading to a 1,500-person community.",
+    "Aarit Shah writes about the software he builds, the way he approaches trading and what he teaches in daily webinars for a 1,500-person community.",
   alternates: { canonical: "/writing" },
 };
 
@@ -19,11 +19,11 @@ export default function WritingPage() {
         eyebrow="Writing"
         title={
           <>
-            How I think about{" "}
-            <span className="font-serif text-amber">AI and markets.</span>
+            Notes on software{" "}
+            <span className="font-serif text-amber">and markets.</span>
           </>
         }
-        intro="Notes from what I'm actually building and teaching. No tips, no signals, just how the systems work."
+        intro="Longer notes on the tools I build, the trades I study and what I learn from teaching a community each day. No tips or signals."
       />
 
       <section className="mx-auto max-w-6xl px-6 pb-28">

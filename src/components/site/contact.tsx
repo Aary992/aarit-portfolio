@@ -21,9 +21,9 @@ export default function Contact() {
               Open for 2026
             </p>
             <h2 className="text-display mt-4 font-display font-black uppercase text-night">
-              Let&apos;s build
+              Tell me
               <br />
-              something
+              what you need
             </h2>
             <a
               href="#calendly"
@@ -49,7 +49,7 @@ export default function Contact() {
               },
               {
                 label: "Who it's for",
-                line: "Founders, creators and teams building with AI or content.",
+                line: "Founders, creators and teams with a specific software or content project.",
               },
             ].map((p) => (
               <li key={p.label} className="py-4 first:pt-0 last:pb-0">
@@ -69,7 +69,7 @@ export default function Contact() {
         label="Contact"
         title={
           <>
-            Let&apos;s build <span className="text-amber">something.</span>
+            Tell me what you <span className="text-amber">need.</span>
           </>
         }
         intro="Book a 30-minute call, or reach out directly. I read everything."

@@ -177,11 +177,11 @@ export default async function MarketPostPage({ params }: Params) {
 
       <section className="mt-14 rounded-2xl border border-edge bg-surface/30 p-7">
         <h2 className="font-display text-xl font-bold tracking-tight">
-          Building something in this space?
+          Need help with a related project?
         </h2>
         <p className="mt-3 leading-relaxed text-muted">
-          I build AI tools and trading infrastructure, and write this series
-          alongside it.
+          I build custom software for trading workflows and write this series
+          alongside that work.
         </p>
         <Link
           href="/work-with-me"

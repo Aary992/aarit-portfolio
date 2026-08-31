@@ -10,7 +10,7 @@ export const revalidate = 60;
 export const metadata: Metadata = {
   title: "Guides",
   description:
-    "Straight answers to the money questions people actually search: how to start, how much, what order, what it costs.",
+    "Clear answers to common money questions, including how to start, how much is needed, what order to follow and what it costs.",
   alternates: { canonical: "/guides" },
 };
 
@@ -43,10 +43,10 @@ export default async function GuidesPage() {
         eyebrow="Guides"
         title={
           <>
-            The questions you <span className="text-amber">actually ask.</span>
+            Questions about <span className="text-amber">money.</span>
           </>
         }
-        intro="No jargon, no theory for its own sake. One page per question, answered in the first paragraph."
+        intro="Each guide answers one question in plain language, starting with the answer in the first paragraph."
       />
 
       <div className="mx-auto max-w-6xl px-6 pb-28">

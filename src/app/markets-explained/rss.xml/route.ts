@@ -32,7 +32,7 @@ export async function GET() {
     <title>Markets, Explained · Aarit Shah</title>
     <link>${BASE}/markets-explained</link>
     <atom:link href="${BASE}/markets-explained/rss.xml" rel="self" type="application/rss+xml" />
-    <description>Why markets did what they did, explained down to the mechanism. Educational only, not investment advice, not SEBI registered.</description>
+    <description>Explanations of past market moves, focused on what happened rather than predicting what comes next. Educational only, not investment advice, not SEBI registered.</description>
     <language>en-IN</language>
 ${items}
   </channel>

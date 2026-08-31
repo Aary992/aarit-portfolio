@@ -8,7 +8,7 @@ import { investing } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Investing",
   description:
-    "How Aarit Shah invests: a value-investing approach to equities (finding undervalued, moat-rich businesses) and a systematic, multi-strategy approach to crypto CFDs.",
+    "How Aarit Shah approaches equities through value investing and trades crypto CFDs with written rules and fixed risk limits.",
   alternates: { canonical: "/investing" },
 };
 
@@ -21,7 +21,7 @@ export default function InvestingPage() {
         eyebrow="How I invest"
         title={
           <>
-            Conviction over <span className="font-serif text-amber">noise.</span>
+            How I approach <span className="font-serif text-amber">risk.</span>
           </>
         }
         intro={investing.intro}

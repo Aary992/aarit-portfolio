@@ -9,7 +9,7 @@ export default function Experience() {
         label="Experience"
         title={
           <>
-            The <span className="text-amber">receipts.</span>
+            Roles and <span className="text-amber">projects.</span>
           </>
         }
       />

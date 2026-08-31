@@ -13,11 +13,11 @@ export default function BuildingTeaser() {
         label="What I'm building"
         title={
           <>
-            Three startups,{" "}
-            <span className="font-serif text-amber">one pattern.</span>
+            The three ventures{" "}
+            <span className="font-serif text-amber">I&apos;m building.</span>
           </>
         }
-        intro="Find something broken, and rebuild it."
+        intro="Each started with a problem I wanted to solve for myself or the people around me."
       />
 
       <div className="mt-14 flex flex-col border-y border-edge">

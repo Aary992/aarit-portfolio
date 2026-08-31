@@ -17,6 +17,19 @@ const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_GIx724d3FXf3h7GqQccIGw_z9l9sEqA
 
 const BUCKET = "resources";
 
+// Published resources are managed in Supabase. These exact-match replacements
+// improve the current descriptions without hiding future edits made in /admin.
+const DESCRIPTION_REVISIONS: Record<string, string> = {
+  "To protect your vibecoded website/app from security issues very easily in 1 prompt.":
+    "A prompt for reviewing security issues in a website or app built with code-generation tools.",
+  "Easy 1 minute prompt copy paste for receipt":
+    "A prompt you can copy and use to create a receipt.",
+  "To save lakhs on paid photoshoot expenditures, Use AI to make these images for you":
+    "A prompt for creating product images without organising a paid photo shoot.",
+  "Helps a person scan through key levels, trends, and many other confluences (No signals)":
+    "A tool for reviewing key levels, trends and other confluences. It does not provide signals.",
+};
+
 export type ResourceRow = {
   id: string;
   slug: string;
@@ -64,7 +77,7 @@ function toResource(r: ResourceRow): Resource {
     id: r.id,
     slug: r.slug,
     title: r.title,
-    description: r.description,
+    description: DESCRIPTION_REVISIONS[r.description] ?? r.description,
     category: r.category,
     url: r.file_path ? publicFileUrl(r.file_path) : (r.external_url ?? "#"),
     fileName: r.file_name,

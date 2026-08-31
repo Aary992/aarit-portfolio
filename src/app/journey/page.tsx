@@ -6,7 +6,7 @@ import Vision from "@/components/site/vision";
 export const metadata: Metadata = {
   title: "Journey",
   description:
-    "Aarit Shah's journey: education at KC College and MET Rishikul Vidyalaya, and where he's headed next, financial independence, building the ventures, and compounding hard.",
+    "Aarit Shah's education at KC College and MET Rishikul Vidyalaya, followed by his goals for the next five years.",
   alternates: { canonical: "/journey" },
 };
 
@@ -21,7 +21,7 @@ export default function JourneyPage() {
             <span className="font-serif text-amber">and where I&apos;m going.</span>
           </>
         }
-        intro="The schooling that shaped how I think, and the plan for the next five years."
+        intro="The schools I attended, what I learned there and the goals I'm working toward over the next five years."
       />
       <Education />
       <Vision />

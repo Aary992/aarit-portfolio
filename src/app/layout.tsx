@@ -10,10 +10,10 @@ import { zodiak, geistMono } from "@/lib/fonts";
 
 // The apex 308-redirects to www on Vercel, so www is the canonical origin.
 const siteUrl = "https://www.aaritshah.com";
-const defaultTitle = "Aarit Shah · AI Builder, Trader & Founder";
+const defaultTitle = "Aarit Shah · Founder, Trader & Builder";
 const titleTemplate = "Aarit Shah · %s";
 const description =
-  "Aarit Shah is an AI builder, trader, founder and educator from Mumbai building MarketPlay, GetAITrade and 10x Founders, and training a 1,500-person community on AI, markets and trading.";
+  "Aarit Shah is a founder and trader from Mumbai. He is building MarketPlay, GetAITrade and 10x Founders, and teaches software, markets and trading to a 1,500-person community.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

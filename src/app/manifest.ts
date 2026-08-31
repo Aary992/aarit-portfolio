@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Aarit Shah — Founder, Trader & Creator",
     short_name: "Aarit Shah",
     description:
-      "Aarit Shah is a founder, trader, creator and student from South Bombay building MarketPlay, GetAITrade and 10x Founders.",
+      "Aarit Shah is a founder, trader, creator and student from South Bombay. He is building MarketPlay, GetAITrade and 10x Founders.",
     start_url: "/",
     display: "standalone",
     background_color: "#0a0a0b",

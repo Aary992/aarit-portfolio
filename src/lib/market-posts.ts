@@ -14,6 +14,33 @@
 const SUPABASE_URL = "https://upknvaoegkagbrktkufd.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_GIx724d3FXf3h7GqQccIGw_z9l9sEqA";
 
+// Published posts are managed in Supabase. Exact-match replacements keep the
+// current archive plain-spoken without masking future edits made in /admin.
+const TEXT_REVISIONS: Record<string, string> = {
+  "Why Smart Money Sold Gold Right Before The War Started.":
+    "Why institutional investors sold gold right before the war started.",
+  "This can go on for months. Even years. While everyone is chasing trending stocks, smart money is quietly building positions where nobody is looking.":
+    "This can go on for months or even years. While attention is elsewhere, large investors can build positions gradually.",
+  "The lesson? Retail traders trade the news. Smart money trades the anticipation of the news.":
+    "The lesson is that retail traders often react to published news, while larger investors may have positioned before it became public.",
+  "Expansion: They build new stores without paying bank interest.\nInvesting: They can put that cash into short-term markets to earn their own interest.\nLiquidity: They have a constant, massive stream of cash that never leaves their ecosystem.":
+    "Expansion: They can build new stores without paying bank interest.\nInvesting: They can put the cash into short-term markets and earn interest.\nLiquidity: They keep a steady pool of cash within the business.",
+  "The Reality Check: That’s $196M of pure margin with zero labor, zero milk costs, and zero overhead. It’s the ultimate \"Smart Money\" play.":
+    "That is $196M with no labour, milk or store overhead attached to those unused balances.",
+  "For years, India was the \"TINA\" (There Is No Alternative) destination. But as we move through 2026, global fund managers are increasingly giving India the cold shoulder. Here’s a breakdown of why the tide is turning and what it means for the ecosystem.":
+    "For years, India was the \"TINA\" (There Is No Alternative) destination. But as we move through 2026, global fund managers are increasingly looking elsewhere. Here is why that changed and what it means for the wider market.",
+  "1. The Valuation Gap\nIndia has always commanded a \"premium valuation,\" and for a long time, investors were happy to pay it because our earnings growth justified the cost. However, that growth engine started to sputter in 2024. When growth slows but prices stay high, global capital starts looking for the exit.":
+    "1. The valuation gap\nIndia has long traded at a premium, and investors were willing to pay it while earnings growth justified the price. Earnings growth slowed in 2024, but valuations stayed high, so global investors began looking elsewhere.",
+  "2. The AI Migration\nCapital is currently flowing toward North Asian markets like South Korea and Taiwan. Why?":
+    "2. Capital moved toward semiconductors\nMoney has been flowing toward North Asian markets such as South Korea and Taiwan. Why?",
+  "The AI Factor: These markets are home to the semiconductor giants powering the global AI revolution.\nSpecialization vs. Diversification: While India’s economy is beautifully diversified across banks and consumption, global managers are currently chasing the high-momentum \"AI supply chain\" trade.":
+    "South Korea and Taiwan are home to major semiconductor companies, and global managers have been concentrating money in that trade. India’s economy is spread more widely across banks and consumer businesses, so it attracted less of that capital.",
+};
+
+function reviseText(value: string): string {
+  return TEXT_REVISIONS[value] ?? value;
+}
+
 export type MarketPostRow = {
   id: string;
   day: number;
@@ -51,9 +78,9 @@ function toPost(r: MarketPostRow): MarketPost {
     id: r.id,
     day: r.day,
     slug: r.slug,
-    title: r.title,
-    dek: r.dek,
-    body: toParagraphs(r.body),
+    title: reviseText(r.title),
+    dek: reviseText(r.dek),
+    body: toParagraphs(r.body).map(reviseText),
     readTime: r.read_time,
     date: (r.published_at ?? new Date().toISOString()).slice(0, 10),
   };

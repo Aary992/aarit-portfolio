@@ -9,7 +9,7 @@ import { getPublishedPosts } from "@/lib/market-posts";
 export const metadata: Metadata = {
   title: "Markets, Explained",
   description:
-    "A written series on why markets did what they did. Mechanism, not prediction. Not investment advice, not SEBI registered, no tips or signals.",
+    "A written series that explains past market moves without predicting what comes next. Not investment advice; Aarit Shah is not SEBI registered and gives no tips or signals.",
   alternates: {
     canonical: "/markets-explained",
     types: { "application/rss+xml": "/markets-explained/rss.xml" },
@@ -42,7 +42,7 @@ export default async function MarketsExplainedIndex() {
     name: "Markets, Explained",
     url: "https://www.aaritshah.com/markets-explained",
     description:
-      "Explaining why markets did what they did. Mechanism over prediction. Educational only.",
+      "Explanations of past market moves, focused on what happened rather than predicting what comes next.",
     author: { "@type": "Person", name: "Aarit Shah", url: "https://www.aaritshah.com" },
     blogPost: posts.map((p) => ({
       "@type": "BlogPosting",
@@ -70,7 +70,7 @@ export default async function MarketsExplainedIndex() {
             Why it moved, <span className="text-amber">not what to buy.</span>
           </>
         }
-        intro="One thing that happened in the market, explained down to the mechanism. Written after the fact, because explaining is honest and predicting mostly is not."
+        intro="Each post takes one market move and explains what happened behind it. The series looks backward at the evidence rather than trying to predict what comes next."
       />
 
       <section className="mx-auto max-w-3xl px-6 pb-24">
@@ -80,7 +80,7 @@ export default async function MarketsExplainedIndex() {
 
         {posts.length === 0 ? (
           <p className="mt-12 rounded-2xl border border-edge bg-surface/30 p-6 leading-relaxed text-muted">
-            The archive is being written. New posts land here as they go out.
+            There are no published posts yet. New posts will appear here when they are ready.
           </p>
         ) : (
           <ol className="mt-12 flex flex-col">

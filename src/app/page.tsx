@@ -13,9 +13,9 @@ const jsonLd = {
   name: "Aarit Shah",
   url: "https://www.aaritshah.com",
   image: "https://www.aaritshah.com/portrait.png",
-  jobTitle: "Founder, AI Builder & Trader",
+  jobTitle: "Founder, Builder & Trader",
   description:
-    "Founder, AI builder, trader and educator from South Bombay building MarketPlay, GetAITrade and 10x Founders, and running daily webinars on AI, markets and trading for a 1,500-person community.",
+    "Founder and trader from South Bombay building MarketPlay, GetAITrade and 10x Founders, and running daily webinars on software, markets and trading for a 1,500-person community.",
   knowsAbout: [
     "Artificial Intelligence",
     "AI agents",
@@ -63,7 +63,7 @@ const orgLd = {
     addressCountry: "IN",
   },
   description:
-    "AI consultation, AI tool and website builds, paid promotions and content work. Education, software and media only. Not SEBI registered and not an investment adviser.",
+    "Workflow consultation, custom tools and websites, paid promotions and content work. Education, software and media only. Not SEBI registered and not an investment adviser.",
 };
 
 const websiteLd = {

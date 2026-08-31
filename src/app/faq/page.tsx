@@ -8,7 +8,7 @@ import { faqs } from "@/lib/data";
 export const metadata: Metadata = {
   title: "FAQ",
   description:
-    "Answers about who Aarit Shah is, what he can be hired for, the not-SEBI-registered position, MarketPlay, GetAITrade, the free calculators, and how to start working together.",
+    "Answers about Aarit Shah, his services, his SEBI registration status, MarketPlay, GetAITrade and how to work with him.",
   alternates: { canonical: "/faq" },
 };
 
@@ -47,10 +47,10 @@ export default function FaqPage() {
         eyebrow="FAQ"
         title={
           <>
-            The questions I <span className="text-amber">actually get.</span>
+            Common <span className="text-amber">questions.</span>
           </>
         }
-        intro="Short answers, including the one about SEBI registration, which is the one that matters most."
+        intro="Direct answers about my work, the products I build and the limits of what I offer."
       />
 
       <section className="mx-auto max-w-3xl px-6 pb-24">

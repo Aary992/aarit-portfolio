@@ -8,7 +8,7 @@ import { Reveal } from "@/components/ui/reveal";
 export const metadata: Metadata = {
   title: "Side projects",
   description:
-    "The tools Aarit Shah builds for himself: a self-improving Obsidian second brain, an AI trade journal, research-analyst bots, financial models and a content engine, plus the things he does purely for fun.",
+    "The tools Aarit Shah builds for himself: an Obsidian research library, a trade journal, research tools, financial models and a repeatable content workflow.",
   alternates: { canonical: "/side-projects" },
 };
 
@@ -23,7 +23,7 @@ export default function SideProjectsPage() {
             <span className="font-serif text-amber">for myself.</span>
           </>
         }
-        intro="I build the tools I can't buy: bots, automations and systems that save me time or teach me faster. This is what runs in the background."
+        intro="These are the tools I use to organise research, record trades, study companies and produce content. I built them because the available options did not fit how I work."
       />
 
       <section className="mx-auto max-w-6xl px-6 pb-20">

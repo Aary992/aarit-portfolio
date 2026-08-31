@@ -16,15 +16,15 @@ export const metadata: Metadata = {
 const bios = [
   {
     label: "One-liner",
-    text: "Aarit Shah is a Mumbai-based founder and AI builder running MarketPlay, GetAITrade and 10x Founders, and teaching AI and trading to a 1,500-person community every day.",
+    text: "Aarit Shah is a Mumbai-based founder and trader running MarketPlay, GetAITrade and 10x Founders, and teaching software and trading to a 1,500-person community every day.",
   },
   {
     label: "Short bio",
-    text: "Aarit Shah is a founder, AI builder and trader from Mumbai building three ventures at once: MarketPlay, a gamified financial literacy app for Indian Gen Z powered by a 10-agent AI backend; GetAITrade, AI trading infrastructure with human-verified execution; and 10x Founders, an invite-only community for young Mumbai builders. He runs daily webinars on AI and markets for a 1,500-person community and posts content that reached 4M views in the last 90 days, without ever giving a tip or a signal.",
+    text: "Aarit Shah is a founder and trader from Mumbai building three ventures: MarketPlay, a financial literacy game for Indian Gen Z with ten automated backend roles that require human approval; GetAITrade, a trading tool that requires confirmation before every order; and 10x Founders, an invite-only group for young Mumbai founders. He runs daily webinars on software and markets for a 1,500-person community and posts content that reached 4M views in the last 90 days. He does not give tips or signals.",
   },
   {
     label: "Long bio",
-    text: "Aarit Shah is a founder, AI builder and trader from South Bombay, currently pursuing commerce at KC College while running three companies. MarketPlay is his solo-built flagship: a Duolingo-style financial literacy game for Indian Gen Z, with a real market event, one irreversible decision, and an AI-run backend of 10 scoped agents gated behind human approval. GetAITrade is AI-powered trading command infrastructure, live and tested with real funds, with a human-verification gate on every order. 10x Founders is an invite-only room for young Mumbai founders actually building. Alongside the ventures, Aarit runs daily webinars for a 1,500-person community teaching AI, markets and trading in plain language, always making clear he's not SEBI registered and never gives a tip or a signal. His personal investing track record runs a value-investing approach to equities and a systematic, risk-first approach to crypto CFDs.",
+    text: "Aarit Shah is a founder and trader from South Bombay who is pursuing commerce at KC College while running three ventures. MarketPlay is a financial literacy game he built for Indian Gen Z. It uses real market events, asks the player to make one irreversible decision and relies on ten task-specific backend tools whose work requires human approval. GetAITrade is a trading tool that has been tested with real funds and requires confirmation before every order. 10x Founders is an invite-only group for young Mumbai founders. Aarit also runs daily webinars on software, markets and trading for a 1,500-person community. He is not SEBI registered and does not give tips or signals. He uses a value-investing approach for equities and written risk rules for crypto CFD trades.",
   },
 ];
 
@@ -35,8 +35,8 @@ export default function PressPage() {
         eyebrow="Press kit"
         title={
           <>
-            Everything you need{" "}
-            <span className="font-serif text-amber">to cover me.</span>
+            Bio, facts and{" "}
+            <span className="font-serif text-amber">a headshot.</span>
           </>
         }
         intro="Bio copy, fact sheet and a headshot, ready to paste. If you need anything else, email me directly."
@@ -123,9 +123,10 @@ export default function PressPage() {
           <div className="mt-8 rounded-2xl border border-edge bg-surface/30 p-6">
             <p className="leading-relaxed text-muted">
               Aarit Shah is the founder of MarketPlay, GetAITrade and 10x Founders,
-              three Mumbai-based ventures at the intersection of AI and finance.
-              He teaches AI, markets and trading to a 1,500-person community
-              daily, with no tips or signals, just how the systems actually work.
+              three Mumbai-based ventures focused on financial education, trading
+              software and founder gatherings. He teaches software, markets and
+              trading to a 1,500-person community each day and does not give tips
+              or signals.
               More at{" "}
               <a href="https://www.aaritshah.com" className="text-amber underline-offset-4 hover:underline">
                 aaritshah.com

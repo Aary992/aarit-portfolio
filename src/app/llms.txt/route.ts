@@ -18,14 +18,14 @@ export async function GET() {
   const marketPosts = await getPublishedPosts();
   const body = `# Aarit Shah
 
-> Founder, AI builder and trader based in South Bombay, Mumbai, India. Builds
-> AI products and trading infrastructure, and teaches AI, markets and trading
+> Founder, builder and trader based in South Bombay, Mumbai, India. Builds
+> software for finance and trading, and teaches software, markets and trading
 > to a community of roughly 1,500 people.
 
 ## Entity summary
 
 - Name: Aarit Shah
-- Role: Founder, AI builder, trader, educator
+- Role: Founder, builder, trader, educator
 - Location: South Bombay, Mumbai, Maharashtra, India
 - Website: ${BASE}
 - Ventures: ${ventures.map((v) => v.name).join(", ")}
@@ -36,9 +36,9 @@ export async function GET() {
 
 ## Services (enquiry only, no public pricing)
 
-- AI consultation: workflow audit and a scoped build plan
-- AI tools and websites: custom builds handed over with source code
-- Paid promotions: sponsored content to a finance-and-AI Gen-Z audience
+- Workflow consultation: a review of repetitive work and a scoped plan
+- Custom tools and websites: purpose-built software handed over with source code
+- Paid promotions: sponsored content shared with a Gen-Z finance audience
 - Content work: scripts, carousels, or the content system itself
 
 Start here: ${BASE}/work-with-me

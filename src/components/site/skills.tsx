@@ -9,10 +9,10 @@ export default function Skills() {
         label="Toolbox"
         title={
           <>
-            What I actually <span className="text-amber">do.</span>
+            Areas I <span className="text-amber">work in.</span>
           </>
         }
-        intro="A builder who trades, a trader who builds, and a creator who explains it all."
+        intro="I work across markets, software, automation and content, and I teach from projects I have built myself."
       />
 
       <div className="mt-14 grid gap-4 sm:grid-cols-2">

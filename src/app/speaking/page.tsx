@@ -8,26 +8,26 @@ import { Reveal } from "@/components/ui/reveal";
 export const metadata: Metadata = {
   title: "Speaking",
   description:
-    "Aarit Shah runs sessions on AI, trading, market basics and AI trading. Seven webinars delivered to a 1,500-person community. Available for communities, companies and campuses.",
+    "Aarit Shah runs sessions on software, trading and market basics. He has delivered seven webinars to a 1,500-person community and is available for communities, companies and campuses.",
   alternates: { canonical: "/speaking" },
 };
 
 const topics = [
   {
-    title: "AI, without the hype",
-    desc: "What these systems actually do, where they break, and which parts of a workflow are worth handing over. Live demos, not slides about the future.",
+    title: "What current software models can and cannot do",
+    desc: "How the tools work, where they fail and which repetitive tasks are worth automating, shown through working examples.",
   },
   {
-    title: "How markets actually work",
-    desc: "Mechanism over prediction: who is on the other side of a trade, why prices move against the obvious narrative, what a balance sheet is really telling you.",
+    title: "How markets work",
+    desc: "Who is on the other side of a trade, why prices can move against the obvious explanation and what to look for in a balance sheet.",
   },
   {
     title: "Market basics from zero",
     desc: "For rooms where most people have never placed a trade. Plain language, no jargon, and honest about what nobody can know.",
   },
   {
-    title: "AI and trading together",
-    desc: "What I built, what it gets right, and why every order still passes a human gate before it executes.",
+    title: "Software used in trading",
+    desc: "What I built, what it can prepare and why a person must confirm every order before it executes.",
   },
 ];
 
@@ -55,7 +55,7 @@ export default function SpeakingPage() {
             I teach this <span className="text-amber">every day.</span>
           </>
         }
-        intro="Seven webinars delivered so far, mostly to my own 1,500-person community. The format is the same one I use daily: explain the mechanism, show it working, take the hard questions live."
+        intro="I have delivered seven webinars so far, mostly to my own 1,500-person community. I explain how something works, demonstrate it and answer questions live."
       />
 
       <section className="mx-auto max-w-6xl px-6 pb-20">
@@ -82,8 +82,8 @@ export default function SpeakingPage() {
             </h2>
             <p className="mt-3 max-w-2xl leading-relaxed text-muted">
               Communities, companies and campuses. Tell me who is in the room
-              and what they already know, and I will tell you which of these
-              lands. Sessions are education only: I am not SEBI registered and
+              and what they already know, and I will suggest the most relevant
+              topic. Sessions are education only: I am not SEBI registered and
               give no tips, calls or signals, whatever the audience asks.
             </p>
             <Link
