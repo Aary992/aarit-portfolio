@@ -1,11 +1,22 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
-import { ArrowUpRight, AtSign } from "lucide-react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+  type Variants,
+} from "framer-motion";
+import { useRef } from "react";
+import { AtSign } from "lucide-react";
+import { SpinningBorderLink } from "@/components/ui/spinning-border-button";
 import { Portrait } from "@/components/ui/portrait";
 import { Counter } from "@/components/ui/counter";
 import { NameLockup } from "@/components/ui/name-lockup";
-import HeroShader from "@/components/site/hero-shader";
+import { Reveal } from "@/components/ui/reveal";
+import { DarkAuroraBackground } from "@/components/background-gradient/dark-aurora-background";
+import { AnnotatedText } from "@/components/underlines/annotated-text";
 
 const container: Variants = {
   hidden: {},
@@ -31,18 +42,42 @@ const stats = [
 ];
 
 export default function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end 35%"],
+  });
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 110,
+    damping: 26,
+    mass: 0.35,
+  });
+  const backdropY = useTransform(progress, [0, 1], [0, 150]);
+  const copyY = useTransform(progress, [0, 1], [0, -48]);
+  const portraitY = useTransform(progress, [0, 1], [0, 90]);
+  const portraitScale = useTransform(progress, [0, 1], [1, .94]);
+
   return (
     <section
+      ref={heroRef}
       id="top"
-      className="relative w-full overflow-hidden px-6 pt-32 pb-16"
+      className="relative w-full overflow-hidden px-6 pt-32 pb-4"
     >
-      <HeroShader />
-      <div className="pointer-events-none absolute inset-0 amber-glow opacity-60" />
-      <div className="pointer-events-none absolute inset-0 bg-grain opacity-[0.035] mix-blend-screen" />
+      <motion.div className="pointer-events-none absolute -inset-y-32 inset-x-0" style={reduceMotion ? undefined : { y: backdropY }}>
+      <DarkAuroraBackground
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+      />
+      </motion.div>
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-night" />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+      <motion.div
+        className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12"
+      >
         <motion.div
+          data-scroll-layer="hero-copy"
+          style={reduceMotion ? undefined : { y: copyY }}
           variants={container}
           initial="hidden"
           animate="show"
@@ -67,9 +102,9 @@ export default function Hero() {
             variants={item}
             className="mt-7 max-w-xl text-lg leading-relaxed text-muted"
           >
-            I build tools for problems I have run into: <span className="text-ink">GetAITrade</span>{" "}
-            for preparing trades, <span className="text-ink">MarketPlay</span> for learning
-            finance, and <span className="text-ink">10x Founders</span> for small founder
+            I build tools for problems I have run into: <AnnotatedText variant="underline" color="text-amber/75" className="text-ink">GetAITrade</AnnotatedText>{" "}
+            for preparing trades, <AnnotatedText variant="wavy" color="text-orange-300/75" className="text-ink">MarketPlay</AnnotatedText> for learning
+            finance, and <AnnotatedText variant="underline" color="text-amber/75" className="text-ink">10x Founders</AnnotatedText> for small founder
             gatherings. I also explain software, markets and trading to a community of
             1,500 people.
           </motion.p>
@@ -78,25 +113,19 @@ export default function Hero() {
             variants={item}
             className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
           >
-            <a
-              href="#contact"
-              className="group tappable inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-ember to-amber px-6 py-3.5 text-base font-semibold text-night transition-transform duration-200 hover:scale-[1.02]"
-            >
-              Book a call
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-            <a
-              href="#work"
-              className="tappable inline-flex items-center justify-center gap-2 rounded-full border border-edge-strong px-6 py-3.5 text-base font-medium text-ink transition-colors duration-200 hover:bg-surface"
-            >
+            <SpinningBorderLink href="#contact" tone="orange">Book a call
+              </SpinningBorderLink>
+            <SpinningBorderLink href="#work">
               View the work
-            </a>
+            </SpinningBorderLink>
           </motion.div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
+          data-scroll-layer="hero-portrait"
+          style={reduceMotion ? undefined : { y: portraitY, scale: portraitScale }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
           className="relative mx-auto w-full max-w-sm lg:max-w-none"
         >
@@ -112,7 +141,7 @@ export default function Hero() {
           />
 
           <motion.div
-            animate={{ y: [0, -9, 0] }}
+            animate={reduceMotion ? undefined : { y: [0, -3, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             className="absolute -left-4 top-10 flex items-center gap-2 rounded-2xl border border-edge bg-night/70 px-3.5 py-2.5 backdrop-blur-md"
           >
@@ -127,7 +156,7 @@ export default function Hero() {
             href="https://instagram.com/withaarit"
             target="_blank"
             rel="noopener noreferrer"
-            animate={{ y: [0, 9, 0] }}
+            animate={reduceMotion ? undefined : { y: [0, 3, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             className="absolute -right-3 bottom-20 flex items-center gap-2 rounded-2xl border border-edge bg-night/70 px-3.5 py-2.5 backdrop-blur-md transition-colors hover:border-edge-strong"
           >
@@ -135,14 +164,9 @@ export default function Hero() {
             <span className="font-mono text-xs text-muted">@withaarit</span>
           </motion.a>
         </motion.div>
-      </div>
+      </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.65, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 mx-auto mt-16 w-full max-w-6xl"
-      >
+      <Reveal className="relative z-10 mx-auto mt-16 w-full max-w-6xl">
         <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-edge bg-edge sm:grid-cols-4">
           {stats.map((s) => (
             <div
@@ -163,7 +187,7 @@ export default function Hero() {
           *Personal track record, educational only. Not SEBI registered. No
           tips, calls or signals.
         </p>
-      </motion.div>
+      </Reveal>
     </section>
   );
 }

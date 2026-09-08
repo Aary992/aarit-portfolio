@@ -1,5 +1,6 @@
+import { SpinningBorderLink } from "@/components/ui/spinning-border-button";
 import type { Metadata } from "next";
-import { Download, Mail } from "lucide-react";
+
 import { PageHeader } from "@/components/ui/page-header";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
@@ -55,14 +56,8 @@ export default function PressPage() {
                 placeholderLabel="Add your portrait"
                 placeholderHint="Save it to public/portrait.png"
               />
-              <a
-                href="/portrait.png"
-                download
-                className="group inline-flex items-center justify-center gap-2 rounded-full border border-edge-strong px-5 py-3 text-sm font-medium text-ink transition-colors hover:bg-surface"
-              >
-                <Download className="h-4 w-4" />
-                Download headshot
-              </a>
+              <SpinningBorderLink href="/portrait.png" download tone="dark">Download headshot
+              </SpinningBorderLink>
             </div>
           </Reveal>
 
@@ -137,13 +132,8 @@ export default function PressPage() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <a
-            href={`mailto:${profile.email}?subject=Press inquiry`}
-            className="group mt-10 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-ember to-amber px-6 py-3.5 text-base font-semibold text-night transition-transform duration-200 hover:scale-[1.02]"
-          >
-            <Mail className="h-4 w-4" />
-            Get in touch for press
-          </a>
+          <SpinningBorderLink href={`mailto:${profile.email}?subject=Press inquiry`} tone="orange" className="mt-10">Get in touch for press
+          </SpinningBorderLink>
         </Reveal>
       </section>
     </>

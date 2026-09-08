@@ -1,6 +1,6 @@
 ﻿import type { CSSProperties } from "react";
-import Link from "next/link";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { SpinningBorderLink } from "@/components/ui/spinning-border-button";
+
 import { ventures, type Venture } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/ui/reveal";
@@ -19,7 +19,7 @@ function hostFromUrl(url: string) {
 
 export default function Work() {
   return (
-    <section id="work" className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
+    <section id="ventures" className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
       <div className="flex flex-col gap-8">
         {ventures.map((v, i) => (
           <VentureCard key={v.slug} v={v} index={i} />
@@ -94,12 +94,12 @@ function VentureCard({ v, index }: { v: Venture; index: number }) {
           <p className="mt-4 leading-relaxed text-muted">{v.description}</p>
 
           <div className="mt-6 flex flex-wrap gap-2">
-            {v.highlights.map((h) => (
+            {v.highlights.map((h, highlightIndex) => (
               <span
                 key={h}
                 className="rounded-full border border-edge px-3 py-1 text-xs text-muted"
               >
-                {h}
+                {v.slug !== "getaitrade" || highlightIndex === 0 ? <span className="underline decoration-[var(--accent)] decoration-2 underline-offset-4">{h}</span> : h}
               </span>
             ))}
           </div>
@@ -121,32 +121,10 @@ function VentureCard({ v, index }: { v: Venture; index: number }) {
           )}
 
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <Link
-              href={`/building/${v.slug}`}
-              className="group/link inline-flex items-center gap-2 text-sm font-medium text-ink transition-colors hover:text-[var(--accent)]"
-            >
-              Explore {v.name}
-              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover/link:translate-x-1" />
-            </Link>
-            <a
-              href={v.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group/visit inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
-            >
-              Visit live
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover/visit:translate-x-0.5 group-hover/visit:-translate-y-0.5" />
-            </a>
+            <SpinningBorderLink href={`/building/${v.slug}`}>Explore {v.name}</SpinningBorderLink>
+            <SpinningBorderLink href={v.url} target="_blank" rel="noopener noreferrer">Visit live</SpinningBorderLink>
             {v.storeUrl && (
-              <a
-                href={v.storeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group/store inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
-              >
-                Google Play
-                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover/store:translate-x-0.5 group-hover/store:-translate-y-0.5" />
-              </a>
+              <SpinningBorderLink href={v.storeUrl} target="_blank" rel="noopener noreferrer">Google Play</SpinningBorderLink>
             )}
           </div>
         </div>

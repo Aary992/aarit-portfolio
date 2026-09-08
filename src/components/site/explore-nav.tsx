@@ -1,219 +1,177 @@
 "use client";
 
-import { useState, type CSSProperties } from "react";
-import Link from "next/link";
-import { useReducedMotion } from "framer-motion";
-import {
-  ArrowUpRight,
-  User,
-  GraduationCap,
-  Layers,
-  TrendingUp,
-  FlaskConical,
-  Award,
-  type LucideIcon,
-} from "lucide-react";
-import { Reveal } from "@/components/ui/reveal";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode, type MouseEvent } from "react";
+import { createPortal } from "react-dom";
+import { motion, useMotionValueEvent, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
+import { ArrowUpRight, ArrowLeft, ArrowRight, X } from "lucide-react";
+import { GlowCard } from "@/components/ui/spotlight-card";
+import type { GalleryId } from "./gallery-art";
+import { ScrollContainerProvider } from "@/components/ui/scroll-scene";
+import { SpinningBorderLink } from "@/components/ui/spinning-border-button";
 
-type Destination = {
-  label: string;
-  href: string;
-  icon: LucideIcon;
-  blurb: string;
-  /** Space-separated sRGB channels, so alpha variants are plain `rgb(x / a)`.
-   *  Not color-mix(): 49% of traffic is Android, and on the older Chrome and
-   *  WebView builds in that mix an unsupported color-mix() drops the whole
-   *  declaration, which would leave these doors flat grey. */
-  accent: string;
-};
-
-const destinations: Destination[] = [
-  {
-    label: "Building",
-    href: "/building",
-    icon: Layers,
-    blurb: "Three startups, one pattern: MarketPlay, GetAITrade and 10x Founders.",
-    accent: "255 107 26",
-  },
-  {
-    label: "Investing",
-    href: "/investing",
-    icon: TrendingUp,
-    blurb: "How I invest: value investing in equities and systematic crypto CFDs.",
-    accent: "245 158 11",
-  },
-  {
-    label: "Side projects",
-    href: "/side-projects",
-    icon: FlaskConical,
-    blurb: "The bots, tools and for-fun builds that run in the background.",
-    accent: "34 211 238",
-  },
-  {
-    label: "About",
-    href: "/about",
-    icon: User,
-    blurb: "Founder, trader and creator from South Bombay. The whole story.",
-    accent: "139 92 246",
-  },
-  {
-    label: "Journey",
-    href: "/journey",
-    icon: GraduationCap,
-    blurb: "Where I've been and where I'm headed: education and goals.",
-    accent: "52 211 153",
-  },
-  {
-    label: "Certifications",
-    href: "/certifications",
-    icon: Award,
-    blurb: "Citi, J.P. Morgan, Goldman Sachs. The receipts.",
-    accent: "201 162 75",
-  },
+const destinations: { id: GalleryId; label: string; line: string; accent: string }[] = [
+  { id: "building", label: "Building", line: "The three ventures I'm building.", accent: "255 139 70" },
+  { id: "investing", label: "Investing", line: "How I approach risk.", accent: "225 183 94" },
+  { id: "side-projects", label: "Side projects", line: "Tools, research and experiments.", accent: "95 184 192" },
+  { id: "about", label: "About", line: "I build what I need.", accent: "196 158 203" },
+  { id: "journey", label: "Journey", line: "Where I've been, and where I'm going.", accent: "137 184 143" },
+  { id: "certifications", label: "Certifications", line: "Courses and job simulations.", accent: "201 162 75" },
 ];
+type Selection = { id: GalleryId; rect: { top: number; left: number; width: number; height: number }; trigger: HTMLAnchorElement; pageY: number };
 
-// Plain CSS transitions rather than framer-motion: framer's `animate` prop
-// silently refused to apply to these children, and a hinge is one property on
-// one element, which the compositor handles for free.
-const SWING = "620ms cubic-bezier(0.22, 1, 0.36, 1)";
-
-function Door({ d, index }: { d: Destination; index: number }) {
-  const [open, setOpen] = useState(false);
-  const reduceMotion = useReducedMotion();
-
-  // Resting angle is slightly ajar rather than flush: it reads as a door before
-  // you touch it, and it is the only cue touch devices get, since they never
-  // fire hover and would otherwise see six flat rectangles.
-  const angle = reduceMotion ? 0 : open ? -74 : -10;
-  const Icon = d.icon;
-
-  return (
-    <Link
-      href={d.href}
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-      onFocus={() => setOpen(true)}
-      onBlur={() => setOpen(false)}
-      style={{ "--accent": d.accent } as CSSProperties}
-      className="group block outline-none"
-      aria-label={`${d.label}. ${d.blurb}`}
-    >
-      {/* contain:layout+style keeps a swinging door from invalidating layout for
-          the whole grid. No paint containment: that would clip the open leaf. */}
-      <div className="relative aspect-[3/4] [contain:layout_style] [perspective:1200px] [transform-style:preserve-3d] sm:aspect-[3/5]">
-        {/* The room behind the door: dark until the leaf swings, then it throws
-            this destination's colour out of the gap. */}
-        <div className="absolute inset-0 overflow-hidden rounded-[4px] bg-night ring-1 ring-inset ring-edge">
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(120% 90% at 0% 50%, rgb(var(--accent) / 0.55) 0%, rgb(var(--accent) / 0.12) 38%, transparent 72%)",
-              opacity: open ? 1 : 0,
-              transition: reduceMotion ? "none" : `opacity ${SWING}`,
-            }}
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-night via-transparent to-night/60" />
-
-          <div
-            className="absolute inset-x-0 bottom-0 p-4"
-            style={{
-              opacity: open ? 1 : 0,
-              transform: open ? "translateY(0)" : "translateY(8px)",
-              transition: reduceMotion
-                ? "none"
-                : `opacity 340ms ease ${open ? "160ms" : "0ms"}, transform 340ms ease ${open ? "160ms" : "0ms"}`,
-            }}
-          >
-            <p className="text-[13px] leading-snug text-ink/85">{d.blurb}</p>
-            <span className="mt-2 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.18em] text-[rgb(var(--accent))]">
-              Enter <ArrowUpRight className="h-3 w-3" />
-            </span>
-          </div>
-        </div>
-
-        {/* The leaf. Hinged left, so it swings toward the viewer and the light
-            spills from the hinge side outward.
-            will-change only from sm up: touch devices never open these, and
-            promoting six layers on a mid-range Android buys nothing but memory.
-            Same reasoning for the drop shadow, which is a large blur radius
-            repainting on every scroll frame. */}
-        <div
-          className="absolute inset-0 rounded-[4px] [backface-visibility:hidden] [transform-origin:left_center] [transform-style:preserve-3d] sm:shadow-[0_18px_40px_-24px_rgb(0_0_0/0.85)] sm:will-change-transform"
-          style={{
-            // Colour at rest, not only on hover: the tint and the accent border
-            // are what make six closed doors read as six different places.
-            background:
-              "linear-gradient(158deg, rgb(var(--accent) / 0.16) 0%, rgb(var(--accent) / 0.05) 42%, var(--color-surface) 82%)",
-            border: "1px solid rgb(var(--accent) / 0.24)",
-            transform: `rotateY(${angle}deg)`,
-            transition: reduceMotion ? "none" : `transform ${SWING}`,
-          }}
-        >
-          {/* Recessed panels are what make a rectangle read as a door. No knob,
-              no arch, no hinge plates: that is where this tips into clipart. */}
-          <div className="absolute inset-[10px] rounded-[2px] border border-[rgb(var(--accent)/0.18)]" />
-          <div className="absolute inset-x-[10px] top-[10px] bottom-[46%] rounded-[2px] border border-[rgb(var(--accent)/0.12)]" />
-
-          {/* Top edge catching the light, like a painted door frame. */}
-          <div className="absolute inset-x-0 top-0 h-px bg-[rgb(var(--accent)/0.5)]" />
-
-          {/* Handle: a hairline bar on the swing edge, not a doorknob. */}
-          <div className="absolute right-[7px] top-1/2 h-7 w-[3px] -translate-y-1/2 rounded-full bg-[rgb(var(--accent)/0.55)] transition-colors duration-500 group-hover:bg-[rgb(var(--accent))]" />
-
-          <span className="absolute left-[16px] top-[14px] font-mono text-[10px] tracking-[0.2em] text-[rgb(var(--accent)/0.7)]">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-
-          <Icon className="absolute left-[16px] top-1/2 h-5 w-5 -translate-y-1/2 text-[rgb(var(--accent))] opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
-
-          {/* Light leaking down the hinge edge as the leaf starts to move. */}
-          <div
-            className="pointer-events-none absolute inset-y-0 left-0 w-px"
-            style={{
-              background: "rgb(var(--accent))",
-              opacity: open ? 0.9 : 0,
-              transition: reduceMotion ? "none" : `opacity ${SWING}`,
-            }}
-          />
-        </div>
-      </div>
-
-      <span className="mt-3 block font-display text-[15px] font-semibold tracking-tight text-ink transition-colors duration-300 group-hover:text-[rgb(var(--accent))]">
-        {d.label}
-      </span>
-    </Link>
-  );
+function CardFace({ item, index }: { item: typeof destinations[number]; index: number }) {
+  return <><div className="chapter-card__top"><span>CHAPTER {String(index + 1).padStart(2, "0")}</span><ArrowUpRight size={21} aria-hidden="true" /></div><span aria-hidden="true" className="chapter-card__number">{String(index + 1).padStart(2, "0")}</span><div className="chapter-card__caption"><h3>{item.label}</h3><p>{item.line}</p><span className="chapter-card__enter">Explore chapter <ArrowUpRight size={14} aria-hidden="true" /></span></div></>;
 }
 
-export default function ExploreNav() {
-  return (
-    <section className="mx-auto max-w-6xl px-6 py-24 sm:py-28">
-      <Reveal>
-        <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-amber">
-          <span className="h-px w-6 bg-amber/60" />
-          Where to next
-        </span>
-      </Reveal>
-      <Reveal delay={0.05}>
-        {/* Anybody Expanded 800. font-stretch is required for the expanded
-            width: without it the variable font renders at normal width. */}
-        <h2
-          className="mt-5 max-w-3xl font-wide text-[2rem] font-extrabold leading-[1.05] tracking-[-0.02em] sm:text-5xl lg:text-[3.5rem]"
-          style={{ fontStretch: "125%" }}
-        >
-          Pick a door.{" "}
-          <span className="text-amber">Then walk through it.</span>
-        </h2>
-      </Reveal>
+export default function ExploreNav({ panels }: { panels: Record<GalleryId, ReactNode> }) {
+  const sectionRef = useRef<HTMLElement>(null);
+  const restoringFocus = useRef(false);
+  const railRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const [travel, setTravel] = useState(1800);
+  const [detailWidth, setDetailWidth] = useState(0);
+  const [selection, setSelection] = useState<Selection | null>(null);
+  const [closing, setClosing] = useState(false);
+  const [returnRect, setReturnRect] = useState<Selection["rect"] | null>(null);
+  const pendingContact = useRef(false);
+  const [ready, setReady] = useState(false);
+  const [galleryVisible, setGalleryVisible] = useState(false);
+  const [chapter, setChapter] = useState(0);
+  const reducedMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end end"] });
+  // A derived spring keeps all phases on one timeline, including browsers that
+  // otherwise offload opacity and transforms to different native scroll ranges.
+  const progress = useSpring(scrollYProgress, { stiffness: 250, damping: 40, mass: .3 });
+  const titleOpacity = useTransform(progress, [0, .06, .17], [1, 1, 0]);
+  const titleScale = useTransform(progress, [0, .17], [1, .96]);
+  const titleY = useTransform(progress, [0, .17], [0, -36]);
+  const railOpacity = useTransform(progress, [.06, .18], [0, 1]);
 
-      <Reveal delay={0.1}>
-        <div className="mt-14 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-6 lg:gap-x-5">
-          {destinations.map((d, i) => (
-            <Door key={d.href} d={d} index={i} />
-          ))}
-        </div>
-      </Reveal>
-    </section>
-  );
+  const railY = useTransform(progress, [.06, .20], [48, 0]);
+  const x = useTransform(progress, [.22, .94], [0, -travel]);
+  const ambientY = useTransform(progress, [0, 1], [24, -24]);
+  const selected = destinations.find((item) => item.id === selection?.id);
+
+  useMotionValueEvent(scrollYProgress, "change", (value) => {
+    setGalleryVisible(value > .14);
+    setChapter(Math.round(Math.max(0, Math.min(1, (value - .22) / .72)) * 5));
+  });
+
+  useEffect(() => {
+    const rail = railRef.current;
+    if (!rail) return;
+    const measure = () => {
+      const viewportWidth = document.documentElement.clientWidth;
+      setDetailWidth(viewportWidth - 2);
+      setTravel(Math.max(0, rail.scrollWidth - viewportWidth));
+    };
+    const observer = new ResizeObserver(measure);
+    observer.observe(rail);
+    observer.observe(document.documentElement);
+    measure();
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!selection) return;
+    const dialog = dialogRef.current;
+    const oldOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    dialog?.showModal();
+    closeRef.current?.focus({ preventScroll: true });
+    return () => {
+      dialog?.close();
+      document.body.style.overflow = oldOverflow;
+      restoringFocus.current = true;
+      if (selection.trigger.isConnected) selection.trigger.focus({ preventScroll: true });
+      window.scrollTo({ top: selection.pageY, behavior: "instant" });
+      requestAnimationFrame(() => { restoringFocus.current = false; });
+    };
+  }, [selection]);
+
+  function open(event: MouseEvent<HTMLAnchorElement>, id: GalleryId) {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    event.preventDefault();
+    window.scrollTo({ top: window.scrollY, behavior: "instant" });
+    const surface = event.currentTarget.querySelector(".chapter-card__surface") || event.currentTarget;
+    const { top, left, width, height } = surface.getBoundingClientRect();
+    setClosing(false); setReady(false); setReturnRect(null); pendingContact.current = false;
+    setSelection({ id, rect: { top, left, width, height }, trigger: event.currentTarget, pageY: window.scrollY });
+  }
+  function close() {
+    if (reducedMotion) { setSelection(null); return; }
+    if (closing) return;
+    const surface = selection?.trigger.querySelector(".chapter-card__surface");
+    if (surface) { const { top, left, width, height } = surface.getBoundingClientRect(); setReturnRect({ top, left, width, height }); }
+    setClosing(true); setReady(false);
+  }
+  function goToChapter(index: number) {
+    const section = sectionRef.current;
+    if (!section || selection || restoringFocus.current) return;
+    if (reducedMotion) {
+      railRef.current?.children[index]?.scrollIntoView({ block: "nearest", inline: "center" });
+      setChapter(index);
+      return;
+    }
+    const progress = .22 + (index / 5) * .72;
+    window.scrollTo({ top: window.scrollY + section.getBoundingClientRect().top + progress * (section.offsetHeight - window.innerHeight), behavior: "smooth" });
+  }
+
+  return <section ref={sectionRef} id="work" aria-label="Explore Aarit's world" className="cinema-gallery" style={{ "--rail-travel": `${travel}px` } as CSSProperties}>
+    <div className="cinema-gallery__stage">
+      <button type="button" className="cinema-gallery__skip" onClick={() => goToChapter(0)}>Explore the six chapters</button>
+      <motion.div aria-hidden="true" className="cinema-gallery__ambient" style={reducedMotion ? undefined : { y: ambientY }} />
+      <motion.div className="cinema-gallery__title" style={reducedMotion ? undefined : { opacity: titleOpacity, scale: titleScale, y: titleY }}>
+        <div className="work-index__eyebrow"><span>THE WORK, AND EVERYTHING AROUND IT</span><span>01 — 06</span></div>
+        <h2>Explore Aarit&apos;s <span>work.</span></h2>
+        <div className="work-index__rule"><span>Six chapters. Pick your starting point.</span><ArrowRight size={20} aria-hidden="true" /></div>
+      </motion.div>
+      <motion.div className="cinema-gallery__collection" inert={!reducedMotion && !galleryVisible} style={reducedMotion ? undefined : { opacity: railOpacity, y: railY }}>
+        <div className="cinema-gallery__meta"><span>EXPLORE / SIX CHAPTERS</span><span>Scroll to explore · Click to enter</span></div>
+        <motion.div ref={railRef} className="cinema-gallery__rail" style={reducedMotion ? undefined : { x }}>
+          {destinations.map((item, index) => <a key={item.id} href={`/${item.id}`} onClick={(event) => open(event, item.id)} onFocus={(event) => { if (event.currentTarget.matches(":focus-visible")) goToChapter(index); }} className="chapter-card" style={{ "--gallery-accent": item.accent, opacity: selection?.id === item.id ? 0 : 1 } as CSSProperties} aria-label={`Explore ${item.label}`} aria-haspopup="dialog">
+            <GlowCard customSize className="chapter-card__surface" style={{ "--spotlight-color": "rgb(var(--gallery-accent))" } as CSSProperties}><CardFace item={item} index={index} /></GlowCard>
+          </a>)}
+        </motion.div>
+        <div className="cinema-gallery__controls"><span>{String(chapter + 1).padStart(2, "0")} <span>/ 06</span></span><div className="cinema-gallery__dots">{destinations.map((item,index) => <button type="button" key={item.id} aria-label={`Show ${item.label}`} aria-current={index === chapter ? "step" : undefined} onClick={() => goToChapter(index)}><span /></button>)}</div><div><button type="button" aria-label="Previous chapter" disabled={chapter === 0} onClick={() => goToChapter(chapter - 1)}><ArrowLeft size={18} /></button><button type="button" aria-label="Next chapter" disabled={chapter === 5} onClick={() => goToChapter(chapter + 1)}><ArrowRight size={18} /></button></div></div>
+      </motion.div>
+    </div>
+    {selection && selected && createPortal(
+      <dialog ref={dialogRef} className="gallery-dialog" style={{ "--detail-width": `${detailWidth}px` } as CSSProperties} aria-label={`${selected.label} details`} onCancel={(event) => { event.preventDefault(); close(); }}
+        onKeyDown={(event) => {
+          if (event.key !== "Tab") return;
+          const controls = Array.from(event.currentTarget.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex="0"]')).filter((element) => element.getClientRects().length > 0 && element.tabIndex >= 0 && !element.closest('[inert]'));
+          const first = controls[0], last = controls[controls.length - 1];
+          if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+          else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+        }}>
+        <motion.div className="gallery-dialog__scrim" aria-hidden="true" initial={{ opacity: 0 }} animate={{ opacity: closing ? 0 : 1 }} transition={{ duration: reducedMotion ? 0 : .65, delay: closing && !reducedMotion ? .15 : 0 }} />
+        <motion.div className="gallery-dialog__frame" data-settled={ready || reducedMotion} style={{ "--gallery-accent": selected.accent } as CSSProperties}
+          initial={reducedMotion ? false : { ...selection.rect, borderRadius: 12 }}
+          animate={closing ? { ...(returnRect || selection.rect), borderRadius: 12 } : { top: 0, left: 0, width: "100%", height: "100%", borderRadius: 0 }}
+          transition={{ duration: reducedMotion ? 0 : closing ? .7 : .82, delay: closing && !reducedMotion ? .16 : 0, ease: closing ? [.65, 0, .35, 1] : [.22, .68, 0, 1] }}
+          onAnimationComplete={() => {
+            if (closing) {
+              setSelection(null);
+              if (pendingContact.current) requestAnimationFrame(() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }));
+            } else setReady(true);
+          }}>
+          <motion.div className="chapter-flight" aria-hidden="true" initial={{ opacity: reducedMotion ? 0 : 1 }} animate={{ opacity: closing ? 1 : 0 }} transition={{ duration: reducedMotion ? 0 : .24, delay: closing ? .05 : .12 }}>
+            <div className="chapter-flight__card"><CardFace item={selected} index={destinations.indexOf(selected)} /></div>
+          </motion.div>
+          <motion.div className="gallery-dialog__toolbar" initial={{ opacity: 0 }} animate={{ opacity: closing ? 0 : 1 }} transition={{ duration: reducedMotion ? 0 : .25, delay: closing || reducedMotion ? 0 : .24 }}><button ref={closeRef} type="button" className="gallery-back" onClick={close}><ArrowLeft aria-hidden="true" size={16} /> Back to gallery</button><span>{selected.label}</span><button type="button" className="gallery-close" aria-label="Close details" onClick={close}><X aria-hidden="true" size={20} /></button></motion.div>
+          <motion.div ref={scrollRef} className="gallery-dialog__scroll" data-ready={ready || reducedMotion} inert={!ready && !reducedMotion}
+            initial={reducedMotion ? false : { opacity: 0, y: 22, scale: 1.025 }} animate={{ opacity: closing ? 0 : 1, y: closing ? 14 : 0, scale: closing ? .99 : 1 }}
+            transition={{ duration: reducedMotion ? 0 : closing ? .18 : .58, delay: closing || reducedMotion ? 0 : .22, ease: [.22, 1, .36, 1] }}>
+            <ScrollContainerProvider value={scrollRef}>
+              <div className="gallery-dialog__content">{panels[selection.id]}</div>
+            </ScrollContainerProvider>
+            <div className="gallery-dialog__footer"><SpinningBorderLink href={`/${selection.id}`}>Open {selected.label} page</SpinningBorderLink><SpinningBorderLink href="/#contact" tone="orange" onClick={(event) => { event.preventDefault(); pendingContact.current = true; if (reducedMotion) { setSelection(null); requestAnimationFrame(() => document.getElementById("contact")?.scrollIntoView()); } else close(); }}>Book a call</SpinningBorderLink></div>
+          </motion.div>
+        </motion.div>
+      </dialog>, document.body,
+    )}
+  </section>;
 }

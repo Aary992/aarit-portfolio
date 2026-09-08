@@ -1,13 +1,15 @@
-﻿import type { CSSProperties } from "react";
+﻿import { SpinningBorderLink } from "@/components/ui/spinning-border-button";
+import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { ventures, ventureDetail } from "@/lib/data";
 import { Reveal } from "@/components/ui/reveal";
 import { Counter } from "@/components/ui/counter";
 import { ScreenshotFrame } from "@/components/ui/screenshot-frame";
+import { MarketPlayGallery } from "@/components/site/marketplay-gallery";
 import { PhoneShowcase } from "@/components/ui/phone-showcase";
 
 function hostFromUrl(url: string) {
@@ -215,33 +217,13 @@ export default async function VenturePage({ params }: Params) {
 
           <Reveal>
             <div className="mt-12 flex flex-wrap items-center gap-3">
-              <a
-                href={v.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-base font-semibold text-night"
-                style={{ background: "var(--accent)" }}
-              >
-                Visit {v.name}
-                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
+              <SpinningBorderLink href={v.url} target="_blank" rel="noopener noreferrer" tone="accent">Visit {v.name}</SpinningBorderLink>
               {v.storeUrl && (
-                <a
-                  href={v.storeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="tappable group inline-flex items-center gap-2 rounded-full border border-edge-strong px-6 py-3.5 text-base font-medium text-ink transition-colors hover:bg-surface"
-                >
-                  View on Google Play
-                  <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
+                <SpinningBorderLink href={v.storeUrl} target="_blank" rel="noopener noreferrer" tone="dark">View on Google Play
+                  </SpinningBorderLink>
               )}
-              <Link
-                href="/work-with-me"
-                className="tappable inline-flex items-center gap-2 rounded-full border border-edge-strong px-6 py-3.5 text-base font-medium text-ink transition-colors hover:bg-surface"
-              >
-                Want something like this built?
-              </Link>
+              <SpinningBorderLink href="/work-with-me" tone="dark">Want something like this built?
+              </SpinningBorderLink>
             </div>
           </Reveal>
         </div>
@@ -279,6 +261,7 @@ export default async function VenturePage({ params }: Params) {
           )}
         </div>
       </div>
+      {v.slug === "marketplay" && v.gallery && <MarketPlayGallery images={v.gallery} />}
     </article>
   );
 }

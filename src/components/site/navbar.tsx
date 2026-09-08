@@ -9,7 +9,8 @@ import {
   useReducedMotion,
   type Variants,
 } from "framer-motion";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { SpinningBorderLink } from "@/components/ui/spinning-border-button";
 import { nav } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { DUR, EASE_OUT_EXPO } from "@/lib/motion";
@@ -201,16 +202,7 @@ export default function Navbar() {
         </motion.nav>
 
         <motion.div variants={pillVariants} className="hidden xl:block">
-          <Link
-            href="/#contact"
-            className={cn(
-              "group tappable inline-flex items-center gap-1.5 rounded-full bg-ink px-4 text-sm font-medium text-night transition-[padding,transform] duration-200 hover:scale-[1.03]",
-              scrolled ? "py-2" : "py-2.5",
-            )}
-          >
-            Book a call
-            <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
+          <SpinningBorderLink href="/#contact" tone="orange" compact >Book a call</SpinningBorderLink>
         </motion.div>
 
         <motion.div variants={pillVariants} className="xl:hidden">
@@ -292,14 +284,7 @@ export default function Navbar() {
               exit={{ opacity: 0, transition: { duration: 0.15 } }}
               className="relative shrink-0 px-8 pb-8 pt-2"
             >
-              <Link
-                href="/#contact"
-                onClick={() => setOpen(false)}
-                className="tappable flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-ember to-amber px-6 py-4 text-base font-semibold text-night"
-              >
-                Book a call
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
+              <SpinningBorderLink href="/#contact" tone="orange" compact onClick={() => setOpen(false)} className="w-full">Book a call</SpinningBorderLink>
             </motion.div>
           </motion.div>
         )}

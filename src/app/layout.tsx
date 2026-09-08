@@ -120,7 +120,7 @@ export default function RootLayout({
         <Footer />
         <div
           aria-hidden="true"
-          className="pointer-events-none fixed inset-0 z-[55] hidden bg-grain opacity-[0.06] mix-blend-soft-light sm:block"
+          className="site-grain pointer-events-none fixed inset-0 z-[55] hidden bg-grain opacity-[0.06] mix-blend-soft-light sm:block"
         />
         <Analytics />
         <SpeedInsights />

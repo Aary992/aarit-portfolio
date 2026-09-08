@@ -38,6 +38,7 @@ export default function IntroLoader() {
         <span>SHAH</span>
       </div>
       <p className="site-intro__roles">FOUNDER · TRADER · CREATOR</p>
+      <p className="site-intro__viewing">Best experienced on a desktop or laptop.</p>
     </div>
   );
 }

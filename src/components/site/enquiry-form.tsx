@@ -1,7 +1,8 @@
 "use client";
 
+import { SpinningBorderButton } from "@/components/ui/spinning-border-button";
 import { useState } from "react";
-import { ArrowUpRight, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import { services, profile } from "@/lib/data";
 import { submitLead } from "@/lib/leads";
 import { cn } from "@/lib/utils";
@@ -128,14 +129,7 @@ export function EnquiryForm() {
         className="absolute left-[-9999px] h-0 w-0 opacity-0"
       />
 
-      <button
-        type="submit"
-        disabled={status === "sending"}
-        className="group tappable mt-2 inline-flex items-center justify-center gap-2 self-start rounded-full bg-gradient-to-r from-ember to-amber px-6 py-3.5 text-base font-semibold text-night transition-transform duration-200 hover:scale-[1.02] disabled:opacity-60"
-      >
-        {status === "sending" ? "Sending…" : "Send the enquiry"}
-        <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-      </button>
+      <SpinningBorderButton type="submit" disabled={status === "sending"} tone="orange" className="mt-2 self-start">{status === "sending" ? "Sending…" : "Send the enquiry"}</SpinningBorderButton>
 
       {status === "error" && (
         <p className="text-sm text-muted">

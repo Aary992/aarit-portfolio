@@ -1,40 +1,23 @@
 "use client";
 
-import { motion } from "framer-motion";
-import type { ReactNode } from "react";
-import {
-  DUR,
-  EASE_OUT_EXPO,
-  VIEWPORT,
-  lineVariants,
-  riseVariants,
-  staggerVariants,
-} from "@/lib/motion";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useRef, type ReactNode } from "react";
+import { useScrollContainer } from "./scroll-scene";
+import { VIEWPORT, lineVariants, riseVariants, staggerVariants } from "@/lib/motion";
 
-/**
- * Rise. The workhorse: a block of content lifting into place.
- * Same API as before, so every existing call site keeps working.
- */
-export function Reveal({
-  children,
-  className,
-  delay = 0,
-}: {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
-}) {
-  return (
-    <motion.div
-      className={className}
-      initial={{ y: 28, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      viewport={VIEWPORT}
-      transition={{ duration: DUR.slow, ease: EASE_OUT_EXPO, delay }}
-    >
-      {children}
-    </motion.div>
-  );
+/** Scrub the entrance against a stationary anchor; hold still while reading. */
+export function Reveal({ children, className, delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
+  const anchor = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const container = useScrollContainer();
+  const { scrollYProgress } = useScroll({ target: anchor, container, offset: ["start 96%", "start 58%"] });
+  const progress = useSpring(scrollYProgress, { stiffness: 180, damping: 32, mass: .25 });
+  const start = Math.min(delay, .15);
+  const y = useTransform(progress, [start, 1], [44, 0]);
+  const opacity = useTransform(progress, [start, .85], [.35, 1]);
+  return <div ref={anchor} className={className} data-scroll-reveal="">
+    <motion.div className="h-full" style={reduced ? undefined : { y, opacity }}>{children}</motion.div>
+  </div>;
 }
 
 /**

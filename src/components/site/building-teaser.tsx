@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import { ventures } from "@/lib/data";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { AnnotatedText } from "@/components/underlines/annotated-text";
 
 export default function BuildingTeaser() {
   return (
@@ -14,7 +15,9 @@ export default function BuildingTeaser() {
         title={
           <>
             The three ventures{" "}
-            <span className="font-serif text-amber">I&apos;m building.</span>
+            <AnnotatedText variant="underline" color="text-amber/60" className="font-serif text-amber">
+              I&apos;m building.
+            </AnnotatedText>
           </>
         }
         intro="Each started with a problem I wanted to solve for myself or the people around me."

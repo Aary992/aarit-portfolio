@@ -10,7 +10,7 @@ export function PhoneShowcase({
 }) {
   return (
     <div className={cn("flex justify-center gap-3 sm:gap-4", className)}>
-      {images.map((img, i) => (
+      {images.slice(0, 3).map((img, i) => (
         <div
           key={img.src}
           className={cn(
@@ -24,7 +24,6 @@ export function PhoneShowcase({
             width={560}
             height={1218}
             sizes="(max-width: 768px) 33vw, 220px"
-            priority={i === 1}
             className="block h-auto w-full object-cover"
           />
         </div>

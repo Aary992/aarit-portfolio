@@ -700,3 +700,172 @@ body.intro-locked {
     display: none !important;
   }
 }
+
+/* A fine, static texture stays inexpensive and visible on dark surfaces. */
+.site-grain {
+  display: block;
+  opacity: .055;
+  background-size: 180px 180px;
+  mix-blend-mode: screen;
+}
+@media (max-width: 640px) { .site-grain { opacity: .04; } }
+
+
+/* Supplied component interactions. Spin only while the control is engaged. */
+@keyframes border-beam-spin { to { transform: rotate(360deg); } }
+@keyframes testimonial-card-fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.spinning-border__beam {
+  animation: border-beam-spin 3s linear infinite;
+  animation-play-state: paused;
+}
+.spinning-border:hover .spinning-border__beam,
+.spinning-border:focus-visible .spinning-border__beam { animation-play-state: running; }
+.testimonial-card__content { animation: testimonial-card-fade 320ms ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .spinning-border__beam, .testimonial-card__content { animation: none; }
+  .scroll-expansion__track { height: auto; }
+  .scroll-expansion__stage { position: relative; }
+  .scroll-expansion__media { width: 100% !important; }
+}
+
+
+/* A pinned, scroll-scrubbed title becomes one horizontal chapter rail. */
+.cinema-gallery { position: relative; height: calc(240svh + var(--rail-travel)); background: #0d0c0b; }
+.cinema-gallery__stage { position: sticky; top: 0; height: 100svh; overflow: clip; isolation: isolate; }
+.cinema-gallery__ambient { position: absolute; inset: -25% -10%; z-index: -1; pointer-events: none; background: radial-gradient(ellipse at 65% 55%,#75341429,transparent 55%); }
+.cinema-gallery__title { position: absolute; inset: 0; display: flex; justify-content: center; align-items: center; gap: .22em; white-space: nowrap; font-size: clamp(22px,7.7vw,150px); font-weight: 500; letter-spacing: -.06em; line-height: 1; transform-origin: center; pointer-events: none; }
+.cinema-gallery__title em { color: #e9a26e; font-family: var(--font-serif); font-weight: 400; }
+.cinema-gallery__collection { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding-top: 72px; transform-origin: 10% center; }
+.cinema-gallery__meta { display: flex; justify-content: space-between; gap: 20px; padding: 0 5vw 25px; color: #b49b88; font: 10px var(--font-mono); letter-spacing: .12em; }
+.cinema-gallery__meta span:last-child { color: #948b83; letter-spacing: 0; }
+.cinema-gallery__rail { display: flex; gap: 24px; width: max-content; padding: 18px 5vw; align-items: center; }
+.chapter-card { display: block; position: relative; flex: 0 0 auto; width: clamp(280px,31vw,490px); height: clamp(280px,55svh,560px); outline-offset: 9px; z-index: 1; }
+.chapter-card__surface { position: absolute; inset: 0; overflow: hidden; isolation: isolate; border: 1px solid rgb(var(--gallery-accent) / .27); border-radius: 10px; background: linear-gradient(145deg,rgb(var(--gallery-accent) / .12),transparent 65%),#161310; transition: transform .65s cubic-bezier(.22,1,.36,1),border-color .4s,box-shadow .5s; }
+.chapter-card__surface::after { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse at 70% 40%,rgb(var(--gallery-accent) / .12),transparent 65%); }
+.chapter-card:hover,.chapter-card:focus-visible { z-index: 3; }
+.chapter-card:hover .chapter-card__surface,.chapter-card:focus-visible .chapter-card__surface { transform: scale(1.055); border-color: rgb(var(--gallery-accent) / .7); box-shadow: 0 25px 55px #0006; }
+.chapter-card:focus-visible { outline: 2px solid #f2ae77; border-radius: 10px; }
+.chapter-card__top { position: absolute; inset: 25px 26px auto; display: flex; justify-content: space-between; align-items: center; color: rgb(var(--gallery-accent)); font: 10px var(--font-mono); letter-spacing: .13em; }
+.chapter-card__number { position: absolute; top: 12%; right: 7%; color: rgb(var(--gallery-accent) / .1); font-size: clamp(150px,20vw,285px); font-weight: 500; letter-spacing: -.095em; line-height: 1; transition: transform .7s cubic-bezier(.22,1,.36,1); }
+.chapter-card:hover .chapter-card__number { transform: translateY(-12px) scale(1.08); }
+.chapter-card__caption { position: absolute; inset: auto 27px 30px; }
+.chapter-card__caption h3 { color: #f6ece2; font-size: clamp(26px,3.15vw,49px); line-height: 1.1; font-weight: 500; letter-spacing: -.055em; }
+.chapter-card__caption p { margin-top: 14px; color: #b6a79b; max-width: 250px; font-size: 13px; line-height: 1.6; }
+.chapter-card__enter { display: flex; align-items: center; gap: 12px; margin-top: 26px; font: 10px var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: rgb(var(--gallery-accent)); }
+.cinema-gallery__controls { display: flex; justify-content: space-between; align-items: center; padding: 20px 5vw 0; font: 11px var(--font-mono); color: #dfc6b3; }
+.cinema-gallery__controls > span > span { color: #7c726a; }
+.cinema-gallery__controls > div { display: flex; }
+.cinema-gallery__controls button { display: grid; place-items: center; width: 44px; height: 44px; cursor: pointer; border-radius: 50%; }
+.cinema-gallery__controls button:disabled { opacity: .25; cursor: default; }
+.cinema-gallery__controls button:hover:not(:disabled) { background: #e9a26e18; }
+.cinema-gallery__controls button:focus-visible { outline: 2px solid #e9a26e; }
+.cinema-gallery__dots button { width: 28px; }
+.cinema-gallery__dots button span { width: 5px; height: 5px; border-radius: 50%; background: #6b5749; transition: transform .3s,background .3s; }
+.cinema-gallery__dots button[aria-current] span { background: #efb489; transform: scale(1.6); }
+.gallery-dialog { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; overflow: hidden; border: 0; color: var(--color-ink); background: transparent; }
+.gallery-dialog::backdrop { background: #080605e8; }
+.gallery-dialog__frame { position: absolute; overflow: hidden; background: #0a0a0b; border: 1px solid rgb(var(--gallery-accent) / .2); }
+.chapter-zoom { position: absolute; inset: 0; display: grid; place-items: center; background: radial-gradient(ellipse at 50% 30%,rgb(var(--gallery-accent) / .16),transparent 75%),#161310; z-index: 3; pointer-events: none; opacity: 1; transition: opacity .6s; }
+.chapter-zoom span { font-size: clamp(35px,11vw,160px); letter-spacing: -.06em; color: #f6ece2; }
+.chapter-zoom[data-ready="true"] { opacity: 0; }
+.gallery-dialog__toolbar { position: absolute; inset: 0 0 auto; z-index: 10; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 28px; border-bottom: 1px solid #ffffff12; background: #11100ff2; backdrop-filter: blur(16px); }
+.gallery-dialog__toolbar > span { color: #b6a899; font: 11px var(--font-mono); }
+.gallery-back { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; font-size: 12px; color: #e1c8b4; cursor: pointer; }
+.gallery-close { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #ffffff26; border-radius: 50%; cursor: pointer; }
+.gallery-dialog__scroll { position: absolute; inset: 72px 0 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
+.gallery-dialog__content,.gallery-dialog__footer { opacity: 0; transition: opacity .65s; }
+.gallery-dialog__scroll[data-ready="true"] .gallery-dialog__content,.gallery-dialog__scroll[data-ready="true"] .gallery-dialog__footer { opacity: 1; }
+.gallery-dialog__footer { display: flex; flex-wrap: wrap; gap: 12px; max-width: 1152px; margin: 0 auto; padding: 30px 24px 70px; }
+.parallax-scene { position: relative; }
+@media (max-width: 640px) {
+  .cinema-gallery__meta { font-size: 8px; letter-spacing: .07em; padding-bottom: 15px; }
+  .cinema-gallery__meta span:last-child { max-width: 130px; text-align: right; line-height: 1.5; }
+  .cinema-gallery__rail { gap: 20px; }
+  .chapter-card { width: 80vw; height: 52svh; min-height: 290px; }
+  .chapter-card__caption { left: 22px; right: 22px; bottom: 25px; }
+  .chapter-card__caption h3 { font-size: 32px; }
+  .chapter-card__number { font-size: 180px; }
+  .cinema-gallery__dots button { width: 20px; }
+  .gallery-dialog__toolbar { padding: 0 14px; }.gallery-dialog__toolbar > span { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cinema-gallery { height: auto; }
+  .cinema-gallery__stage { position: relative; height: auto; padding: 70px 0; }
+  .cinema-gallery__title { position: relative; margin: 30px 0 60px; transform: none !important; opacity: 1 !important; }
+  .cinema-gallery__collection { position: relative; padding: 0; transform: none !important; opacity: 1 !important; }
+  .cinema-gallery__rail { width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; transform: none !important; }
+  .chapter-card { scroll-snap-align: center; }
+  .chapter-card__surface,.chapter-card__number,.chapter-zoom { transition: none; transform: none !important; }
+  .gallery-dialog__content,.gallery-dialog__footer { transition: none; }
+}
+
+/* Keep modal opening from changing the horizontal rail measurements. */
+html { scrollbar-gutter: stable; }
+.cinema-gallery__skip { position: absolute; top: 90px; left: 5vw; z-index: 5; padding: 12px 20px; border-radius: 30px; background: #e9a26e; color: #17100b; transform: translateY(-250px); }
+.cinema-gallery__skip:focus-visible { transform: none; }
+
+/* Spotlight integration: component-local coordinates, no global listeners. */
+.spotlight-card { --spot-x: 50%; --spot-y: 45%; position: relative; border-radius: 12px; isolation: isolate; }
+.spotlight-card::before { content: ""; position: absolute; pointer-events: none; inset: -1px; z-index: 4; border-radius: inherit; padding: 1px; background: radial-gradient(240px circle at var(--spot-x) var(--spot-y),#fff 0%,var(--spotlight-color) 30%,transparent 75%); mask: linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); mask-composite: exclude; opacity: 0; transition: opacity .35s; }
+.spotlight-card__wash { position: absolute; pointer-events: none; inset: 0; border-radius: inherit; background: radial-gradient(280px circle at var(--spot-x) var(--spot-y),color-mix(in srgb,var(--spotlight-color) 17%,transparent),transparent 75%); opacity: 0; transition: opacity .4s; z-index: -1; }
+.spotlight-card[data-active="true"]::before,.spotlight-card[data-active="true"] .spotlight-card__wash,.chapter-card:focus-visible .spotlight-card::before,.chapter-card:focus-visible .spotlight-card__wash { opacity: 1; }
+.chapter-card__surface { border-radius: 12px; }
+.chapter-card:hover .chapter-card__surface,.chapter-card:focus-visible .chapter-card__surface { transform: scale(1.035); }
+.chapter-card:hover .chapter-card__number { transform: translateY(-5px); }
+.chapter-card__surface::after { z-index: -2; }
+
+/* The index begins just after the stats, instead of halfway down an empty screen. */
+.cinema-gallery { height: calc(145svh + var(--rail-travel) * .85); background: #0a0a0b; }
+.cinema-gallery__title { inset: 58px 5vw auto; display: block; white-space: normal; line-height: 1; transform-origin: left top; }
+.work-index__eyebrow { display: flex; align-items: center; justify-content: space-between; color: #a38d7e; font: 9px var(--font-mono); letter-spacing: .12em; }
+.cinema-gallery__title h2 { margin: 27px 0 32px; font-family: var(--font-display); font-size: clamp(28px,7.8vw,132px); font-weight: 800; letter-spacing: -.065em; line-height: .98; white-space: nowrap; }
+.cinema-gallery__title h2 span { color: #edac79; }
+.work-index__rule { border-top: 1px solid #dec2a933; padding-top: 18px; display: flex; align-items: center; justify-content: space-between; color: #a7988b; font: 11px var(--font-mono); letter-spacing: 0; }
+.cinema-gallery__collection { padding-top: 56px; }
+.cinema-gallery__meta { padding-bottom: 12px; }
+.cinema-gallery__ambient { background: radial-gradient(ellipse at 70% 45%,#7a3d161f,transparent 60%); }
+.site-intro__viewing { position: absolute; bottom: clamp(32px,7vh,72px); left: 24px; right: 24px; text-align: center; font: 11px var(--font-mono); letter-spacing: .025em; color: #201309b3; }
+
+/* A real card surface opens into fixed-size page content. Text never stretches
+   with the frame, and the same surface returns before the frame closes. */
+.gallery-dialog::backdrop { background: transparent; }
+.gallery-dialog__scrim { position: absolute; inset: 0; background: #080706e8; }
+.gallery-dialog__frame { background: linear-gradient(145deg,rgb(var(--gallery-accent) / .12),transparent 65%),#161310; will-change: top,left,width,height; }
+.gallery-dialog__frame[data-settled="true"] { will-change: auto; }
+.chapter-flight { position: absolute; inset: 0; z-index: 4; pointer-events: none; background: radial-gradient(ellipse at 70% 40%,rgb(var(--gallery-accent) / .12),transparent 65%),linear-gradient(145deg,rgb(var(--gallery-accent) / .12),transparent 65%),#161310; }
+.chapter-flight__card { position: absolute; top: 0; left: 0; overflow: hidden; }
+.gallery-dialog__toolbar { width: calc(100vw - 12px); right: auto; }
+.gallery-dialog__scroll { right: auto; bottom: auto; width: calc(100vw - 12px); height: calc(100svh - 73px); background: #0a0a0b; transform-origin: center top; }
+.gallery-dialog__content,.gallery-dialog__footer { opacity: 1; transition: none; }
+@media (max-width: 640px) {
+  .cinema-gallery__title { inset: 42px 5vw auto; }
+  .work-index__eyebrow { font-size: 7px; letter-spacing: .07em; }
+  .cinema-gallery__title h2 { font-size: 7.5vw; margin: 25px 0; }
+  .work-index__rule { font-size: 8px; padding-top: 14px; }
+  .cinema-gallery__collection { padding-top: 35px; }
+  .site-intro__viewing { font-size: 9px; }
+}
+@media (max-height: 650px) and (min-width: 641px) {
+  .cinema-gallery__collection { padding-top: 45px; }
+  .chapter-card { height: 54svh; min-height: 240px; }
+  .cinema-gallery__controls { padding-top: 0; }
+  .chapter-card__caption p { margin-top: 8px; }
+  .chapter-card__enter { margin-top: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cinema-gallery { height: auto; }
+  .cinema-gallery__stage { padding: 35px 0; }
+  .cinema-gallery__title { inset: auto; margin: 15px 5vw 40px; }
+  .cinema-gallery__collection { padding-top: 0; }
+  .gallery-dialog__frame { will-change: auto; }
+}
+
+/* Fill the existing chapter shell rather than relying on absolute children for height. */
+.chapter-card > .spotlight-card { position: absolute; inset: 0; }
+
+.chapter-flight__card { width: 100%; height: 100%; }
+.gallery-dialog__toolbar,.gallery-dialog__scroll { width: var(--detail-width); }
+.chapter-card { user-select: none; -webkit-user-drag: none; }

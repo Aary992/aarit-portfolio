@@ -1,7 +1,9 @@
-﻿import IntroLoader from "@/components/site/intro-loader";
+﻿import { FineGrainPattern } from "@/components/background-pattern/fine-grain-pattern";
+import IntroLoader from "@/components/site/intro-loader";
 import Hero from "@/components/site/hero";
-import ExploreNav from "@/components/site/explore-nav";
+import ExploreGallery from "@/components/site/explore-gallery";
 import Marquee from "@/components/site/marquee";
+import Testimonials from "@/components/site/testimonials";
 import BuildingTeaser from "@/components/site/building-teaser";
 import Newsletter from "@/components/site/newsletter";
 import Contact from "@/components/site/contact";
@@ -91,12 +93,16 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }}
       />
       <IntroLoader />
-      <Hero />
-      <ExploreNav />
-      <Marquee />
-      <BuildingTeaser />
-      <Newsletter />
-      <Contact />
+      {/* Native scrolling with layered parallax and scroll-driven section entrances. */}
+      <FineGrainPattern tone="dark" className="homepage-surface overflow-clip">
+        <Hero />
+        <ExploreGallery />
+        <Marquee />
+        <BuildingTeaser />
+        <Testimonials />
+        <Newsletter />
+        <Contact />
+      </FineGrainPattern>
     </>
   );
 }

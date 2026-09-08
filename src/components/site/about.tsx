@@ -1,4 +1,5 @@
-import { ArrowUpRight, Download } from "lucide-react";
+import { SpinningBorderLink } from "@/components/ui/spinning-border-button";
+
 import { profile, socials } from "@/lib/data";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -50,25 +51,10 @@ export default function About() {
           </Reveal>
           <Reveal delay={0.15}>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <a
-                href={profile.cv}
-                download
-                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-ember to-amber px-5 py-2 text-sm font-semibold text-night transition-transform duration-200 hover:scale-[1.03]"
-              >
-                <Download className="h-4 w-4" />
-                Download CV
-              </a>
+              <SpinningBorderLink href={profile.cv} download tone="orange">Download CV
+              </SpinningBorderLink>
               {socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 rounded-full border border-edge px-4 py-2 text-sm text-muted transition-colors hover:border-edge-strong hover:text-ink"
-                >
-                  {s.label}
-                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
+                <SpinningBorderLink key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" tone="dark">{s.label}</SpinningBorderLink>
               ))}
             </div>
           </Reveal>

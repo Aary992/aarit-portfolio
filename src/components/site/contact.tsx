@@ -1,8 +1,9 @@
-import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { profile, socials } from "@/lib/data";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { MoltenPanel } from "@/components/ui/molten-panel";
+import { SpinningBorderLink } from "@/components/ui/spinning-border-button";
 import CalendlyEmbed from "./calendly-embed";
 
 const contactItems = [
@@ -25,13 +26,9 @@ export default function Contact() {
               <br />
               what you need
             </h2>
-            <a
-              href="#calendly"
-              className="tappable mt-8 inline-flex items-center gap-2 rounded-full bg-night px-6 py-3.5 text-base font-semibold text-ink transition-transform duration-200 hover:scale-[1.02]"
-            >
+            <SpinningBorderLink tone="orange" href="#calendly" className="mt-8">
               Book a 30-minute call
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
+            </SpinningBorderLink>
           </div>
 
           {/* Proof column. Fills the right two-thirds that used to be empty
@@ -113,16 +110,7 @@ export default function Contact() {
 
             <div className="mt-2 flex flex-wrap gap-3">
               {socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 rounded-full border border-edge px-4 py-2 text-sm text-muted transition-colors hover:border-edge-strong hover:text-ink"
-                >
-                  {s.label}
-                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
+                <SpinningBorderLink key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" tone="dark">{s.label}</SpinningBorderLink>
               ))}
             </div>
           </div>

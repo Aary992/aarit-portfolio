@@ -6,8 +6,8 @@ import type { Variants, Transition } from "framer-motion";
  * Rules this file encodes, all of them mobile-first:
  * - transform and opacity only (no animated blur/shadow/filter, those are the
  *   real jank sources on mid-range Android)
- * - everything fires once on entry via IntersectionObserver, nothing is
- *   scroll-linked and continuous
+ * - reading reveals follow the user's scroll; one-off entrances and
+ *   interactions still use these shared timings
  * - one easing curve family, so unrelated sections still feel related
  */
 

@@ -1,6 +1,7 @@
+import { SpinningBorderLink } from "@/components/ui/spinning-border-button";
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+
+
 import { PageHeader } from "@/components/ui/page-header";
 import { Reveal } from "@/components/ui/reveal";
 import { faqs } from "@/lib/data";
@@ -75,13 +76,8 @@ export default function FaqPage() {
             <p className="mt-3 leading-relaxed text-muted">
               Ask it directly. I read everything and reply within 24 hours.
             </p>
-            <Link
-              href="/work-with-me#enquire"
-              className="group tappable mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-ember to-amber px-6 py-3.5 text-base font-semibold text-night transition-transform duration-200 hover:scale-[1.02]"
-            >
-              Send an enquiry
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
+            <SpinningBorderLink href="/work-with-me#enquire" tone="orange" className="mt-6">Send an enquiry
+              </SpinningBorderLink>
           </div>
         </Reveal>
       </section>
