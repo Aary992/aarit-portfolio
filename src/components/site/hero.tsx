@@ -53,10 +53,13 @@ export default function Hero() {
     damping: 26,
     mass: 0.35,
   });
-  const backdropY = useTransform(progress, [0, 1], [0, 150]);
-  const copyY = useTransform(progress, [0, 1], [0, -48]);
-  const portraitY = useTransform(progress, [0, 1], [0, 90]);
-  const portraitScale = useTransform(progress, [0, 1], [1, .94]);
+  const backdropY = useTransform(progress, [0, 1], [0, 200]);
+  const backdropScale = useTransform(progress, [0, 1], [1, 1.12]);
+  const copyY = useTransform(progress, [0, 1], [0, -60]);
+  const copyScale = useTransform(progress, [0, 1], [1, 1.035]);
+  const portraitX = useTransform(progress, [0, 1], [0, -24]);
+  const portraitY = useTransform(progress, [0, 1], [0, -90]);
+  const portraitScale = useTransform(progress, [0, 1], [1, 1.18]);
 
   return (
     <section
@@ -64,7 +67,7 @@ export default function Hero() {
       id="top"
       className="relative w-full overflow-hidden px-6 pt-32 pb-4"
     >
-      <motion.div className="pointer-events-none absolute -inset-y-32 inset-x-0" style={reduceMotion ? undefined : { y: backdropY }}>
+      <motion.div className="pointer-events-none absolute -inset-y-32 inset-x-0" style={reduceMotion ? undefined : { y: backdropY, scale: backdropScale }}>
       <DarkAuroraBackground
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
@@ -77,7 +80,7 @@ export default function Hero() {
       >
         <motion.div
           data-scroll-layer="hero-copy"
-          style={reduceMotion ? undefined : { y: copyY }}
+          style={reduceMotion ? undefined : { y: copyY, scale: copyScale, transformOrigin: "left center" }}
           variants={container}
           initial="hidden"
           animate="show"
@@ -123,7 +126,7 @@ export default function Hero() {
 
         <motion.div
           data-scroll-layer="hero-portrait"
-          style={reduceMotion ? undefined : { y: portraitY, scale: portraitScale }}
+          style={reduceMotion ? undefined : { x: portraitX, y: portraitY, scale: portraitScale }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}

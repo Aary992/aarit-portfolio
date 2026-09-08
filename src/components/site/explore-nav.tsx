@@ -49,9 +49,11 @@ export default function ExploreNav({ panels }: { panels: Record<GalleryId, React
   const titleY = useTransform(progress, [0, .17], [0, -36]);
   const railOpacity = useTransform(progress, [.06, .18], [0, 1]);
 
+  const railScale = useTransform(progress, [.06, .20], [.72, 1]);
+  const ambientScale = useTransform(progress, [0, 1], [1, 1.2]);
   const railY = useTransform(progress, [.06, .20], [48, 0]);
   const x = useTransform(progress, [.22, .94], [0, -travel]);
-  const ambientY = useTransform(progress, [0, 1], [24, -24]);
+  const ambientY = useTransform(progress, [0, 1], [60, -60]);
   const selected = destinations.find((item) => item.id === selection?.id);
 
   useMotionValueEvent(scrollYProgress, "change", (value) => {
@@ -122,13 +124,13 @@ export default function ExploreNav({ panels }: { panels: Record<GalleryId, React
   return <section ref={sectionRef} id="work" aria-label="Explore Aarit's world" className="cinema-gallery" style={{ "--rail-travel": `${travel}px` } as CSSProperties}>
     <div className="cinema-gallery__stage">
       <button type="button" className="cinema-gallery__skip" onClick={() => goToChapter(0)}>Explore the six chapters</button>
-      <motion.div aria-hidden="true" className="cinema-gallery__ambient" style={reducedMotion ? undefined : { y: ambientY }} />
+      <motion.div aria-hidden="true" className="cinema-gallery__ambient" style={reducedMotion ? undefined : { y: ambientY, scale: ambientScale }} />
       <motion.div className="cinema-gallery__title" style={reducedMotion ? undefined : { opacity: titleOpacity, scale: titleScale, y: titleY }}>
         <div className="work-index__eyebrow"><span>THE WORK, AND EVERYTHING AROUND IT</span><span>01 — 06</span></div>
         <h2>Explore Aarit&apos;s <span>work.</span></h2>
         <div className="work-index__rule"><span>Six chapters. Pick your starting point.</span><ArrowRight size={20} aria-hidden="true" /></div>
       </motion.div>
-      <motion.div className="cinema-gallery__collection" inert={!reducedMotion && !galleryVisible} style={reducedMotion ? undefined : { opacity: railOpacity, y: railY }}>
+      <motion.div className="cinema-gallery__collection" inert={!reducedMotion && !galleryVisible} style={reducedMotion ? undefined : { opacity: railOpacity, y: railY, scale: railScale }}>
         <div className="cinema-gallery__meta"><span>EXPLORE / SIX CHAPTERS</span><span>Scroll to explore · Click to enter</span></div>
         <motion.div ref={railRef} className="cinema-gallery__rail" style={reducedMotion ? undefined : { x }}>
           {destinations.map((item, index) => <a key={item.id} href={`/${item.id}`} onClick={(event) => open(event, item.id)} onFocus={(event) => { if (event.currentTarget.matches(":focus-visible")) goToChapter(index); }} className="chapter-card" style={{ "--gallery-accent": item.accent, opacity: selection?.id === item.id ? 0 : 1 } as CSSProperties} aria-label={`Explore ${item.label}`} aria-haspopup="dialog">
