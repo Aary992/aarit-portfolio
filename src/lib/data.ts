@@ -203,6 +203,58 @@ export const experience = [
   },
 ];
 
+/** /timeline, oldest first. Keep it to ~6-9 entries: each one adds ~17vw of
+ * sideways scroll on desktop. */
+export type Milestone = { date: string; title: string; body: string };
+
+export const timeline: Milestone[] = [
+  {
+    date: "2025",
+    title: "Finished school, started commerce",
+    body: "Class X boards at MET Rishikul with 90% across my top five, then commerce at KC College.",
+  },
+  {
+    date: "Jun 2025",
+    title: "Put my own money in the market",
+    body: "Started investing in stocks, then crypto, and began day trading.",
+  },
+  {
+    date: "Sep 2025",
+    title: "Started writing and building",
+    body: "Launched Youth Market Insights and took on AI projects as a side hustle.",
+  },
+  {
+    date: "2025",
+    title: "Learned from the big banks",
+    body: "Completed job simulations and courses from J.P. Morgan, Goldman Sachs and more.",
+  },
+  {
+    date: "Mar 2026",
+    title: "First internship",
+    body: "AI Finance Intern at Concept Investwell, building tools for the investment team.",
+  },
+  {
+    date: "Apr 2026",
+    title: "MarketPlay, and a camera",
+    body: "Started prototyping MarketPlay and hunting for product-market fit. Started posting on Instagram the same month.",
+  },
+  {
+    date: "Jun 2026",
+    title: "All in on MarketPlay",
+    body: "Went full time on MarketPlay. Instagram crossed 22k, and my stock and crypto portfolios stayed in profit.",
+  },
+  {
+    date: "Jun 2026",
+    title: "Two more at once",
+    body: "Started 10x Founders, a room for young Mumbai founders, and GetAITrade with my team.",
+  },
+  {
+    date: "Now",
+    title: "Still doing all of it",
+    body: "Building, trading, writing and posting, and pushing every one of them further.",
+  },
+];
+
 export const education = [
   {
     period: "2025 - 2027",
@@ -305,6 +357,7 @@ export const marqueeItems = [
 export const nav = [
   { label: "About", href: "/about" },
   { label: "Journey", href: "/journey" },
+  { label: "Timeline", href: "/timeline" },
   { label: "Building", href: "/building" },
   { label: "Investing", href: "/investing" },
   { label: "Side projects", href: "/side-projects" },

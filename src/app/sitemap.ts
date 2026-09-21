@@ -15,6 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const tertiary = [
     "/about",
     "/journey",
+    "/timeline",
     "/investing",
     "/side-projects",
     "/speaking",
