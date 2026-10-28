@@ -7,7 +7,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { ventures, ventureDetail } from "@/lib/data";
 import { Reveal } from "@/components/ui/reveal";
-import { ScrubText } from "@/components/ui/scrub-text";
+import { ScrubText, ScrubGroup, ScrubItem } from "@/components/ui/scrub-text";
 import { Counter } from "@/components/ui/counter";
 import { ScreenshotFrame } from "@/components/ui/screenshot-frame";
 import { MarketPlayGallery } from "@/components/site/marketplay-gallery";
@@ -245,19 +245,21 @@ export default async function VenturePage({ params }: Params) {
           </Reveal>
           {v.metrics.length > 0 && (
             <Reveal delay={0.05}>
-              <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-edge bg-edge">
-                {v.metrics.map((m) => (
+              <ScrubGroup count={v.metrics.length} className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-edge bg-edge">
+                {v.metrics.map((m, i) => (
                   <div key={m.label} className="bg-night p-5">
-                    <Counter
-                      value={m.value}
-                      className="block font-display text-2xl font-bold"
-                    />
-                    <div className="mt-1 font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-amber/80">
-                      {m.label}
-                    </div>
+                    <ScrubItem index={i}>
+                      <Counter
+                        value={m.value}
+                        className="block font-display text-2xl font-bold"
+                      />
+                      <div className="mt-1 font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-amber/80">
+                        {m.label}
+                      </div>
+                    </ScrubItem>
                   </div>
                 ))}
-              </div>
+              </ScrubGroup>
             </Reveal>
           )}
         </div>

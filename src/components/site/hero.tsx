@@ -13,6 +13,7 @@ import { AtSign } from "lucide-react";
 import { SpinningBorderLink } from "@/components/ui/spinning-border-button";
 import { Portrait } from "@/components/ui/portrait";
 import { TiltStage } from "@/components/ui/tilt-stage";
+import { ScrubText, ScrubGroup, ScrubItem } from "@/components/ui/scrub-text";
 import { Counter } from "@/components/ui/counter";
 import { NameLockup } from "@/components/ui/name-lockup";
 import { Reveal } from "@/components/ui/reveal";
@@ -106,11 +107,13 @@ export default function Hero() {
             variants={item}
             className="mt-7 max-w-xl text-lg leading-relaxed text-muted"
           >
+            <ScrubText as="span" trigger="load">
             I build tools for problems I have run into: <AnnotatedText variant="underline" color="text-amber/75" className="text-ink">GetAITrade</AnnotatedText>{" "}
             for preparing trades, <AnnotatedText variant="wavy" color="text-orange-300/75" className="text-ink">MarketPlay</AnnotatedText> for learning
             finance, and <AnnotatedText variant="underline" color="text-amber/75" className="text-ink">10x Founders</AnnotatedText> for small founder
             gatherings. I also explain software, markets and trading to a community of
             1,500 people.
+            </ScrubText>
           </motion.p>
 
           <motion.div
@@ -178,22 +181,24 @@ export default function Hero() {
       </motion.div>
 
       <Reveal className="relative z-10 mx-auto mt-16 w-full max-w-6xl">
-        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-edge bg-edge sm:grid-cols-4">
-          {stats.map((s) => (
+        <ScrubGroup count={stats.length} className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-edge bg-edge sm:grid-cols-4">
+          {stats.map((s, i) => (
             <div
               key={s.label}
-              className="group/stat flex flex-col gap-1.5 bg-night px-5 py-6 transition-colors duration-300 hover:bg-surface/40"
+              className="group/stat bg-night px-5 py-6 transition-colors duration-300 hover:bg-surface/40"
             >
-              <Counter
-                value={s.value}
-                className="font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl"
-              />
-              <span className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-amber/80">
-                {s.label}
-              </span>
+              <ScrubItem index={i} className="flex flex-col gap-1.5">
+                <Counter
+                  value={s.value}
+                  className="font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl"
+                />
+                <span className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-amber/80">
+                  {s.label}
+                </span>
+              </ScrubItem>
             </div>
           ))}
-        </div>
+        </ScrubGroup>
         <p className="mt-4 font-mono text-[11px] leading-relaxed text-faint">
           *Personal track record, educational only. Not SEBI registered. No
           tips, calls or signals.
