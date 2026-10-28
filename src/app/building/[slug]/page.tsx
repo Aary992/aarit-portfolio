@@ -7,6 +7,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { ventures, ventureDetail } from "@/lib/data";
 import { Reveal } from "@/components/ui/reveal";
+import { ScrubText } from "@/components/ui/scrub-text";
 import { Counter } from "@/components/ui/counter";
 import { ScreenshotFrame } from "@/components/ui/screenshot-frame";
 import { MarketPlayGallery } from "@/components/site/marketplay-gallery";
@@ -135,11 +136,11 @@ export default async function VenturePage({ params }: Params) {
 
       <div className="mx-auto grid max-w-6xl gap-12 px-6 py-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
         <div>
-          <Reveal>
-            <p className="text-lg leading-relaxed text-muted">
-              {detail?.longDescription ?? v.description}
-            </p>
-          </Reveal>
+          <ScrubText
+            className="text-lg leading-relaxed text-muted"
+            accents={v.name.split(" ")}
+            text={detail?.longDescription ?? v.description}
+          />
 
           {detail?.features && (
             <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-edge bg-edge sm:grid-cols-3">

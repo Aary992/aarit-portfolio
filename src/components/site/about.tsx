@@ -2,6 +2,7 @@ import { SpinningBorderLink } from "@/components/ui/spinning-border-button";
 
 import { profile, socials } from "@/lib/data";
 import { Reveal } from "@/components/ui/reveal";
+import { ScrubText } from "@/components/ui/scrub-text";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Portrait } from "@/components/ui/portrait";
 
@@ -31,24 +32,13 @@ export default function About() {
               </>
             }
           />
-          <Reveal delay={0.1}>
-            <div className="mt-6 space-y-4 text-lg leading-relaxed text-muted">
-              <p>
-                I&apos;m Aarit. My team and I built GetAITrade because I wanted a
-                better way to prepare and review trades. I built MarketPlay to
-                help people my age learn about finance and markets by making
-                decisions. We started 10x Founders because I wanted smaller,
-                more considered gatherings for young founders in Mumbai.
-              </p>
-              <p>
-                I&apos;m a founder, trader, creator, student and developer from
-                South Bombay. I trade with my own money and explain the
-                reasoning behind my process. Away from the market, I work on my
-                ventures and maintain the research tools I use to learn and
-                organise information.
-              </p>
-            </div>
-          </Reveal>
+          <div className="mt-6 space-y-4 text-lg leading-relaxed text-muted">
+            <ScrubText
+              accents={["GetAITrade", "MarketPlay", "10x", "Founders"]}
+              text="I'm Aarit. My team and I built GetAITrade because I wanted a better way to prepare and review trades. I built MarketPlay to help people my age learn about finance and markets by making decisions. We started 10x Founders because I wanted smaller, more considered gatherings for young founders in Mumbai."
+            />
+            <ScrubText text="I'm a founder, trader, creator, student and developer from South Bombay. I trade with my own money and explain the reasoning behind my process. Away from the market, I work on my ventures and maintain the research tools I use to learn and organise information." />
+          </div>
           <Reveal delay={0.15}>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <SpinningBorderLink href={profile.cv} download tone="orange">Download CV
