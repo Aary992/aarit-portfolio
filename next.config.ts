@@ -54,6 +54,10 @@ const nextConfig: NextConfig = {
   experimental: {
     viewTransition: true,
   },
+  // /journey was folded into /timeline; keep old links and search results working.
+  async redirects() {
+    return [{ source: "/journey", destination: "/timeline", permanent: true }];
+  },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },

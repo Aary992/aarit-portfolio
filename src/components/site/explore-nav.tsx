@@ -14,7 +14,7 @@ const destinations: { id: GalleryId; label: string; line: string; accent: string
   { id: "investing", label: "Investing", line: "How I approach risk.", accent: "225 183 94" },
   { id: "side-projects", label: "Side projects", line: "Tools, research and experiments.", accent: "95 184 192" },
   { id: "about", label: "About", line: "I build what I need.", accent: "196 158 203" },
-  { id: "journey", label: "Journey", line: "Where I've been, and where I'm going.", accent: "137 184 143" },
+  { id: "timeline", label: "Timeline", line: "Where I've been, and where I'm going.", accent: "137 184 143" },
   { id: "certifications", label: "Certifications", line: "Courses and job simulations.", accent: "201 162 75" },
 ];
 type Selection = { id: GalleryId; rect: { top: number; left: number; width: number; height: number }; trigger: HTMLAnchorElement; pageY: number };

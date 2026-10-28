@@ -15,8 +15,10 @@ import { nav } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { DUR, EASE_OUT_EXPO } from "@/lib/motion";
 
-function isActive(pathname: string, href: string) {
-  return pathname === href || (href !== "/" && pathname.startsWith(href));
+function isActive(pathname: string, href: string, match: string[] = []) {
+  return [href, ...match].some(
+    (h) => pathname === h || (h !== "/" && pathname.startsWith(h)),
+  );
 }
 
 /**
@@ -164,7 +166,7 @@ export default function Navbar() {
           )}
         >
           {nav.map((item) => {
-            const active = isActive(pathname, item.href);
+            const active = isActive(pathname, item.href, item.match);
             return (
               <Link
                 key={item.href}
@@ -172,8 +174,6 @@ export default function Navbar() {
                 transitionTypes={transitionType(item.href)}
                 onMouseEnter={() => setHovered(item.href)}
                 className={cn(
-                  // Tight padding and 13px type: nine links have to share one
-                  // row, and the alternative is a bar that wraps.
                   "group/link relative whitespace-nowrap rounded-full px-2.5 py-2 text-[13px] font-medium transition-colors duration-300",
                   active ? "text-ink" : "text-muted hover:text-ink",
                 )}
@@ -230,12 +230,11 @@ export default function Navbar() {
             className="fixed inset-0 z-40 flex flex-col bg-night xl:hidden"
           >
             <div className="pointer-events-none absolute inset-0 bg-grain opacity-[0.05]" />
-            {/* Nine links at display size overflow a short phone (measured:
-                they collided with the CTA at 360x600), so the list scrolls
-                inside itself and the CTA stays pinned below it. */}
+            {/* The list scrolls inside itself so the CTA stays pinned below
+                it on short phones. */}
             <nav className="relative flex flex-1 flex-col justify-center gap-0.5 overflow-y-auto px-8 pt-24 pb-4">
               {nav.map((item, i) => {
-                const active = isActive(pathname, item.href);
+                const active = isActive(pathname, item.href, item.match);
                 return (
                   <motion.div
                     key={item.href}
