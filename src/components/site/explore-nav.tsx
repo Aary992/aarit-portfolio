@@ -20,7 +20,7 @@ const destinations: { id: GalleryId; label: string; line: string; accent: string
 type Selection = { id: GalleryId; rect: { top: number; left: number; width: number; height: number }; trigger: HTMLAnchorElement; pageY: number };
 
 function CardFace({ item, index }: { item: typeof destinations[number]; index: number }) {
-  return <><div className="chapter-card__top"><span>CHAPTER {String(index + 1).padStart(2, "0")}</span><ArrowUpRight size={21} aria-hidden="true" /></div><span aria-hidden="true" className="chapter-card__number">{String(index + 1).padStart(2, "0")}</span><div className="chapter-card__caption"><h3>{item.label}</h3><p>{item.line}</p><span className="chapter-card__enter">Explore chapter <ArrowUpRight size={14} aria-hidden="true" /></span></div></>;
+  return <><div className="chapter-card__top"><span>CHAPTER {String(index + 1).padStart(2, "0")}</span><ArrowUpRight size={21} aria-hidden="true" /></div><span aria-hidden="true" data-spot-follow className="chapter-card__number">{String(index + 1).padStart(2, "0")}</span><div className="chapter-card__caption"><h3>{item.label}</h3><p>{item.line}</p><span className="chapter-card__enter">Explore chapter <ArrowUpRight size={14} aria-hidden="true" /></span></div></>;
 }
 
 export default function ExploreNav({ panels }: { panels: Record<GalleryId, ReactNode> }) {

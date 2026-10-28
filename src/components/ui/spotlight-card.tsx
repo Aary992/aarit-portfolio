@@ -33,6 +33,12 @@ export function GlowCard({ children, className, glowColor = "orange", size = "md
       frame.current = requestAnimationFrame(() => {
         element.style.setProperty("--spot-x", `${x}px`);
         element.style.setProperty("--spot-y", `${y}px`);
+        // Children marked data-spot-follow get the same point in their own
+        // coordinates, so a gradient clipped to them lines up with the beam.
+        for (const child of element.querySelectorAll<HTMLElement>("[data-spot-follow]")) {
+          child.style.setProperty("--num-x", `${x - child.offsetLeft}px`);
+          child.style.setProperty("--num-y", `${y - child.offsetTop}px`);
+        }
         element.dataset.active = "true";
       });
     }}
