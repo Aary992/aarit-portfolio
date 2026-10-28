@@ -12,6 +12,7 @@ import { useRef } from "react";
 import { AtSign } from "lucide-react";
 import { SpinningBorderLink } from "@/components/ui/spinning-border-button";
 import { Portrait } from "@/components/ui/portrait";
+import { TiltStage } from "@/components/ui/tilt-stage";
 import { Counter } from "@/components/ui/counter";
 import { NameLockup } from "@/components/ui/name-lockup";
 import { Reveal } from "@/components/ui/reveal";
@@ -132,7 +133,11 @@ export default function Hero() {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
           className="relative mx-auto w-full max-w-sm lg:max-w-none"
         >
+          <TiltStage>
+          {/* Warm backlight behind the photo. Absolute, so layout is untouched. */}
+          <div aria-hidden="true" className="portrait-backlight" />
           <Portrait
+            rimLight
             src="/portrait.png"
             alt="Aarit Shah"
             className="aspect-[4/5]"
@@ -146,6 +151,7 @@ export default function Hero() {
           <motion.div
             animate={reduceMotion ? undefined : { y: [0, -3, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            style={{ z: 40 }}
             className="absolute -left-4 top-10 flex items-center gap-2 rounded-2xl border border-edge bg-night/70 px-3.5 py-2.5 backdrop-blur-md"
           >
             <span className="relative flex h-2 w-2">
@@ -161,11 +167,13 @@ export default function Hero() {
             rel="noopener noreferrer"
             animate={reduceMotion ? undefined : { y: [0, 3, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            style={{ z: 28 }}
             className="absolute -right-3 bottom-20 flex items-center gap-2 rounded-2xl border border-edge bg-night/70 px-3.5 py-2.5 backdrop-blur-md transition-colors hover:border-edge-strong"
           >
             <AtSign className="h-4 w-4 text-amber" />
             <span className="font-mono text-xs text-muted">@withaarit</span>
           </motion.a>
+          </TiltStage>
         </motion.div>
       </motion.div>
 

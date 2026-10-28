@@ -354,16 +354,12 @@ export const marqueeItems = [
  * width below that gets the full-screen menu, which handles a long list
  * better than a cramped row ever could.
  */
-export const nav = [
+export const nav: { label: string; href: string; match?: string[] }[] = [
   { label: "About", href: "/about" },
-  { label: "Journey", href: "/journey" },
-  { label: "Timeline", href: "/timeline" },
   { label: "Building", href: "/building" },
-  { label: "Investing", href: "/investing" },
-  { label: "Side projects", href: "/side-projects" },
-  { label: "Writing", href: "/writing" },
-  { label: "Markets", href: "/markets-explained" },
-  { label: "Certifications", href: "/certifications" },
+  // One entry for both archives: the long notes and Markets, Explained.
+  { label: "Writing", href: "/writing", match: ["/markets-explained"] },
+  { label: "Speaking", href: "/speaking" },
   { label: "Work with me", href: "/work-with-me" },
 ];
 
@@ -383,6 +379,8 @@ export const footerNav: { heading: string; links: { label: string; href: string 
     links: [
       { label: "Markets, Explained", href: "/markets-explained" },
       { label: "Writing", href: "/writing" },
+      { label: "Guides", href: "/guides" },
+      { label: "Resources", href: "/resources" },
       { label: "FAQ", href: "/faq" },
     ],
   },
@@ -390,7 +388,7 @@ export const footerNav: { heading: string; links: { label: string; href: string 
     heading: "About",
     links: [
       { label: "About", href: "/about" },
-      { label: "Journey", href: "/journey" },
+      { label: "Timeline", href: "/timeline" },
       { label: "Speaking", href: "/speaking" },
       { label: "Certifications", href: "/certifications" },
       { label: "Press kit", href: "/press" },

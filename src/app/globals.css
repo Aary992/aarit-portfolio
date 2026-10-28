@@ -869,3 +869,29 @@ html { scrollbar-gutter: stable; }
 .chapter-flight__card { width: 100%; height: 100%; }
 .gallery-dialog__toolbar,.gallery-dialog__scroll { width: var(--detail-width); }
 .chapter-card { user-select: none; -webkit-user-drag: none; }
+
+/* Hero portrait: warm backlight, ember rim, pointer sheen and tilt. Every
+   layer is absolute or a transform, so the photo and pills keep their place. */
+.tilt-stage { position: relative; transform-style: preserve-3d; transition: transform .6s cubic-bezier(.22,1,.36,1); }
+.portrait-backlight { position: absolute; inset: 6% -8% -4%; border-radius: 40%; pointer-events: none; filter: blur(46px); opacity: .5; background: conic-gradient(from 210deg,#ff6b1a,#f59e0b,transparent 40%,transparent 70%,#ff6b1a); transform: translateZ(-60px); animation: portrait-breathe 6s ease-in-out infinite; }
+@keyframes portrait-breathe { 50% { opacity: .75; transform: translateZ(-60px) scale(1.05); } }
+.portrait-rim { border-color: rgb(255 190 120 / .28); box-shadow: 0 40px 80px -30px rgb(0 0 0 / .9); }
+.portrait-rim__light { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; background: linear-gradient(255deg,rgb(255 120 40 / .42),transparent 32%); }
+.portrait-rim__sheen { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: soft-light; background: radial-gradient(240px circle at var(--sheen-x,70%) var(--sheen-y,20%),rgb(255 255 255 / .32),transparent 60%); }
+
+/* Chapter cards: the spotlight rests softly at the top instead of vanishing,
+   and the big numeral lights up where the beam passes. */
+@property --num-glow { syntax: "<number>"; inherits: true; initial-value: .1; }
+.chapter-card .spotlight-card { --spot-x: 30%; --spot-y: 18%; }
+.chapter-card .spotlight-card::before { opacity: .45; }
+.chapter-card .spotlight-card__wash { opacity: .55; }
+/* The tight tracking pushes the last glyph past the box, and a clipped
+   background only paints inside it; pad the box and shift the anchor by the
+   same amount so the glyphs stay exactly where they were. */
+.chapter-card__number { padding-right: .15em; right: calc(7% - .15em); color: transparent; -webkit-background-clip: text; background-clip: text; background-image: radial-gradient(170px circle at var(--num-x,50%) var(--num-y,50%),rgb(var(--gallery-accent) / var(--num-glow)),rgb(var(--gallery-accent) / .1) 70%); transition: transform .7s cubic-bezier(.22,1,.36,1),--num-glow .4s; }
+.spotlight-card[data-active="true"] .chapter-card__number,.chapter-card:focus-visible .chapter-card__number { --num-glow: .85; }
+@media (prefers-reduced-motion: reduce) {
+  .tilt-stage { transform: none !important; }
+  .portrait-backlight { animation: none; }
+  .chapter-card__number { transition: none; }
+}

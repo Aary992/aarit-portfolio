@@ -26,6 +26,26 @@ export default function WritingPage() {
         intro="Longer notes on the tools I build, the trades I study and what I learn from teaching a community each day. No tips or signals."
       />
 
+      <section className="mx-auto max-w-6xl px-6 pb-10">
+        <Link
+          href="/markets-explained"
+          className="group flex items-center justify-between gap-6 rounded-2xl border border-edge bg-surface/40 p-6 transition-colors hover:border-amber/50"
+        >
+          <span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-amber">
+              Also writing
+            </span>
+            <span className="mt-2 block font-display text-xl font-bold tracking-tight">
+              Markets, Explained
+            </span>
+            <span className="mt-1 block text-muted">
+              A series explaining past market moves, without predicting what comes next.
+            </span>
+          </span>
+          <ArrowUpRight className="h-5 w-5 shrink-0 text-faint transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-amber" />
+        </Link>
+      </section>
+
       <section className="mx-auto max-w-6xl px-6 pb-28">
         <div className="grid gap-px overflow-hidden rounded-2xl border border-edge bg-edge sm:grid-cols-2">
           {posts.map((p, i) => (

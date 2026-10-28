@@ -14,6 +14,7 @@ export function Portrait({
   priority = false,
   placeholderLabel,
   placeholderHint,
+  rimLight = false,
 }: {
   src?: string;
   alt: string;
@@ -23,6 +24,8 @@ export function Portrait({
   priority?: boolean;
   placeholderLabel?: string;
   placeholderHint?: string;
+  /** Ember rim light and a pointer sheen (reads --sheen-x/--sheen-y). */
+  rimLight?: boolean;
 }) {
   const [errored, setErrored] = useState(false);
 
@@ -40,6 +43,7 @@ export function Portrait({
     <div
       className={cn(
         "relative overflow-hidden rounded-3xl border border-edge bg-surface",
+        rimLight && "portrait-rim",
         className,
       )}
     >
@@ -54,6 +58,12 @@ export function Portrait({
         style={{ objectPosition }}
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-night/50 via-transparent to-transparent" />
+      {rimLight && (
+        <>
+          <div aria-hidden="true" className="portrait-rim__light" />
+          <div aria-hidden="true" className="portrait-rim__sheen" />
+        </>
+      )}
     </div>
   );
 }

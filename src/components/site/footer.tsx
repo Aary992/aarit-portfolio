@@ -16,7 +16,7 @@ export default function Footer() {
           <WeightStack />
         </Link>
 
-        {/* The full map of the site. The top nav carries six links; every
+        {/* The full map of the site. The top nav carries five links; every
             other route is reachable from here, which is also what gives the
             deeper pages internal links pointing at them. */}
         <nav
