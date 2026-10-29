@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Reveal } from "./reveal";
+import { ScrubText } from "./scrub-text";
 
 export function PageHeader({
   eyebrow,
@@ -23,11 +24,7 @@ export function PageHeader({
         </h1>
       </Reveal>
       {intro && (
-        <Reveal delay={0.12}>
-          <p className="mt-7 max-w-2xl text-lg leading-relaxed text-muted">
-            {intro}
-          </p>
-        </Reveal>
+        <ScrubText className="mt-7 max-w-2xl text-lg leading-relaxed text-muted" text={intro} />
       )}
     </header>
   );

@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Reveal } from "./reveal";
+import { ScrubText } from "./scrub-text";
 import { DUR, EASE_IN_OUT_QUINT, VIEWPORT } from "@/lib/motion";
 
 export function SectionHeading({
@@ -42,9 +43,7 @@ export function SectionHeading({
         <h2 className="text-heading mt-4 font-display font-semibold">{title}</h2>
       </Reveal>
       {intro && (
-        <Reveal delay={0.1}>
-          <p className="mt-5 text-lg leading-relaxed text-muted">{intro}</p>
-        </Reveal>
+        <ScrubText className="mt-5 text-lg leading-relaxed text-muted" text={intro} />
       )}
     </div>
   );
