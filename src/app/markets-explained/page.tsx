@@ -9,7 +9,7 @@ import { getPublishedPosts } from "@/lib/market-posts";
 export const metadata: Metadata = {
   title: "Markets, Explained",
   description:
-    "A written series that explains past market moves without predicting what comes next. Not investment advice; Aarit Shah is not SEBI registered and gives no tips or signals.",
+    "A written series explaining past market moves without predicting what comes next. Not investment advice; Aarit Shah is not SEBI registered.",
   alternates: {
     canonical: "/markets-explained",
     types: { "application/rss+xml": "/markets-explained/rss.xml" },

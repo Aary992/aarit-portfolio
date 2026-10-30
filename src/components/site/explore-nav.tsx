@@ -8,6 +8,7 @@ import { GlowCard } from "@/components/ui/spotlight-card";
 import type { GalleryId } from "./gallery-art";
 import { ScrollContainerProvider } from "@/components/ui/scroll-scene";
 import { SpinningBorderLink } from "@/components/ui/spinning-border-button";
+import { useRestStyle } from "@/lib/use-rest-style";
 
 const destinations: { id: GalleryId; label: string; line: string; accent: string }[] = [
   { id: "building", label: "Building", line: "The three ventures I'm building.", accent: "255 139 70" },
@@ -25,6 +26,7 @@ function CardFace({ item, index }: { item: typeof destinations[number]; index: n
 
 export default function ExploreNav({ panels }: { panels: Record<GalleryId, ReactNode> }) {
   const sectionRef = useRef<HTMLElement>(null);
+  const collectionRef = useRef<HTMLDivElement>(null);
   const restoringFocus = useRef(false);
   const railRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -40,6 +42,7 @@ export default function ExploreNav({ panels }: { panels: Record<GalleryId, React
   const [galleryVisible, setGalleryVisible] = useState(false);
   const [chapter, setChapter] = useState(0);
   const reducedMotion = useReducedMotion();
+  const rest = useRestStyle();
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end end"] });
   // A derived spring keeps all phases on one timeline, including browsers that
   // otherwise offload opacity and transforms to different native scroll ranges.
@@ -60,6 +63,13 @@ export default function ExploreNav({ panels }: { panels: Record<GalleryId, React
     setGalleryVisible(value > .14);
     setChapter(Math.round(Math.max(0, Math.min(1, (value - .22) / .72)) * 5));
   });
+
+  // Set from an effect, not as a prop: the server cannot know the visitor's
+  // motion preference and renders the rail inert, and React does not correct
+  // attributes while hydrating, so reduced-motion visitors were locked out.
+  useEffect(() => {
+    if (collectionRef.current) collectionRef.current.inert = !reducedMotion && !galleryVisible;
+  }, [reducedMotion, galleryVisible]);
 
   useEffect(() => {
     const rail = railRef.current;
@@ -124,15 +134,15 @@ export default function ExploreNav({ panels }: { panels: Record<GalleryId, React
   return <section ref={sectionRef} id="work" aria-label="Explore Aarit's world" className="cinema-gallery" style={{ "--rail-travel": `${travel}px` } as CSSProperties}>
     <div className="cinema-gallery__stage">
       <button type="button" className="cinema-gallery__skip" onClick={() => goToChapter(0)}>Explore the six chapters</button>
-      <motion.div aria-hidden="true" className="cinema-gallery__ambient" style={reducedMotion ? undefined : { y: ambientY, scale: ambientScale }} />
-      <motion.div className="cinema-gallery__title" style={reducedMotion ? undefined : { opacity: titleOpacity, scale: titleScale, y: titleY }}>
+      <motion.div aria-hidden="true" className="cinema-gallery__ambient" style={reducedMotion ? rest : { y: ambientY, scale: ambientScale }} />
+      <motion.div className="cinema-gallery__title" style={reducedMotion ? rest : { opacity: titleOpacity, scale: titleScale, y: titleY }}>
         <div className="work-index__eyebrow"><span>THE WORK, AND EVERYTHING AROUND IT</span><span>01 — 06</span></div>
         <h2>Explore Aarit&apos;s <span>work.</span></h2>
         <div className="work-index__rule"><span>Six chapters. Pick your starting point.</span><ArrowRight size={20} aria-hidden="true" /></div>
       </motion.div>
-      <motion.div className="cinema-gallery__collection" inert={!reducedMotion && !galleryVisible} style={reducedMotion ? undefined : { opacity: railOpacity, y: railY, scale: railScale }}>
+      <motion.div ref={collectionRef} className="cinema-gallery__collection" style={reducedMotion ? rest : { opacity: railOpacity, y: railY, scale: railScale }}>
         <div className="cinema-gallery__meta"><span>EXPLORE / SIX CHAPTERS</span><span>Scroll to explore · Click to enter</span></div>
-        <motion.div ref={railRef} className="cinema-gallery__rail" style={reducedMotion ? undefined : { x }}>
+        <motion.div ref={railRef} className="cinema-gallery__rail" style={reducedMotion ? rest : { x }}>
           {destinations.map((item, index) => <a key={item.id} href={`/${item.id}`} onClick={(event) => open(event, item.id)} onFocus={(event) => { if (event.currentTarget.matches(":focus-visible")) goToChapter(index); }} className="chapter-card" style={{ "--gallery-accent": item.accent, opacity: selection?.id === item.id ? 0 : 1 } as CSSProperties} aria-label={`Explore ${item.label}`} aria-haspopup="dialog">
             <GlowCard customSize className="chapter-card__surface" style={{ "--spotlight-color": "rgb(var(--gallery-accent))" } as CSSProperties}><CardFace item={item} index={index} /></GlowCard>
           </a>)}

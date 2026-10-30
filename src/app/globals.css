@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 /* Switzer, self-hosted from /public/fonts. Declared by hand instead of
    next/font/local so the browser only fetches the weights a page renders;
@@ -54,6 +54,31 @@
   font-display: swap;
 }
 
+/* Zodiak, the serif accent. Same approach as Switzer: self-hosted, fetched
+   only when a page renders that weight. 700 is preloaded from the root layout
+   because page titles set their accent word in it. */
+@font-face {
+  font-family: "Zodiak";
+  src: url("/fonts/zodiak-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Zodiak";
+  src: url("/fonts/zodiak-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Zodiak";
+  src: url("/fonts/zodiak-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Anybody Expanded, the section-headline display face. Latin subset only, and
    deliberately NOT preloaded: it renders below the fold and 93% of traffic is
    mobile, so it must not compete with Switzer for the first paint.
@@ -74,7 +99,9 @@
   --color-surface-2: #1b1b1f;
   --color-ink: #fafaf9;
   --color-muted: #a1a1aa;
-  --color-faint: #71717a;
+  /* Lightest grey that still clears WCAG AA (4.5:1) on every surface it sits
+     on, up to surface-2. #71717a measured 3.6–4.1:1. */
+  --color-faint: #82828b;
   --color-amber: #f59e0b;
   --color-ember: #ff6b1a;
   --color-edge: rgba(250, 250, 249, 0.08);
@@ -87,7 +114,7 @@
   --font-display: "Switzer", ui-sans-serif, system-ui, sans-serif;
   --font-grotesk: "Switzer", ui-sans-serif, system-ui, sans-serif;
   --font-wide: "Anybody", "Switzer", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-zodiak), Georgia, serif;
+  --font-serif: "Zodiak", Georgia, serif;
   --font-sans: "Switzer", ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
@@ -726,9 +753,6 @@ body.intro-locked {
 .testimonial-card__content { animation: testimonial-card-fade 320ms ease-out; }
 @media (prefers-reduced-motion: reduce) {
   .spinning-border__beam, .testimonial-card__content { animation: none; }
-  .scroll-expansion__track { height: auto; }
-  .scroll-expansion__stage { position: relative; }
-  .scroll-expansion__media { width: 100% !important; }
 }
 
 
@@ -756,7 +780,7 @@ body.intro-locked {
 .chapter-card__caption p { margin-top: 14px; color: #b6a79b; max-width: 250px; font-size: 13px; line-height: 1.6; }
 .chapter-card__enter { display: flex; align-items: center; gap: 12px; margin-top: 26px; font: 10px var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: rgb(var(--gallery-accent)); }
 .cinema-gallery__controls { display: flex; justify-content: space-between; align-items: center; padding: 20px 5vw 0; font: 11px var(--font-mono); color: #dfc6b3; }
-.cinema-gallery__controls > span > span { color: #7c726a; }
+.cinema-gallery__controls > span > span { color: #8e847c; }
 .cinema-gallery__controls > div { display: flex; }
 .cinema-gallery__controls button { display: grid; place-items: center; width: 44px; height: 44px; cursor: pointer; border-radius: 50%; }
 .cinema-gallery__controls button:disabled { opacity: .25; cursor: default; }
@@ -894,4 +918,16 @@ html { scrollbar-gutter: stable; }
   .tilt-stage { transform: none !important; }
   .portrait-backlight { animation: none; }
   .chapter-card__number { transition: none; }
+}
+
+/* Hero pills drift a few pixels. CSS rather than a framer-motion loop: the JS
+   version rewrote both pills' styles every frame, forever, which kept the main
+   thread busy restyling while the page sat idle. The independent `translate`
+   property animates on the compositor and composes with the tilt's transform. */
+@keyframes hero-float-up { 50% { translate: 0 -3px; } }
+@keyframes hero-float-down { 50% { translate: 0 3px; } }
+.hero-float--up { animation: hero-float-up 5s ease-in-out infinite; }
+.hero-float--down { animation: hero-float-down 6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-float { animation: none; }
 }

@@ -126,12 +126,16 @@ export function ScrubText({
 }) {
   const ref = useRef<HTMLParagraphElement>(null);
   const reduced = useReducedMotion();
-  const progress = usePlayhead(ref, trigger, delay);
+  const playhead = usePlayhead(ref, trigger, delay);
+  const lit = useMotionValue(1);
+  // Reduced motion keeps the exact same markup and simply holds the playhead
+  // at "fully lit". Rendering a different tree (or dropping the style) would
+  // mismatch the server HTML, which cannot know the visitor's preference, and
+  // React does not repair style attributes when hydrating.
+  const progress = reduced ? lit : playhead;
   const content = children ?? text ?? "";
   const accentSet = new Set(accents);
   const total = Math.max(1, countWords(content));
-
-  if (reduced) return <Tag className={className}>{content}</Tag>;
 
   let index = 0;
   const split = (node: ReactNode): ReactNode => {
@@ -216,8 +220,8 @@ export function ScrubGroup({
 export function ScrubItem({ index, children, className }: { index: number; children: ReactNode; className?: string }) {
   const ctx = useContext(GroupCtx);
   const reduced = useReducedMotion();
-  const fallback = useMotionValue(1);
-  const progress = ctx?.progress ?? fallback;
+  const lit = useMotionValue(1);
+  const progress = reduced || !ctx ? lit : ctx.progress;
   const count = ctx?.count ?? 1;
   // Slight overlap so the row lights as a wave rather than one tile at a time.
   // It also finishes early (by 85%), so the last tile is lit while the row is
@@ -227,7 +231,7 @@ export function ScrubItem({ index, children, className }: { index: number; child
   const opacity = useTransform(progress, [start, end], [0.18, 1]);
   const y = useTransform(progress, [start, end], [10, 0]);
   return (
-    <motion.div className={className} style={reduced ? undefined : { opacity, y }}>
+    <motion.div className={className} style={{ opacity, y }}>
       {children}
     </motion.div>
   );

@@ -55,18 +55,20 @@ export default function FaqPage() {
       />
 
       <section className="mx-auto max-w-3xl px-6 pb-24">
-        <dl className="flex flex-col">
+        {/* One <dl> per pair: Reveal wraps each item in its own divs, and a
+            single outer <dl> may only contain dt/dd (or one level of div). */}
+        <div className="flex flex-col">
           {faqs.map((f, i) => (
             <Reveal key={f.q} delay={Math.min(i, 6) * 0.04}>
-              <div className="border-t border-edge py-8 first:border-t-0 first:pt-0">
+              <dl className="border-t border-edge py-8 first:border-t-0 first:pt-0">
                 <dt className="font-display text-xl font-bold tracking-tight text-ink sm:text-2xl">
                   {f.q}
                 </dt>
                 <dd className="mt-3 leading-relaxed text-muted">{f.a}</dd>
-              </div>
+              </dl>
             </Reveal>
           ))}
-        </dl>
+        </div>
 
         <Reveal>
           <div className="mt-12 rounded-2xl border border-edge bg-surface/30 p-7">

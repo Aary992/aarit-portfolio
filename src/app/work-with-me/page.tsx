@@ -9,7 +9,7 @@ import { services, profile } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Work with me",
   description:
-    "Hire Aarit Shah for workflow consultation, custom tools and websites, paid promotions to a 22K-follower finance audience, or content work. Education, software and media only; no investment advice.",
+    "Hire Aarit Shah for workflow consultation, custom tools, websites, paid promotions or content work. Education, software and media only; no investment advice.",
   alternates: { canonical: "/work-with-me" },
 };
 

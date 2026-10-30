@@ -19,6 +19,7 @@ import { NameLockup } from "@/components/ui/name-lockup";
 import { Reveal } from "@/components/ui/reveal";
 import { DarkAuroraBackground } from "@/components/background-gradient/dark-aurora-background";
 import { AnnotatedText } from "@/components/underlines/annotated-text";
+import { useRestStyle } from "@/lib/use-rest-style";
 
 const container: Variants = {
   hidden: {},
@@ -46,6 +47,7 @@ const stats = [
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
+  const rest = useRestStyle();
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end 35%"],
@@ -69,7 +71,7 @@ export default function Hero() {
       id="top"
       className="relative w-full overflow-hidden px-6 pt-32 pb-4"
     >
-      <motion.div className="pointer-events-none absolute -inset-y-32 inset-x-0" style={reduceMotion ? undefined : { y: backdropY, scale: backdropScale }}>
+      <motion.div className="pointer-events-none absolute -inset-y-32 inset-x-0" style={reduceMotion ? rest : { y: backdropY, scale: backdropScale }}>
       <DarkAuroraBackground
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
@@ -82,7 +84,7 @@ export default function Hero() {
       >
         <motion.div
           data-scroll-layer="hero-copy"
-          style={reduceMotion ? undefined : { y: copyY, scale: copyScale, transformOrigin: "left center" }}
+          style={reduceMotion ? rest : { y: copyY, scale: copyScale, transformOrigin: "left center" }}
           variants={container}
           initial="hidden"
           animate="show"
@@ -130,7 +132,7 @@ export default function Hero() {
 
         <motion.div
           data-scroll-layer="hero-portrait"
-          style={reduceMotion ? undefined : { x: portraitX, y: portraitY, scale: portraitScale }}
+          style={reduceMotion ? rest : { x: portraitX, y: portraitY, scale: portraitScale }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
@@ -152,10 +154,8 @@ export default function Hero() {
           />
 
           <motion.div
-            animate={reduceMotion ? undefined : { y: [0, -3, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             style={{ z: 40 }}
-            className="absolute -left-4 top-10 flex items-center gap-2 rounded-2xl border border-edge bg-night/70 px-3.5 py-2.5 backdrop-blur-md"
+            className="hero-float hero-float--up absolute -left-4 top-10 flex items-center gap-2 rounded-2xl border border-edge bg-night/70 px-3.5 py-2.5 backdrop-blur-md"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
@@ -168,10 +168,8 @@ export default function Hero() {
             href="https://instagram.com/withaarit"
             target="_blank"
             rel="noopener noreferrer"
-            animate={reduceMotion ? undefined : { y: [0, 3, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             style={{ z: 28 }}
-            className="absolute -right-3 bottom-20 flex items-center gap-2 rounded-2xl border border-edge bg-night/70 px-3.5 py-2.5 backdrop-blur-md transition-colors hover:border-edge-strong"
+            className="hero-float hero-float--down absolute -right-3 bottom-20 flex items-center gap-2 rounded-2xl border border-edge bg-night/70 px-3.5 py-2.5 backdrop-blur-md transition-colors hover:border-edge-strong"
           >
             <AtSign className="h-4 w-4 text-amber" />
             <span className="font-mono text-xs text-muted">@withaarit</span>

@@ -26,6 +26,7 @@ const RESERVED = new Set([
   "lab", "press", "speaking", "writing", "resources", "guides", "work-with-me",
   "markets-explained", "sitemap", "robots", "api", "_next", "llms",
   "opengraph-image", "manifest", "favicon", "icon", "apple-icon", "not-found", "404",
+  "timeline", "side-projects",
 ]);
 
 function fetchResources() {

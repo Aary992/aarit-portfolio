@@ -6,14 +6,14 @@ import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { PageTransition } from "@/components/ui/page-transition";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { zodiak, geistMono } from "@/lib/fonts";
+import { geistMono } from "@/lib/fonts";
 
 // The apex 308-redirects to www on Vercel, so www is the canonical origin.
 const siteUrl = "https://www.aaritshah.com";
 const defaultTitle = "Aarit Shah · Founder, Trader & Builder";
 const titleTemplate = "Aarit Shah · %s";
 const description =
-  "Aarit Shah is a founder and trader from Mumbai. He is building MarketPlay, GetAITrade and 10x Founders, and teaches software, markets and trading to a 1,500-person community.";
+  "Aarit Shah is a founder and trader from Mumbai building MarketPlay, GetAITrade and 10x Founders, and teaching software and markets to 1,500 people.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -55,7 +55,9 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Aarit Shah",
     locale: "en_IN",
-    url: siteUrl,
+    // No `url` here: every page inherits this block, so a root og:url told
+    // LinkedIn and WhatsApp that /about, /building and the rest were all the
+    // homepage. Without it, scrapers use each page's own canonical.
   },
   twitter: {
     card: "summary_large_image",
@@ -85,12 +87,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${zodiak.variable} ${geistMono.variable} antialiased`}
+      className={`${geistMono.variable} antialiased`}
     >
       <body className="min-h-screen bg-night text-ink">
-        {/* Only the two critical Switzer weights block first paint: 400 for
-            body text, 900 for the display faces. Everything else loads on
-            demand via the @font-face rules in globals.css. */}
+        {/* Only the critical weights are preloaded: Switzer 400 for body
+            text, Switzer 900 for the display faces, and Zodiak 700 for the
+            serif accent word in page titles ("I need.", "buy it."), which
+            otherwise arrived after first paint and reflowed the title (CLS
+            0.13 on slow mobile). Everything else loads on demand via the
+            @font-face rules in globals.css. */}
         <link
           rel="preload"
           href="/fonts/switzer-400-normal.woff2"
@@ -101,6 +106,13 @@ export default function RootLayout({
         <link
           rel="preload"
           href="/fonts/switzer-900-normal.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/zodiak-700-normal.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"

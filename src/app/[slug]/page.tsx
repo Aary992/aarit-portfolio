@@ -53,7 +53,7 @@ export default async function ResourcePage({ params }: Params) {
     .slice(0, 3);
 
   return (
-    <main className="mx-auto max-w-3xl px-6 pt-36 pb-28 sm:pt-44">
+    <article className="mx-auto max-w-3xl px-6 pt-36 pb-28 sm:pt-44">
       <Reveal>
         <span className="font-mono text-xs uppercase tracking-[0.25em] text-amber">
           Free resource
@@ -148,6 +148,6 @@ export default async function ResourcePage({ params }: Params) {
           </section>
         </Reveal>
       )}
-    </main>
+    </article>
   );
 }

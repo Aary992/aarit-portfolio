@@ -33,7 +33,7 @@ export default async function GuidesPage() {
   };
 
   return (
-    <main>
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -97,6 +97,6 @@ export default async function GuidesPage() {
           ))
         )}
       </div>
-    </main>
+    </>
   );
 }

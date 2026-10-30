@@ -7,8 +7,10 @@ import { ShieldAlert } from "lucide-react";
  */
 export function MarketDisclaimer() {
   return (
-    <aside className="flex gap-3 rounded-2xl border border-amber/30 bg-amber/[0.05] p-4 sm:p-5">
-      <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0 text-amber" />
+    // A note inside the article, not a page-level <aside> landmark: it sits
+    // within <main>, where a complementary landmark does not belong.
+    <div role="note" className="flex gap-3 rounded-2xl border border-amber/30 bg-amber/[0.05] p-4 sm:p-5">
+      <ShieldAlert aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-amber" />
       <p className="text-sm leading-relaxed text-muted">
         <span className="font-medium text-ink">
           Not investment advice. I am not SEBI registered.
@@ -18,6 +20,6 @@ export function MarketDisclaimer() {
         act. Any instrument mentioned is an example used to explain a
         mechanism. Do your own work, or speak to a registered adviser.
       </p>
-    </aside>
+    </div>
   );
 }

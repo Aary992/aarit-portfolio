@@ -8,7 +8,7 @@ import { Reveal } from "@/components/ui/reveal";
 export const metadata: Metadata = {
   title: "Speaking",
   description:
-    "Aarit Shah runs sessions on software, trading and market basics. He has delivered seven webinars to a 1,500-person community and is available for communities, companies and campuses.",
+    "Aarit Shah runs sessions on software, trading and market basics: seven webinars so far for a 1,500-person community. Open to companies and campuses.",
   alternates: { canonical: "/speaking" },
 };
 
