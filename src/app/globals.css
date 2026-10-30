@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 /* Switzer, self-hosted from /public/fonts. Declared by hand instead of
    next/font/local so the browser only fetches the weights a page renders;

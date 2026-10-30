@@ -1,4 +1,4 @@
-﻿import type { CSSProperties } from "react";
+import type { CSSProperties } from "react";
 import { SpinningBorderLink } from "@/components/ui/spinning-border-button";
 
 import { ventures, type Venture } from "@/lib/data";

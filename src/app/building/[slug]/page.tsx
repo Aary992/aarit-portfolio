@@ -1,4 +1,4 @@
-﻿import { SpinningBorderLink } from "@/components/ui/spinning-border-button";
+import { SpinningBorderLink } from "@/components/ui/spinning-border-button";
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";

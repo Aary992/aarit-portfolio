@@ -1,4 +1,4 @@
-﻿export const profile = {
+export const profile = {
   name: "Aarit Shah",
   location: "South Bombay, India",
   roles: ["Founder", "Trader", "Creator"],
@@ -109,7 +109,7 @@ export const ventures: Venture[] = [
     name: "GetAITrade",
     tagline: "Prepare trades from the web or Telegram, then confirm every order yourself.",
     role: "Co-founder",
-    status: "Live Â· Phase 1",
+    status: "Live · Phase 1",
     year: "2026",
     description:
       "A trading tool that connects to brokers, accepts instructions from the web or Telegram, keeps an audit log and asks for confirmation before every order. It has been tested with real funds.",
@@ -128,7 +128,7 @@ export const ventures: Venture[] = [
     name: "10x Founders",
     tagline: "An invite-only room for young founders in Mumbai.",
     role: "Co-founder",
-    status: "Invite-only Â· launching",
+    status: "Invite-only · launching",
     year: "2026",
     description:
       "An invite-only group for young founders in Mumbai. It is built around considered introductions and small in-person gatherings rather than crowded mixers or pitch events.",
@@ -319,10 +319,10 @@ export const skills = [
 ];
 
 export const certifications = [
-  { name: "Markets Quantitative Analysis (MQA)", issuer: "Citi Â· Forage", date: "Mar 2026" },
-  { name: "Quantitative Research", issuer: "J.P. Morgan Â· Forage", date: "Dec 2025" },
-  { name: "Investment Banking", issuer: "JPMorgan Chase Â· Forage", date: "Dec 2025" },
-  { name: "Risk", issuer: "Goldman Sachs Â· Forage", date: "Jan 2026" },
+  { name: "Markets Quantitative Analysis (MQA)", issuer: "Citi · Forage", date: "Mar 2026" },
+  { name: "Quantitative Research", issuer: "J.P. Morgan · Forage", date: "Dec 2025" },
+  { name: "Investment Banking", issuer: "JPMorgan Chase · Forage", date: "Dec 2025" },
+  { name: "Risk", issuer: "Goldman Sachs · Forage", date: "Jan 2026" },
   { name: "Trading in the Zone (Elementary)", issuer: "GetTogetherFinance", date: "Jan 2026" },
   { name: "Volunteer", issuer: "World Hindu Economic Forum", date: "Dec 2025" },
 ];
@@ -632,7 +632,7 @@ export const investing = {
   intro:
     "I invest only after I understand what I'm holding. For equities, I use a value-investing approach. For crypto, I follow a written set of rules. In both cases, I decide the risk before entering a position.",
   equity: {
-    label: "Equity Â· value investing",
+    label: "Equity · value investing",
     title: "Price, financials and competitive advantage.",
     intro:
       "I look for businesses trading below what I believe they are worth. Before investing, I review the financial statements and the company's competitive advantage. I then adjust the position as the price changes.",
@@ -666,7 +666,7 @@ export const investing = {
     ],
   },
   crypto: {
-    label: "Crypto Â· CFDs",
+    label: "Crypto · CFDs",
     title: "Written rules and a fixed risk limit.",
     intro:
       "Alongside equities, I trade crypto CFDs using several strategies. The mix changes with the market, but I follow the same risk rules for every trade.",

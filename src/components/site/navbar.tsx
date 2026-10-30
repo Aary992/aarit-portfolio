@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -29,7 +29,7 @@ function transitionType(href: string): string[] {
   return href === "/" ? ["nav-back"] : ["nav-forward"];
 }
 
-/* â”€â”€ Entrance â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+/* ── Entrance ────────────────────────────────────────────────────────────────
    The header drops in as a unit, then its pills resolve one by one: wordmark,
    each nav link, CTA last. One cascade on load, never again. */
 

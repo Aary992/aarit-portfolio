@@ -1,4 +1,4 @@
-﻿import { FineGrainPattern } from "@/components/background-pattern/fine-grain-pattern";
+import { FineGrainPattern } from "@/components/background-pattern/fine-grain-pattern";
 import IntroLoader from "@/components/site/intro-loader";
 import Hero from "@/components/site/hero";
 import ExploreGallery from "@/components/site/explore-gallery";

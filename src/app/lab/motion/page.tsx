@@ -249,7 +249,7 @@ function StackCard({ i, total, progress, v }: { i: number; total: number; progre
             <h3 className="mt-4 font-display text-4xl font-black tracking-[-0.035em] sm:text-5xl">{v.name}</h3>
             <p className="mt-4 text-lg leading-relaxed text-muted">{v.tagline}</p>
           </div>
-          <p className="font-mono text-xs text-faint">{v.status.replace("Â", "")}</p>
+          <p className="font-mono text-xs text-faint">{v.status}</p>
         </div>
         <div className="relative min-h-[260px] p-4 sm:min-h-[380px]">
           <motion.div className="absolute inset-4 overflow-hidden" style={{ clipPath }}>
