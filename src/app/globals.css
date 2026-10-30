@@ -54,6 +54,31 @@
   font-display: swap;
 }
 
+/* Zodiak, the serif accent. Same approach as Switzer: self-hosted, fetched
+   only when a page renders that weight. 700 is preloaded from the root layout
+   because page titles set their accent word in it. */
+@font-face {
+  font-family: "Zodiak";
+  src: url("/fonts/zodiak-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Zodiak";
+  src: url("/fonts/zodiak-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Zodiak";
+  src: url("/fonts/zodiak-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Anybody Expanded, the section-headline display face. Latin subset only, and
    deliberately NOT preloaded: it renders below the fold and 93% of traffic is
    mobile, so it must not compete with Switzer for the first paint.
@@ -87,7 +112,7 @@
   --font-display: "Switzer", ui-sans-serif, system-ui, sans-serif;
   --font-grotesk: "Switzer", ui-sans-serif, system-ui, sans-serif;
   --font-wide: "Anybody", "Switzer", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-zodiak), Georgia, serif;
+  --font-serif: "Zodiak", Georgia, serif;
   --font-sans: "Switzer", ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
@@ -894,4 +919,16 @@ html { scrollbar-gutter: stable; }
   .tilt-stage { transform: none !important; }
   .portrait-backlight { animation: none; }
   .chapter-card__number { transition: none; }
+}
+
+/* Hero pills drift a few pixels. CSS rather than a framer-motion loop: the JS
+   version rewrote both pills' styles every frame, forever, which kept the main
+   thread busy restyling while the page sat idle. The independent `translate`
+   property animates on the compositor and composes with the tilt's transform. */
+@keyframes hero-float-up { 50% { translate: 0 -3px; } }
+@keyframes hero-float-down { 50% { translate: 0 3px; } }
+.hero-float--up { animation: hero-float-up 5s ease-in-out infinite; }
+.hero-float--down { animation: hero-float-down 6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-float { animation: none; }
 }

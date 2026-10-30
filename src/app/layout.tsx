@@ -6,7 +6,7 @@ import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { PageTransition } from "@/components/ui/page-transition";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { zodiak, geistMono } from "@/lib/fonts";
+import { geistMono } from "@/lib/fonts";
 
 // The apex 308-redirects to www on Vercel, so www is the canonical origin.
 const siteUrl = "https://www.aaritshah.com";
@@ -85,12 +85,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${zodiak.variable} ${geistMono.variable} antialiased`}
+      className={`${geistMono.variable} antialiased`}
     >
       <body className="min-h-screen bg-night text-ink">
-        {/* Only the two critical Switzer weights block first paint: 400 for
-            body text, 900 for the display faces. Everything else loads on
-            demand via the @font-face rules in globals.css. */}
+        {/* Only the critical weights are preloaded: Switzer 400 for body
+            text, Switzer 900 for the display faces, and Zodiak 700 for the
+            serif accent word in page titles ("I need.", "buy it."), which
+            otherwise arrived after first paint and reflowed the title (CLS
+            0.13 on slow mobile). Everything else loads on demand via the
+            @font-face rules in globals.css. */}
         <link
           rel="preload"
           href="/fonts/switzer-400-normal.woff2"
@@ -101,6 +104,13 @@ export default function RootLayout({
         <link
           rel="preload"
           href="/fonts/switzer-900-normal.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/zodiak-700-normal.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"

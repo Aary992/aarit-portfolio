@@ -154,10 +154,8 @@ export default function Hero() {
           />
 
           <motion.div
-            animate={reduceMotion ? undefined : { y: [0, -3, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             style={{ z: 40 }}
-            className="absolute -left-4 top-10 flex items-center gap-2 rounded-2xl border border-edge bg-night/70 px-3.5 py-2.5 backdrop-blur-md"
+            className="hero-float hero-float--up absolute -left-4 top-10 flex items-center gap-2 rounded-2xl border border-edge bg-night/70 px-3.5 py-2.5 backdrop-blur-md"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
@@ -170,10 +168,8 @@ export default function Hero() {
             href="https://instagram.com/withaarit"
             target="_blank"
             rel="noopener noreferrer"
-            animate={reduceMotion ? undefined : { y: [0, 3, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             style={{ z: 28 }}
-            className="absolute -right-3 bottom-20 flex items-center gap-2 rounded-2xl border border-edge bg-night/70 px-3.5 py-2.5 backdrop-blur-md transition-colors hover:border-edge-strong"
+            className="hero-float hero-float--down absolute -right-3 bottom-20 flex items-center gap-2 rounded-2xl border border-edge bg-night/70 px-3.5 py-2.5 backdrop-blur-md transition-colors hover:border-edge-strong"
           >
             <AtSign className="h-4 w-4 text-amber" />
             <span className="font-mono text-xs text-muted">@withaarit</span>
