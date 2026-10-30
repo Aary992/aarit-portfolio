@@ -348,11 +348,10 @@ export const marqueeItems = [
 // collected from webinar attendees).
 
 /**
- * Primary nav: every section of the site, in reading order, with the link
- * that earns money last so it lands closest to the CTA. Nine items is a lot
- * for one bar, so the desktop row is compact and only appears at xl; every
- * width below that gets the full-screen menu, which handles a long list
- * better than a cramped row ever could.
+ * Primary nav: the five main sections, with the link that earns money last so
+ * it lands closest to the CTA. Everything else lives in `footerNav`. The
+ * desktop row appears from lg (1024px); narrower widths get the full-screen
+ * menu.
  */
 export const nav: { label: string; href: string; match?: string[] }[] = [
   { label: "About", href: "/about" },

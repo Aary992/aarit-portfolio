@@ -753,9 +753,6 @@ body.intro-locked {
 .testimonial-card__content { animation: testimonial-card-fade 320ms ease-out; }
 @media (prefers-reduced-motion: reduce) {
   .spinning-border__beam, .testimonial-card__content { animation: none; }
-  .scroll-expansion__track { height: auto; }
-  .scroll-expansion__stage { position: relative; }
-  .scroll-expansion__media { width: 100% !important; }
 }
 
 

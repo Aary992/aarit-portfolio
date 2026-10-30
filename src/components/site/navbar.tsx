@@ -161,7 +161,7 @@ export default function Navbar() {
           variants={pillVariants}
           onMouseLeave={() => setHovered(null)}
           className={cn(
-            "nav-surface hidden items-center gap-0.5 rounded-full border border-edge transition-[padding] duration-300 xl:flex",
+            "nav-surface hidden items-center gap-0.5 rounded-full border border-edge transition-[padding] duration-300 lg:flex",
             scrolled ? "p-0.5" : "p-1",
           )}
         >
@@ -201,11 +201,11 @@ export default function Navbar() {
           })}
         </motion.nav>
 
-        <motion.div variants={pillVariants} className="hidden xl:block">
+        <motion.div variants={pillVariants} className="hidden lg:block">
           <SpinningBorderLink href="/#contact" tone="orange" compact >Book a call</SpinningBorderLink>
         </motion.div>
 
-        <motion.div variants={pillVariants} className="xl:hidden">
+        <motion.div variants={pillVariants} className="lg:hidden">
           <button
             onClick={() => setOpen(!open)}
             aria-label={open ? "Close menu" : "Open menu"}
@@ -227,7 +227,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.28, ease: EASE_OUT_EXPO }}
-            className="fixed inset-0 z-40 flex flex-col bg-night xl:hidden"
+            className="fixed inset-0 z-40 flex flex-col bg-night lg:hidden"
           >
             <div className="pointer-events-none absolute inset-0 bg-grain opacity-[0.05]" />
             {/* The list scrolls inside itself so the CTA stays pinned below
