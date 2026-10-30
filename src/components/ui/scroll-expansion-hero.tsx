@@ -4,6 +4,7 @@ import { useRef, type ReactNode } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/lib/cn";
+import { useRestStyle } from "@/lib/use-rest-style";
 
 export interface ScrollExpandMediaProps {
   mediaType?: "video" | "image";
@@ -24,6 +25,7 @@ export interface ScrollExpandMediaProps {
 export default function ScrollExpandMedia({ mediaType = "image", mediaSrc, posterSrc, bgImageSrc, title, date, scrollToExpand = "Scroll to explore", textBlend, mediaAlt = title ?? "Project preview", mediaContent, children, className }: ScrollExpandMediaProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
+  const rest = useRestStyle();
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end end"] });
   const width = useTransform(scrollYProgress, [0, 0.85], ["32%", "100%"]);
   const height = useTransform(scrollYProgress, [0, 0.85], ["62%", "84%"]);
@@ -35,7 +37,7 @@ export default function ScrollExpandMedia({ mediaType = "image", mediaSrc, poste
     <div ref={sectionRef} className="scroll-expansion__track relative h-[150svh] motion-reduce:h-auto">
       <div className="scroll-expansion__stage sticky top-0 flex h-svh min-h-[540px] items-center justify-center overflow-hidden motion-reduce:relative motion-reduce:h-[80svh]">
         {bgImageSrc && <Image src={bgImageSrc} alt="" fill sizes="100vw" className="object-cover opacity-15" />}
-        <motion.div className="pointer-events-none absolute inset-x-6 top-24 z-20 text-center" style={reducedMotion ? undefined : { y: textY, opacity: textOpacity }}>
+        <motion.div className="pointer-events-none absolute inset-x-6 top-24 z-20 text-center" style={reducedMotion ? rest : { y: textY, opacity: textOpacity }}>
           {date && <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.24em] text-amber">{date}</p>}
           {title && <h2 className={cn("font-display text-[clamp(2.5rem,7vw,6rem)] font-bold leading-none tracking-tight text-ink", textBlend && "mix-blend-difference")}>{title}</h2>}
         </motion.div>

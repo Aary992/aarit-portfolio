@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useRef, type ReactNode, type RefObject } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useRestStyle } from "@/lib/use-rest-style";
 
 const ScrollRoot = createContext<RefObject<HTMLDivElement | null> | undefined>(undefined);
 export const ScrollContainerProvider = ScrollRoot.Provider;
@@ -12,7 +13,8 @@ export function ParallaxSection({ children, distance = 100 }: { children: ReactN
   const ref = useRef<HTMLDivElement>(null);
   const container = useScrollContainer();
   const reduced = useReducedMotion();
+  const rest = useRestStyle();
   const { scrollYProgress } = useScroll({ target: ref, container, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [distance, -distance]);
-  return <div ref={ref} className="parallax-scene"><motion.div style={reduced ? undefined : { y }}>{children}</motion.div></div>;
+  return <div ref={ref} className="parallax-scene"><motion.div style={reduced ? rest : { y }}>{children}</motion.div></div>;
 }
