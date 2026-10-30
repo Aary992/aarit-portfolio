@@ -7,7 +7,7 @@ import { timeline } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Timeline",
   description:
-    "Aarit Shah's timeline from 2025 to now: investing, writing, internships and founding MarketPlay, 10x Founders and GetAITrade. Plus his education at KC College and MET Rishikul Vidyalaya and his goals for the next five years.",
+    "Aarit Shah's timeline from 2025 to now: investing, writing, internships and founding three ventures, plus his education and goals for the next five years.",
   alternates: { canonical: "/timeline" },
 };
 

@@ -13,7 +13,7 @@ const siteUrl = "https://www.aaritshah.com";
 const defaultTitle = "Aarit Shah · Founder, Trader & Builder";
 const titleTemplate = "Aarit Shah · %s";
 const description =
-  "Aarit Shah is a founder and trader from Mumbai. He is building MarketPlay, GetAITrade and 10x Founders, and teaches software, markets and trading to a 1,500-person community.";
+  "Aarit Shah is a founder and trader from Mumbai building MarketPlay, GetAITrade and 10x Founders, and teaching software and markets to 1,500 people.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -55,7 +55,9 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Aarit Shah",
     locale: "en_IN",
-    url: siteUrl,
+    // No `url` here: every page inherits this block, so a root og:url told
+    // LinkedIn and WhatsApp that /about, /building and the rest were all the
+    // homepage. Without it, scrapers use each page's own canonical.
   },
   twitter: {
     card: "summary_large_image",

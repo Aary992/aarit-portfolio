@@ -29,7 +29,7 @@ export default function OpengraphImage() {
             height: 760,
             borderRadius: 9999,
             background:
-              "radial-gradient(circle, rgba(255,107,26,0.45) 0%, rgba(245,158,11,0.18) 38%, rgba(10,10,11,0) 70%)",
+              "radial-gradient(circle, rgba(255,107,26,0.45) 0%, rgba(245,158,11,0.18) 27%, rgba(10,10,11,0) 50%)",
           }}
         />
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>

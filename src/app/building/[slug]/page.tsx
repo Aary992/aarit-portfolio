@@ -23,6 +23,21 @@ function hostFromUrl(url: string) {
 
 type Params = { params: Promise<{ slug: string }> };
 
+/**
+ * Search results cut descriptions at about 160 characters, and the full venture
+ * descriptions run to 300. Lead with the tagline, then add the description's
+ * first sentence only if the pair still fits and it says something new.
+ */
+function metaDescription(tagline: string, description: string) {
+  const first = description.match(/^.*?[.!?](\s|$)/)?.[0].trim() ?? description;
+  const words = (s: string) => new Set(s.toLowerCase().match(/[a-z0-9]+/g) ?? []);
+  const taglineWords = words(tagline);
+  const firstWords = [...words(first)];
+  const overlap = firstWords.filter((w) => taglineWords.has(w)).length / firstWords.length;
+  const pair = `${tagline} ${first}`;
+  return pair.length <= 160 && overlap < 0.6 ? pair : tagline;
+}
+
 export function generateStaticParams() {
   return ventures.map((v) => ({ slug: v.slug }));
 }
@@ -32,13 +47,14 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const v = ventures.find((x) => x.slug === slug);
   if (!v) return {};
   const canonical = `/building/${v.slug}`;
+  const description = metaDescription(v.tagline, v.description);
   return {
     title: v.name,
-    description: v.description,
+    description,
     alternates: { canonical },
     openGraph: {
       title: `Aarit Shah · ${v.name}`,
-      description: v.description,
+      description,
       url: canonical,
     },
   };

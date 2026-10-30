@@ -8,7 +8,7 @@ import Community from "@/components/site/community";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Aarit Shah is a founder, trader, creator and student from South Bombay. He is building MarketPlay, GetAITrade and 10x Founders and teaches a community of 1,500 people.",
+    "Aarit Shah is a founder, trader and student from South Bombay building MarketPlay, GetAITrade and 10x Founders, and teaching a 1,500-person community.",
   alternates: { canonical: "/about" },
 };
 

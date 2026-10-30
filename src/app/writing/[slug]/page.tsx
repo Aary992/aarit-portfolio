@@ -17,7 +17,9 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   if (!p) return {};
   const canonical = `/writing/${p.slug}`;
   return {
-    title: p.title,
+    // Absolute, without the "Aarit Shah · " prefix: post titles are long
+    // enough already, and the prefix pushed them past what search results show.
+    title: { absolute: p.title },
     description: p.dek,
     alternates: { canonical },
     openGraph: {
