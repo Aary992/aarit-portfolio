@@ -297,6 +297,7 @@ export function JourneyTimeline({
             </div>
           )}
 
+          <h2 className="sr-only">Milestones</h2>
           <div
             data-track
             className="relative flex w-max items-center gap-[5vw] pl-[6vw] pr-[8vw] will-change-transform"
@@ -471,28 +472,34 @@ export function JourneyTimeline({
           </div>
         </div>
 
-        <ol data-v-list className="relative mt-16 space-y-14 pl-10">
-          <span className="absolute bottom-2 left-[6px] top-2 w-px bg-edge-strong" />
+        {/* The rail sits beside the list, not inside it: an <ol> may only
+            contain <li> children. Same box, so it lines up exactly. */}
+        <h2 className="sr-only">Milestones</h2>
+        <div className="relative mt-16">
+          <span aria-hidden="true" className="absolute bottom-2 left-[6px] top-2 w-px bg-edge-strong" />
           <span
+            aria-hidden="true"
             data-v-progress
             className="absolute bottom-2 left-[6px] top-2 w-px origin-top bg-gradient-to-b from-ember to-amber shadow-[0_0_10px_rgba(245,158,11,0.6)]"
           />
-          {items.map((item, i) => (
-            <li key={`${item.date}-${item.title}`} data-v-item className="relative">
-              <span className="absolute -left-10 top-1 size-[13px] rounded-full bg-amber shadow-[0_0_14px_rgba(245,158,11,0.7)]" />
-              <div className="flex items-baseline gap-3">
-                <span className="font-serif text-lg leading-none text-amber">{pad(i + 1)}</span>
-                <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-muted">
-                  {item.date}
-                </span>
-              </div>
-              <h3 className="mt-2 font-display text-2xl font-bold tracking-[-0.02em]">
-                {item.title}
-              </h3>
-              <p className="mt-2 leading-relaxed text-muted">{item.body}</p>
-            </li>
-          ))}
-        </ol>
+          <ol data-v-list className="relative space-y-14 pl-10">
+            {items.map((item, i) => (
+              <li key={`${item.date}-${item.title}`} data-v-item className="relative">
+                <span className="absolute -left-10 top-1 size-[13px] rounded-full bg-amber shadow-[0_0_14px_rgba(245,158,11,0.7)]" />
+                <div className="flex items-baseline gap-3">
+                  <span className="font-serif text-lg leading-none text-amber">{pad(i + 1)}</span>
+                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-muted">
+                    {item.date}
+                  </span>
+                </div>
+                <h3 className="mt-2 font-display text-2xl font-bold tracking-[-0.02em]">
+                  {item.title}
+                </h3>
+                <p className="mt-2 leading-relaxed text-muted">{item.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
 
         {cta && (
           <div data-v-item className="mt-20 border-t border-edge pt-10">

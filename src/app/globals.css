@@ -99,7 +99,9 @@
   --color-surface-2: #1b1b1f;
   --color-ink: #fafaf9;
   --color-muted: #a1a1aa;
-  --color-faint: #71717a;
+  /* Lightest grey that still clears WCAG AA (4.5:1) on every surface it sits
+     on, up to surface-2. #71717a measured 3.6–4.1:1. */
+  --color-faint: #82828b;
   --color-amber: #f59e0b;
   --color-ember: #ff6b1a;
   --color-edge: rgba(250, 250, 249, 0.08);
@@ -781,7 +783,7 @@ body.intro-locked {
 .chapter-card__caption p { margin-top: 14px; color: #b6a79b; max-width: 250px; font-size: 13px; line-height: 1.6; }
 .chapter-card__enter { display: flex; align-items: center; gap: 12px; margin-top: 26px; font: 10px var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: rgb(var(--gallery-accent)); }
 .cinema-gallery__controls { display: flex; justify-content: space-between; align-items: center; padding: 20px 5vw 0; font: 11px var(--font-mono); color: #dfc6b3; }
-.cinema-gallery__controls > span > span { color: #7c726a; }
+.cinema-gallery__controls > span > span { color: #8e847c; }
 .cinema-gallery__controls > div { display: flex; }
 .cinema-gallery__controls button { display: grid; place-items: center; width: 44px; height: 44px; cursor: pointer; border-radius: 50%; }
 .cinema-gallery__controls button:disabled { opacity: .25; cursor: default; }

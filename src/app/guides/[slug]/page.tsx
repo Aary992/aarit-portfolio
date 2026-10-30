@@ -92,7 +92,7 @@ export default async function GuidePage({ params }: Params) {
   };
 
   return (
-    <main className="mx-auto max-w-3xl px-6 pt-36 pb-28 sm:pt-44">
+    <article className="mx-auto max-w-3xl px-6 pt-36 pb-28 sm:pt-44">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
@@ -179,6 +179,6 @@ export default async function GuidePage({ params }: Params) {
           </section>
         </Reveal>
       )}
-    </main>
+    </article>
   );
 }

@@ -123,7 +123,7 @@ export default function PressPage() {
               trading to a 1,500-person community each day and does not give tips
               or signals.
               More at{" "}
-              <a href="https://www.aaritshah.com" className="text-amber underline-offset-4 hover:underline">
+              <a href="https://www.aaritshah.com" className="text-amber underline underline-offset-4 hover:no-underline">
                 aaritshah.com
               </a>
               .

@@ -143,6 +143,9 @@ export default async function VenturePage({ params }: Params) {
           />
 
           {detail?.features && (
+            <h2 className="sr-only">What&apos;s inside</h2>
+          )}
+          {detail?.features && (
             <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-edge bg-edge sm:grid-cols-3">
               {detail.features.map((f, i) => (
                 <Reveal key={f.title} delay={i * 0.05}>

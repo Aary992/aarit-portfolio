@@ -22,7 +22,7 @@ export default async function ResourcesPage() {
   const categories = [...new Set(resources.map((r) => r.category))].sort();
 
   return (
-    <main>
+    <>
       <PageHeader
         eyebrow="Free resources"
         title={
@@ -80,6 +80,6 @@ export default async function ResourcesPage() {
           ))
         )}
       </div>
-    </main>
+    </>
   );
 }

@@ -5,6 +5,7 @@ import { Reveal } from "@/components/ui/reveal";
 export default function Certifications() {
   return (
     <section id="certifications" className="mx-auto max-w-6xl px-6 pb-28">
+      <h2 className="sr-only">Certificates</h2>
       <div className="grid gap-px overflow-hidden rounded-2xl border border-edge bg-edge sm:grid-cols-2 lg:grid-cols-3">
         {certifications.map((c, i) => (
           <Reveal key={c.name} delay={(i % 3) * 0.05}>

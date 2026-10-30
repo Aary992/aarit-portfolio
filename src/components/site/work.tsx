@@ -20,6 +20,8 @@ function hostFromUrl(url: string) {
 export default function Work() {
   return (
     <section id="ventures" className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
+      {/* Bridges the page h1 and the venture h3s for screen-reader outlines. */}
+      <h2 className="sr-only">Ventures</h2>
       <div className="flex flex-col gap-8">
         {ventures.map((v, i) => (
           <VentureCard key={v.slug} v={v} index={i} />

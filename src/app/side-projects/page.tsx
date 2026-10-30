@@ -27,6 +27,7 @@ export default function SideProjectsPage() {
       />
 
       <section className="mx-auto max-w-6xl px-6 pb-20">
+        <h2 className="sr-only">Tools I built</h2>
         <div className="grid gap-px overflow-hidden rounded-2xl border border-edge bg-edge sm:grid-cols-2">
           {sideProjects.map((p, i) => {
             const cardBody = (
